@@ -6,7 +6,7 @@
   <header>
     <h1>{{ projectName }}</h1>
 
-    <a *ngIf="categoryId" [href]="categoryLink" class="category">
+    <a *ngIf="categoryId" [routerLink]="categoryLink" class="category">
       <svg-icon [name]="categoryIcon"></svg-icon>
       <span>{{ categoryName }}</span>
     </a>
