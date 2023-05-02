@@ -1,0 +1,55 @@
+<main>
+  <div *ngIf="showAxis" class="indexes x">
+    <span></span>
+    <div *ngFor="let i of xIndexes">
+      <span
+        [class.hovered]="i === hoveredCell?.x"
+        [class.focused]="i === focusedCell?.x"
+        >{{ i + 1 }}</span
+      >
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="showAxis" class="indexes y">
+      <div *ngFor="let i of yIndexes">
+        <span
+          [class.hovered]="i === hoveredCell?.y"
+          [class.focused]="i === focusedCell?.y"
+          >{{ i + 1 }}</span
+        >
+      </div>
+    </div>
+
+    <div class="matrix" (mouseleave)="resetHoveredCell()">
+      <div
+        *ngFor="let row of rows; let y = index; trackBy: trackByRow"
+        class="row"
+      >
+        <input
+          *ngFor="let value of row; let x = index; trackBy: trackByColumn"
+          [value]="value"
+          [title]="y + 1 + '⨉' + (x + 1)"
+          [readonly]="readOnly"
+          (change)="updateValue(y, x, $event)"
+          (mouseenter)="onCellHover(y, x)"
+          (focus)="onCellFocus(y, x)"
+          (blur)="resetFocusedCell()"
+          type="number"
+          class="col"
+          [placeholder]="readOnly ? '◌' : '⬚'"
+        />
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer *ngIf="showDetails">
+  <div *ngIf="matrix.name" class="name">{{ matrix.name }}</div>
+
+  <div class="size">
+    <span class="y">{{ matrix.y }}</span>
+    <span>⨉</span>
+    <span class="x">{{ matrix.x }}</span>
+  </div>
+</footer>

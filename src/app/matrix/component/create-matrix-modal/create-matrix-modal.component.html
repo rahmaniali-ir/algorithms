@@ -1,0 +1,107 @@
+<modal-card [header]="header" description="Fill in size and values">
+  <section>
+    <form-group name="Matrix Size">
+      <form-label label="Rows" target="rows">
+        <input
+          *ngIf="isRowFixed"
+          [value]="rows"
+          readonly
+          id="rows"
+          min="1"
+          type="number"
+        />
+
+        <input
+          *ngIf="!isRowFixed"
+          [(ngModel)]="rows"
+          (input)="changeInputMatrixSize()"
+          id="rows"
+          min="1"
+          type="number"
+        />
+      </form-label>
+
+      <form-label label="Columns" target="columns">
+        <input
+          [(ngModel)]="columns"
+          (input)="changeInputMatrixSize()"
+          id="columns"
+          min="1"
+          type="number"
+        />
+      </form-label>
+    </form-group>
+  </section>
+
+  <section class="randomize">
+    <check-box
+      [(value)]="randomize"
+      (valueChange)="updateRandomMatrix()"
+      uncheckedIcon="random"
+      checkedIcon="random"
+      label="Randomize"
+      description="Fill matrix with random values"
+    ></check-box>
+
+    <button
+      *ngIf="randomize"
+      (click)="useRandomMatrix()"
+      class="button neutral"
+      title="Edit randomized matrix"
+    >
+      <svg-icon name="edit"></svg-icon>
+    </button>
+
+    <button
+      *ngIf="randomize"
+      (click)="updateRandomMatrix()"
+      class="button neutral"
+      title="Randomize again"
+    >
+      <svg-icon name="refresh"></svg-icon>
+    </button>
+  </section>
+
+  <section class="random">
+    <form-group *ngIf="randomize" name="Random Range">
+      <form-label label="Min" target="random-min">
+        <input
+          [(ngModel)]="randomMin"
+          (change)="updateRandomMatrix()"
+          id="random-min"
+          min="0"
+          type="number"
+        />
+      </form-label>
+
+      <form-label label="Max" target="random-max">
+        <input
+          [(ngModel)]="randomMax"
+          (change)="updateRandomMatrix()"
+          id="random-max"
+          min="1"
+          type="number"
+        />
+      </form-label>
+    </form-group>
+  </section>
+
+  <section class="matrix">
+    <app-matrix
+      [matrix]="randomize ? randomMatrix : matrix"
+      [readOnly]="randomize"
+      [showAxis]="true"
+      [showDetails]="true"
+    ></app-matrix>
+  </section>
+
+  <ng-container footer>
+    <button (click)="modal.dismiss()" class="button neutral">
+      <span>Cancel</span>
+    </button>
+
+    <button (click)="createMatrix()" class="button primary filled">
+      <span>Create</span>
+    </button>
+  </ng-container>
+</modal-card>

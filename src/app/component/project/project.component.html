@@ -1,0 +1,24 @@
+<nav>
+  <div class="project-icon">
+    <svg-icon [name]="projectIcon"></svg-icon>
+  </div>
+
+  <header>
+    <h1>{{ projectName }}</h1>
+
+    <a *ngIf="categoryId" [href]="categoryLink" class="category">
+      <svg-icon [name]="categoryIcon"></svg-icon>
+      <span>{{ categoryName }}</span>
+    </a>
+  </header>
+
+  <div class="options">
+    <a routerLink="/" class="button primary" title="Home">
+      <svg-icon name="apps"></svg-icon>
+    </a>
+  </div>
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

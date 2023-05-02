@@ -1,0 +1,22 @@
+<img src="assets/background.jpg" class="fixed-background" alt="Background" />
+
+<header>
+  <h1>Design Algorithms</h1>
+  <h2>By <a href="#">Ali Rahmani</a></h2>
+</header>
+
+<main>
+  <a
+    *ngFor="let project of projects"
+    [routerLink]="'project/' + project.id"
+    class="card"
+  >
+    <header>
+      <svg-icon [name]="project.icon"></svg-icon>
+    </header>
+
+    <h3>{{ project.name }}</h3>
+
+    <p>{{ project.description }}</p>
+  </a>
+</main>

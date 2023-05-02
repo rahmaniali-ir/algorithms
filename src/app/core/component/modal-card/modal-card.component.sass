@@ -1,0 +1,35 @@
+
+modal-card
+  background: var(--background-accent)
+  border-radius: var(--radius)
+  display: flex
+  flex-direction: column
+  max-height: 100vh
+  min-width: 30vw
+
+  > *
+    padding: 24px
+
+  > header
+    align-items: flex-start
+    display: flex
+
+    .header
+      flex: 1
+
+      p
+        font-size: 14px
+        margin: 0
+        opacity: .5
+
+  > main
+    padding: 0 24px
+
+    > section:not(:last-of-type)
+      margin: 0 0 16px
+
+  > footer
+    align-items: center
+    display: flex
+    gap: 8px
+    justify-content: flex-end

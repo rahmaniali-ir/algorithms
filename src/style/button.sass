@@ -1,0 +1,96 @@
+
+.button
+  --background-color: var(--text)
+  --background-opacity: .1
+
+  align-items: center
+  background: transparent
+  border: none
+  border-radius: var(--radius)
+  color: var(--text)
+  cursor: pointer
+  display: inline-flex
+  font-size: inherit
+  gap: 8px
+  isolation: isolate
+  padding: 8px
+  position: relative
+  text-decoration: none
+
+  &:hover
+    --background-opacity: .2
+
+  &.vertical
+    flex-direction: column
+
+  &.primary
+    --background-color: var(--primary)
+    color: var(--primary)
+
+  &.accent
+    --background-color: var(--accent)
+    color: var(--accent)
+
+  &.neutral
+    --background-color: var(--background-accent)
+    color: var(--text) !important
+
+  &.filled
+    --background-opacity: 1
+    color: var(--background)
+
+    &:hover
+      --background-opacity: .9
+
+  &.placeholder
+    --background-color: var(--text)
+    --background-opacity: 0
+    --hover-color: var(--primary)
+
+    border: 1px dashed var(--border)
+    justify-content: center
+
+    &.vertical
+      gap: 16px
+
+      > span
+        margin: 0
+
+    &:hover
+      --background-opacity: .02
+
+      border-color: var(--border-accent)
+
+      svg-icon
+        color: var(--hover-color)
+        opacity: 1
+        scale: 1.2
+
+      span
+        opacity: .7
+
+    svg-icon
+      opacity: .6
+
+    span
+      font-size: 14px
+      opacity: .5
+      transition: all .3s ease
+
+  &::before
+    background: var(--background-color)
+    border-radius: inherit
+    content: ''
+    display: block
+    inset: 0
+    opacity: var(--background-opacity)
+    pointer-events: none
+    position: absolute
+    transition: all .3s ease
+    z-index: -1
+
+  > span
+    margin-inline-end: 8px
+
+    &:only-child
+      margin-inline-start: 8px

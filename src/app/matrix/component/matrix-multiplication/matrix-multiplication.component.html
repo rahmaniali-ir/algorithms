@@ -1,0 +1,113 @@
+<!-- <page-header name="Chained Matrix Multiplication"></page-header> -->
+
+<nav>
+  <!-- axis -->
+  <check-box
+    [(value)]="showAxis"
+    uncheckedIcon="combinedRuler"
+    checkedIcon="combinedRuler"
+    label="Indices"
+    description="Show indices"
+  ></check-box>
+
+  <!-- details -->
+  <check-box
+    [(value)]="showDetails"
+    uncheckedIcon="infoCircle"
+    checkedIcon="infoCircle"
+    label="Details"
+    description="Show name & size"
+  ></check-box>
+</nav>
+
+<section class="input">
+  <nav>
+    <header>
+      <svg-icon name="keyboardIn"></svg-icon>
+      <strong>Input</strong>
+    </header>
+
+    <aside>
+      <!-- clear -->
+      <button
+        *ngIf="matrices.length > 0"
+        (click)="clear()"
+        class="button placeholder clear"
+      >
+        <svg-icon name="trash"></svg-icon>
+        <span>Clear</span>
+      </button>
+    </aside>
+  </nav>
+
+  <main>
+    <!-- matrices -->
+    <div *ngFor="let matrix of matrices; let i = index" class="matrix">
+      <svg-icon *ngIf="i > 0" name="times" class="times"></svg-icon>
+
+      <app-matrix
+        [matrix]="matrix"
+        [showDetails]="showDetails"
+        [showAxis]="showAxis"
+        [readOnly]="true"
+      ></app-matrix>
+    </div>
+
+    <!-- add matrix -->
+    <button (click)="createMatrix()" class="button vertical placeholder">
+      <svg-icon name="addX"></svg-icon>
+
+      <span *ngIf="!matrices.length">Add First Matrix</span>
+      <span *ngIf="matrices.length === 1">Add Second Matrix</span>
+      <span *ngIf="matrices.length > 1">Add More</span>
+    </button>
+
+    <!-- calculate result -->
+    <button
+      *ngIf="matrices.length > 1 && !result"
+      (click)="multiply()"
+      class="button vertical placeholder calculate"
+    >
+      <svg-icon name="calculator"></svg-icon>
+      <span>Calculate</span>
+    </button>
+
+    <!-- result -->
+    <div *ngIf="result" class="matrix">
+      <svg-icon name="equal" class="equal"></svg-icon>
+
+      <app-matrix
+        [matrix]="result"
+        [showDetails]="showDetails"
+        [showAxis]="showAxis"
+        [readOnly]="true"
+      ></app-matrix>
+    </div>
+  </main>
+</section>
+
+<section class="solution">
+  <nav>
+    <header>
+      <svg-icon name="wrapText"></svg-icon>
+      <strong>Solution</strong>
+    </header>
+
+    <aside></aside>
+  </nav>
+
+  <main>No result yet!</main>
+</section>
+
+<section class="notes">
+  <nav>
+    <header>
+      <svg-icon name="landscapeFile"></svg-icon>
+      <strong>Notes</strong>
+    </header>
+
+    <aside></aside>
+  </nav>
+
+  <main>Some content will be here soon!</main>
+</section>
