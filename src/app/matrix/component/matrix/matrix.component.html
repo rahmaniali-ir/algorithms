@@ -5,8 +5,9 @@
       <span
         [class.hovered]="i === hoveredCell?.x"
         [class.focused]="i === focusedCell?.x"
-        >{{ i + 1 }}</span
       >
+        {{ i === undefined ? "" : i + 1 }}
+      </span>
     </div>
   </div>
 
@@ -16,25 +17,28 @@
         <span
           [class.hovered]="i === hoveredCell?.y"
           [class.focused]="i === focusedCell?.y"
-          >{{ i + 1 }}</span
         >
+          {{ i === undefined ? "" : i + 1 }}
+        </span>
       </div>
     </div>
 
     <div class="matrix" (mouseleave)="resetHoveredCell()">
       <div
-        *ngFor="let row of rows; let y = index; trackBy: trackByRow"
+        *ngFor="let row of viewRows; trackBy: trackByRow"
+        [class]="row.className"
         class="row"
       >
         <input
-          *ngFor="let value of row; let x = index; trackBy: trackByColumn"
-          [value]="value || ''"
-          [title]="y + 1 + '⨉' + (x + 1)"
+          *ngFor="let cell of row.cells; trackBy: trackByColumn"
+          [value]="cell.value === undefined ? '' : cell.value"
+          [title]="cell.title"
+          [type]="cell.type"
+          [class]="cell.className"
           [readonly]="readOnly"
-          [type]="inputType"
-          (change)="updateValue(y, x, $event)"
-          (mouseenter)="onCellHover(y, x)"
-          (focus)="onCellFocus(y, x)"
+          (change)="updateValue(cell.position, $event)"
+          (mouseenter)="onCellHover(cell.position)"
+          (focus)="onCellFocus(cell.position)"
           (blur)="resetFocusedCell()"
           class="col"
           [placeholder]="readOnly ? '◌' : '⬚'"

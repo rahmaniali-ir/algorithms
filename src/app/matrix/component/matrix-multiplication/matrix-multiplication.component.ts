@@ -57,9 +57,9 @@ export class MatrixMultiplicationComponent {
   }
 
   multiply() {
-    const matrix = Matrix.multiply(this.matrices[0], this.matrices[1]);
-    matrix.name = 'Result';
-    this.result = matrix;
+    // const matrix = Matrix.multiply(this.matrices[0], this.matrices[1]);
+    // matrix.name = 'Result';
+    // this.result = matrix;
 
     const result = Matrix.chainMultiply(...this.matrices);
 
