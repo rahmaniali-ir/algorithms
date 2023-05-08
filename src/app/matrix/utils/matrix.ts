@@ -11,9 +11,10 @@ export function getCellView(
   position: Position,
   value?: any,
   title: string = `${position.y + 1}⨉${position.x + 1}`,
-  type: MatrixInputType = 'number',
   className?: string
 ): MatrixCellView {
+  const type: MatrixInputType = Number.isInteger(value) ? 'number' : 'text';
+
   return {
     position,
     value,
@@ -27,7 +28,6 @@ export function getFilledRowView(
   y: number,
   x: number,
   v: any,
-  type: MatrixInputType,
   className?: string,
   cellClassName?: string
 ): MatrixRowView {
@@ -35,7 +35,7 @@ export function getFilledRowView(
     index: y,
     cells: Array(x)
       .fill(v)
-      .map((value, x) => getCellView({ y, x }, value, '', type, cellClassName)),
+      .map((value, x) => getCellView({ y, x }, value, '', cellClassName)),
     className,
   };
 }

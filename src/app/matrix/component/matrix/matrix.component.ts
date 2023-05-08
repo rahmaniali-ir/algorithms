@@ -72,14 +72,7 @@ export class MatrixComponent {
 
     if (this.shouldTrimY) {
       rowViews.push(
-        getFilledRowView(
-          this.maxSize - 1,
-          this.matrix.x,
-          '⋮',
-          'text',
-          '',
-          'trim-line'
-        ),
+        getFilledRowView(this.maxSize - 1, this.matrix.x, '⋮', '', 'trim-line'),
         matrixRowToRowView(this.matrix.y - 1, this.rows[this.matrix.y - 1])
       );
     }
@@ -88,7 +81,7 @@ export class MatrixComponent {
       rowViews = rowViews.map((row, y) => {
         row.cells = [
           ...row.cells.slice(0, this.maxSize - 1),
-          getCellView({ y, x: this.maxSize - 1 }, '⋯', '', 'text', 'trim-line'),
+          getCellView({ y, x: this.maxSize - 1 }, '⋯', '', 'trim-line'),
           row.cells[this.matrix.x - 1],
         ];
 
@@ -101,16 +94,6 @@ export class MatrixComponent {
     }
 
     return rowViews;
-  }
-
-  get isInputNumber() {
-    if (!this.matrix.x || !this.matrix.y) return false;
-
-    return typeof this.matrix.get(0, 0) === 'number';
-  }
-
-  get inputType() {
-    return this.isInputNumber ? 'number' : 'text';
   }
 
   trackByRow(index: number) {
