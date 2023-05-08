@@ -47,7 +47,7 @@ export class Matrix {
     this.matrix = plainMatrix;
   }
 
-  setAllWith(v: number) {
+  fill(v: number) {
     for (let y = 0; y < this.y; y++) {
       for (let x = 0; x < this.x; x++) {
         this.set(y, x, v);
@@ -55,7 +55,7 @@ export class Matrix {
     }
   }
 
-  setDiagonalWith(d: number, v: number) {
+  fillDiagonal(d: number, v: number) {
     const x = this.x - d;
 
     for (let y = 0; y < x; y++) {
@@ -101,7 +101,7 @@ export class Matrix {
     const cost = new Matrix(n, n);
 
     // Fill the diagonal entries with zero
-    cost.setDiagonalWith(0, 0);
+    cost.fillDiagonal(0, 0);
 
     // Loop over the chain length from 2 to n
     for (let l = 2; l <= n; l++) {
