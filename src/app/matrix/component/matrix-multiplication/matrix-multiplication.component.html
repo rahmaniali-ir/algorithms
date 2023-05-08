@@ -1,6 +1,6 @@
 <!-- <page-header name="Chained Matrix Multiplication"></page-header> -->
 
-<nav>
+<nav class="no-print">
   <!-- axis -->
   <check-box
     [(value)]="showAxis"
@@ -27,7 +27,7 @@
       <strong>Input</strong>
     </header>
 
-    <aside>
+    <aside class="no-print">
       <!-- clear -->
       <button
         *ngIf="matrices.length > 0"
@@ -55,7 +55,10 @@
     </div>
 
     <!-- add matrix -->
-    <button (click)="createMatrix()" class="button vertical placeholder">
+    <button
+      (click)="createMatrix()"
+      class="button vertical placeholder no-print"
+    >
       <svg-icon name="addX"></svg-icon>
 
       <span *ngIf="!matrices.length">Add First Matrix</span>
@@ -67,7 +70,7 @@
     <button
       *ngIf="matrices.length > 1 && !result"
       (click)="multiply()"
-      class="button vertical placeholder calculate"
+      class="button vertical placeholder calculate no-print"
     >
       <svg-icon name="calculator"></svg-icon>
       <span>Calculate</span>
@@ -94,7 +97,13 @@
       <strong>Solution</strong>
     </header>
 
-    <aside></aside>
+    <aside class="no-print">
+      <!-- print -->
+      <button *ngIf="m" (click)="print()" class="button placeholder print">
+        <svg-icon name="print"></svg-icon>
+        <span>Print</span>
+      </button>
+    </aside>
   </nav>
 
   <main>
