@@ -39,6 +39,10 @@ export class CreateMatrixModalComponent implements OnInit {
     return `Add Matrix '${this.name}'`;
   }
 
+  get maxSize() {
+    return this.randomize ? 4 : Number.MAX_VALUE;
+  }
+
   changeInputMatrixSize() {
     if (this.randomize) {
       this.randomMatrix = new Matrix(this.rows, this.columns);

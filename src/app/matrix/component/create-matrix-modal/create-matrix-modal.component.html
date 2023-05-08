@@ -89,6 +89,7 @@
   <section class="matrix">
     <app-matrix
       [matrix]="randomize ? randomMatrix : matrix"
+      [maxSize]="maxSize"
       [readOnly]="randomize"
       [showAxis]="true"
       [showDetails]="true"
