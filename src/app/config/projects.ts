@@ -1,5 +1,5 @@
 import { Project } from '../type/gallery';
-import { categories } from './categories';
+import { categories, defaultCategory } from './categories';
 
 export type ProjectKey =
   | 'chainedMatrixMultiplication'
@@ -54,3 +54,11 @@ export const projects: Record<ProjectKey, Project> = {
 export const projectsArray = Object.keys(projects).map(
   (k) => projects[k as ProjectKey]
 );
+
+export const defaultProject: Project = {
+  id: '',
+  name: '',
+  icon: '',
+  description: '',
+  category: defaultCategory,
+};

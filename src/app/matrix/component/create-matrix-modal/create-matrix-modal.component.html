@@ -64,7 +64,7 @@
 
   <section class="random">
     <form-group *ngIf="randomize" name="Random Range">
-      <form-label label="Min" target="random-min">
+      <form-label label="Min (inclusive)" target="random-min">
         <input
           [(ngModel)]="randomMin"
           (change)="updateRandomMatrix()"
@@ -74,7 +74,7 @@
         />
       </form-label>
 
-      <form-label label="Max" target="random-max">
+      <form-label label="Max (exclusive)" target="random-max">
         <input
           [(ngModel)]="randomMax"
           (change)="updateRandomMatrix()"

@@ -6,17 +6,8 @@
 </header>
 
 <main>
-  <a
+  <project-card
     *ngFor="let project of projects"
-    [routerLink]="'project/' + project.id"
-    class="card"
-  >
-    <header>
-      <svg-icon [name]="project.icon"></svg-icon>
-    </header>
-
-    <h3>{{ project.name }}</h3>
-
-    <p>{{ project.description }}</p>
-  </a>
+    [project]="project"
+  ></project-card>
 </main>

@@ -9,5 +9,5 @@ export interface Project {
   name: string;
   description: string;
   id: string;
-  category?: Category;
+  category: Category;
 }

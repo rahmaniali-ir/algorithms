@@ -75,3 +75,34 @@
 
       .calculate
         --hover-color: var(--accent)
+
+  section.solution
+    .diagonals
+      align-items: center
+      cursor: default
+      display: flex
+      font-family: sans
+      font-style: italic
+      gap: 8px
+
+      > div
+        align-items: center
+        display: flex
+
+        .diagonal
+          align-items: center
+          display: flex
+
+          &:hover
+            .index
+              // color: var(--primary)
+              opacity: 1
+              scale: 1.1
+
+            .d
+              color: var(--accent)
+
+          .index
+            align-self: flex-end
+            font-size: .7em
+            opacity: .5

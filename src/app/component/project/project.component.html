@@ -1,20 +1,12 @@
 <nav>
   <div class="project-icon">
-    <svg-icon [name]="projectIcon"></svg-icon>
+    <svg-icon [name]="project.icon"></svg-icon>
   </div>
 
   <header>
-    <h1>{{ projectName }}</h1>
+    <h1>{{ project.name }}</h1>
 
-    <a
-      *ngIf="categoryId"
-      routerLink="/"
-      [queryParams]="{ category: categoryId }"
-      class="category"
-    >
-      <svg-icon [name]="categoryIcon"></svg-icon>
-      <span>{{ categoryName }}</span>
-    </a>
+    <category-tag [category]="category"></category-tag>
   </header>
 
   <div class="options">

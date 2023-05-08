@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { defaultCategory } from 'src/app/config/categories';
+import { defaultProject } from 'src/app/config/projects';
 import { Project } from 'src/app/type/gallery';
 
 @Component({
@@ -12,34 +13,10 @@ export class ProjectComponent {
   constructor(private route: ActivatedRoute) {}
 
   get project(): Project {
-    return this.route.snapshot.children[0].data['project'];
+    return this.route.snapshot.children[0].data['project'] || defaultProject;
   }
 
   get category() {
     return this.project.category || defaultCategory;
-  }
-
-  get projectName() {
-    return this.project.name || 'Project';
-  }
-
-  get projectIcon() {
-    return this.project.icon || '';
-  }
-
-  get categoryId() {
-    return this.category.id;
-  }
-
-  get categoryName() {
-    return this.category.name;
-  }
-
-  get categoryIcon() {
-    return this.category.icon;
-  }
-
-  get categoryLink() {
-    return `/?category=${this.category.id}`;
   }
 }

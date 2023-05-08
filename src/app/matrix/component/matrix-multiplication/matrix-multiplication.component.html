@@ -96,7 +96,31 @@
     <aside></aside>
   </nav>
 
-  <main>No result yet!</main>
+  <main>
+    <app-matrix
+      [matrix]="test"
+      [showDetails]="showDetails"
+      [showAxis]="showAxis"
+      [readOnly]="true"
+    ></app-matrix>
+
+    <p>No result yet!</p>
+    <div class="step">
+      <header>Diagonals:</header>
+
+      <div class="diagonals">
+        <div *ngFor="let d of diagonals; let i = index">
+          <span *ngIf="i !== 0">,</span>
+          <span class="diagonal">
+            d
+            <span class="index">{{ i }}</span>
+            =
+            <span class="d">{{ d }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </main>
 </section>
 
 <section class="notes">

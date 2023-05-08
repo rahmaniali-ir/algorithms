@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Matrix } from '../../model/matrix';
 import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { CreateMatrixModalComponent } from '../create-matrix-modal/create-matrix-modal.component';
-import { getAlphabetLetter } from 'src/app/core/util/alphabet';
 
 @Component({
   selector: 'matrix-multiplication',
@@ -12,6 +11,7 @@ import { getAlphabetLetter } from 'src/app/core/util/alphabet';
 export class MatrixMultiplicationComponent {
   matrices: Matrix[] = [];
   result?: Matrix;
+  test = new Matrix(4, 4);
   showDetails = false;
   showAxis = false;
 
@@ -21,9 +21,19 @@ export class MatrixMultiplicationComponent {
     return this.matrices.at(-1)?.x;
   }
 
+  get diagonals() {
+    return this.matrices.length
+      ? [this.matrices[0].y, ...this.matrices.map((m) => m.x)]
+      : [];
+  }
+
+  get nextMatrixName() {
+    return `A${this.matrices.length + 1}`;
+  }
+
   createMatrix() {
     const input: { [key in string]: any } = {
-      letter: getAlphabetLetter(this.matrices.length),
+      name: this.nextMatrixName,
     };
 
     if (this.matrices.length > 0) {
@@ -38,7 +48,7 @@ export class MatrixMultiplicationComponent {
         next: (matrix) => {
           if (!matrix) return;
 
-          matrix.name = getAlphabetLetter(this.matrices.length);
+          matrix.name = this.nextMatrixName;
           this.matrices.push(matrix);
           this.result = undefined;
         },
@@ -47,9 +57,13 @@ export class MatrixMultiplicationComponent {
   }
 
   multiply() {
-    const matrix = Matrix.Multiply(this.matrices[0], this.matrices[1]);
+    const matrix = Matrix.multiply(this.matrices[0], this.matrices[1]);
     matrix.name = 'Result';
     this.result = matrix;
+
+    const result = Matrix.chainMultiply(...this.matrices);
+
+    if (result.matrix) this.test = result.matrix;
   }
 
   clear() {
