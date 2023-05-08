@@ -1,14 +1,14 @@
 const INVALID_INDEX_ERROR = 'Invalid index!';
 
-export type PlainMatrix = number[][];
+export type PlainMatrix<T = number> = T[][];
 
-export class Matrix {
+export class Matrix<T = number> {
   readonly y: number;
   readonly x: number;
-  private matrix: PlainMatrix;
+  private matrix: PlainMatrix<T | undefined>;
   name?: string;
 
-  constructor(y: number, x: number, matrix?: PlainMatrix, name?: string) {
+  constructor(y: number, x: number, matrix?: PlainMatrix<T>, name?: string) {
     this.y = y;
     this.x = x;
 
@@ -27,12 +27,15 @@ export class Matrix {
     return this.matrix[y][x];
   }
 
-  set(y: number, x: number, v: number) {
+  set(y: number, x: number, v: T) {
     this.matrix[y][x] = v;
   }
 
-  setAll(matrix: PlainMatrix) {
-    const plainMatrix: PlainMatrix = Matrix.getEmptyPlainMatrix(this.y, this.x);
+  setAll(matrix: PlainMatrix<T>) {
+    const plainMatrix: PlainMatrix<T> = Matrix.getEmptyPlainMatrix(
+      this.y,
+      this.x
+    );
 
     try {
       matrix.forEach((row, y) => {
@@ -47,7 +50,7 @@ export class Matrix {
     this.matrix = plainMatrix;
   }
 
-  fill(v: number) {
+  fill(v: T) {
     for (let y = 0; y < this.y; y++) {
       for (let x = 0; x < this.x; x++) {
         this.set(y, x, v);
@@ -55,7 +58,7 @@ export class Matrix {
     }
   }
 
-  fillDiagonal(d: number, v: number) {
+  fillDiagonal(d: number, v: T) {
     const x = this.x - d;
 
     for (let y = 0; y < x; y++) {
@@ -63,10 +66,26 @@ export class Matrix {
     }
   }
 
-  static getEmptyPlainMatrix(y: number, x: number): PlainMatrix {
-    const plainMatrix: PlainMatrix = [];
+  clone() {
+    return new Matrix(this.y, this.x, this.plainMatrix, this.name);
+  }
 
-    for (let i = 0; i < y; i++) plainMatrix.push(Array(x));
+  map<V = T>(callback: (c: T | undefined) => V) {
+    const newPlainMatrix: PlainMatrix<V> = this.matrix.map((row) =>
+      row?.map(callback)
+    );
+
+    return new Matrix(this.y, this.x, newPlainMatrix, this.name);
+  }
+
+  static getEmptyPlainMatrix<T = undefined>(
+    y: number,
+    x: number,
+    v: T | undefined = undefined
+  ): PlainMatrix<T> {
+    const plainMatrix: PlainMatrix<T> = [];
+
+    for (let i = 0; i < y; i++) plainMatrix.push(Array(x).fill(v));
 
     return plainMatrix;
   }
@@ -82,7 +101,7 @@ export class Matrix {
         result[i].push(0);
 
         for (let p = 0; p < a.x; p++) {
-          result[i][j] += a.get(i, p) * b.get(p, j);
+          result[i][j] += a.get(i, p)! * b.get(p, j)!;
         }
       }
     }
@@ -90,7 +109,7 @@ export class Matrix {
     return new Matrix(a.y, b.x, result);
   }
 
-  static chainMultiply(...matrices: Matrix[]) {
+  static chainMultiply(...matrices: Matrix<number>[]) {
     // Check if the array is empty or has only one matrix
     if (matrices.length === 0 || matrices.length === 1) {
       return { cost: 0, matrix: null };
@@ -98,7 +117,7 @@ export class Matrix {
 
     // Initialize a 2D array to store the minimum costs of subproblems
     const n = matrices.length;
-    const cost = new Matrix(n, n);
+    const cost = new Matrix<number>(n, n);
 
     // Fill the diagonal entries with zero
     cost.fillDiagonal(0, 0);
@@ -116,8 +135,8 @@ export class Matrix {
         // Loop over the possible split points
         for (let k = i; k < j; k++) {
           // Get the cost of the left and right subproblems
-          const leftCost = cost.get(i, k);
-          const rightCost = cost.get(k + 1, j);
+          const leftCost = cost.get(i, k)!;
+          const rightCost = cost.get(k + 1, j)!;
           // Get the number of multiplications for the current split
           const currCost =
             leftCost +
@@ -125,7 +144,7 @@ export class Matrix {
             matrices[i].y * matrices[k].x * matrices[j].x;
 
           // Update the minimum cost if needed
-          if (currCost < cost.get(i, j)) {
+          if (currCost < cost.get(i, j)!) {
             cost.set(i, j, currCost);
           }
         }

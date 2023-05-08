@@ -9,9 +9,9 @@ import { CreateMatrixModalComponent } from '../create-matrix-modal/create-matrix
   styleUrls: ['./matrix-multiplication.component.sass'],
 })
 export class MatrixMultiplicationComponent {
-  matrices: Matrix[] = [];
+  matrices: Matrix<number>[] = [];
+  m?: Matrix<string | undefined>;
   result?: Matrix;
-  test = new Matrix(4, 4);
   showDetails = false;
   showAxis = false;
 
@@ -63,7 +63,18 @@ export class MatrixMultiplicationComponent {
 
     const result = Matrix.chainMultiply(...this.matrices);
 
-    if (result.matrix) this.test = result.matrix;
+    if (result.matrix) {
+      this.m = result.matrix.map((c) => {
+        if (c === undefined) return undefined;
+
+        if (c >= 1000) {
+          c /= 1000;
+          return c + 'K';
+        }
+
+        return String(c);
+      });
+    }
   }
 
   clear() {

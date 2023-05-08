@@ -50,7 +50,7 @@ export class CreateMatrixModalComponent implements OnInit {
 
   updateRandomMatrix() {
     const matrix = new Matrix(this.rows, this.columns);
-    const plainMatrix: PlainMatrix = matrix.plainMatrix;
+    const plainMatrix: PlainMatrix<number | undefined> = matrix.plainMatrix;
 
     for (let r = 0; r < this.rows; r++) {
       plainMatrix[r] = [];

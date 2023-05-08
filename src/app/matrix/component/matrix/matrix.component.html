@@ -28,14 +28,14 @@
       >
         <input
           *ngFor="let value of row; let x = index; trackBy: trackByColumn"
-          [value]="value"
+          [value]="value || ''"
           [title]="y + 1 + '⨉' + (x + 1)"
           [readonly]="readOnly"
+          [type]="inputType"
           (change)="updateValue(y, x, $event)"
           (mouseenter)="onCellHover(y, x)"
           (focus)="onCellFocus(y, x)"
           (blur)="resetFocusedCell()"
-          type="number"
           class="col"
           [placeholder]="readOnly ? '◌' : '⬚'"
         />

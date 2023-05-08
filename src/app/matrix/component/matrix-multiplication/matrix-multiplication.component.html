@@ -98,7 +98,8 @@
 
   <main>
     <app-matrix
-      [matrix]="test"
+      *ngIf="m"
+      [matrix]="m"
       [showDetails]="showDetails"
       [showAxis]="showAxis"
       [readOnly]="true"
