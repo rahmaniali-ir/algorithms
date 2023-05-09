@@ -31,17 +31,17 @@
       >
         <input
           *ngFor="let cell of row.cells; trackBy: trackByColumn"
-          [value]="cell.value === undefined ? '' : cell.value"
+          [ngModel]="cell.value ?? ''"
           [title]="cell.title"
           [type]="cell.type"
           [class]="cell.className"
           [readonly]="readOnly"
+          [placeholder]="readOnly ? '◌' : '⬚'"
           (change)="updateValue(cell.position, $event)"
           (mouseenter)="onCellHover(cell.position)"
           (focus)="onCellFocus(cell.position)"
           (blur)="resetFocusedCell()"
           class="col"
-          [placeholder]="readOnly ? '◌' : '⬚'"
         />
       </div>
     </div>
