@@ -12,8 +12,20 @@ import { ProjectCardComponent } from './component/project-card/project-card.comp
 import { CategoryTagComponent } from './component/category-tag/category-tag.component';
 
 @NgModule({
-  declarations: [AppComponent, GalleryComponent, ProjectComponent, ProjectCardComponent, CategoryTagComponent],
-  imports: [BrowserModule, AppRoutingModule, MatrixModule, IconModule, SearchModule],
+  declarations: [
+    AppComponent,
+    GalleryComponent,
+    ProjectComponent,
+    ProjectCardComponent,
+    CategoryTagComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatrixModule,
+    IconModule,
+    SearchModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

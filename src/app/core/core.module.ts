@@ -6,6 +6,8 @@ import { FormLabelComponent } from './component/form-label/form-label.component'
 import { FormGroupComponent } from './component/form-group/form-group.component';
 import { PageHeaderComponent } from './component/page-header/page-header.component';
 import { RouterModule } from '@angular/router';
+import { StepComponent } from './component/step/step.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,14 +16,16 @@ import { RouterModule } from '@angular/router';
     FormLabelComponent,
     FormGroupComponent,
     PageHeaderComponent,
+    StepComponent,
   ],
-  imports: [IconModule, RouterModule],
+  imports: [CommonModule, IconModule, RouterModule],
   exports: [
     ModalCardComponent,
     CheckBoxComponent,
     FormLabelComponent,
     FormGroupComponent,
     PageHeaderComponent,
+    StepComponent,
   ],
 })
 export class CoreModule {}
