@@ -21,6 +21,10 @@ export class MatrixMultiplicationComponent {
     return this.matrices.at(-1)?.x;
   }
 
+  get matrixNames() {
+    return this.matrices.map((m) => m.name);
+  }
+
   get diagonals() {
     return this.matrices.length
       ? [this.matrices[0].y, ...this.matrices.map((m) => m.x)]

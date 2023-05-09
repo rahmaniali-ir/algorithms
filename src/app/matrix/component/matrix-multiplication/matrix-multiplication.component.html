@@ -108,23 +108,46 @@
 
   <main class="steps">
     <app-step
-      *ngIf="!m"
+      *ngIf="!matrices.length"
       header="Multiply at least two matrices to get the solution!"
       icon="infoCircle"
     ></app-step>
 
-    <app-step *ngIf="m" header="Diagonals" icon="infoCircle" class="diagonals">
-      <div *ngFor="let d of diagonals; let i = index" class="equation">
-        <span *ngIf="i !== 0">,</span>
-        <span class="diagonal">
-          d
-          <span class="index">{{ i }}</span>
-          =
-          <span class="d">{{ d }}</span>
-        </span>
+    <!-- input data -->
+    <app-step *ngIf="matrices.length > 0" header="Input data" icon="infoCircle">
+      <div class="equation matrix-names">
+        <div class="name">
+          <span>Result</span>
+          <svg-icon name="equal"></svg-icon>
+        </div>
+
+        <div *ngFor="let name of matrixNames; let i = index" class="name">
+          <svg-icon *ngIf="i !== 0" name="times"></svg-icon>
+          <span>{{ name }}</span>
+        </div>
+      </div>
+
+      <div class="diagonals">
+        <div *ngFor="let d of diagonals; let i = index" class="equation">
+          <span *ngIf="i !== 0">,</span>
+          <span class="diagonal">
+            d
+            <span class="index">{{ i }}</span>
+            =
+            <span class="d">{{ d }}</span>
+          </span>
+        </div>
       </div>
     </app-step>
 
+    <!-- possible orders -->
+    <app-step
+      *ngIf="m"
+      header="Possibles multiplication orders"
+      icon="infoCircle"
+    ></app-step>
+
+    <!-- m -->
     <app-step *ngIf="m" header="Minimum multiplications" icon="infoCircle">
       <div class="m equation">
         m

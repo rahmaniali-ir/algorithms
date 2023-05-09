@@ -80,24 +80,30 @@
     > nav .print
       font-size: 14px
 
+    .matrix-names
+      align-items: center
+      display: flex
+      margin: 0 0 16px
+
+      .name
+        align-items: center
+        display: flex
+        gap: 8px
+
     .diagonals
-      > div
+      .diagonal
         align-items: center
         display: flex
 
-        .diagonal
-          align-items: center
-          display: flex
-
-          &:hover
-            .index
-              opacity: 1
-              scale: 1.1
-
-            .d
-              color: var(--accent)
-
+        &:hover
           .index
-            align-self: flex-end
-            font-size: .7em
-            opacity: .5
+            opacity: 1
+            scale: 1.1
+
+          .d
+            color: var(--accent)
+
+        .index
+          align-self: flex-end
+          font-size: .7em
+          opacity: .5
