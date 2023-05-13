@@ -117,8 +117,7 @@
     <app-step *ngIf="matrices.length > 0" header="Input data" icon="infoCircle">
       <div class="equation matrix-names">
         <div class="name">
-          <span>Result</span>
-          <svg-icon name="equal"></svg-icon>
+          <span>Question :</span>
         </div>
 
         <div *ngFor="let name of matrixNames; let i = index" class="name">
@@ -127,10 +126,12 @@
         </div>
       </div>
 
-      <div class="diagonals">
-        <div *ngFor="let d of diagonals; let i = index" class="equation">
+      <div class="equation dimensions">
+        <span>Dimensions :</span>
+
+        <div *ngFor="let d of dimensions; let i = index" class="equation">
           <span *ngIf="i !== 0">,</span>
-          <span class="diagonal">
+          <span class="dimension">
             d
             <span class="index">{{ i }}</span>
             =
@@ -142,10 +143,17 @@
 
     <!-- possible orders -->
     <app-step
-      *ngIf="m"
-      header="Possibles multiplication orders"
+      *ngIf="matrices.length > 2"
+      header="Possibles multiplication"
       icon="infoCircle"
-    ></app-step>
+      class="sequences"
+    >
+      <ul>
+        <li *ngFor="let sequence of possibleSequences">
+          <span class="equation">{{ sequence }}</span>
+        </li>
+      </ul>
+    </app-step>
 
     <!-- m -->
     <app-step *ngIf="m" header="Minimum multiplications" icon="infoCircle">

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Matrix } from '../../model/matrix';
 import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { CreateMatrixModalComponent } from '../create-matrix-modal/create-matrix-modal.component';
+import { getPossibleSequenceParenthesis } from '../../utils/matrix';
 
 @Component({
   selector: 'matrix-multiplication',
@@ -22,10 +23,10 @@ export class MatrixMultiplicationComponent {
   }
 
   get matrixNames() {
-    return this.matrices.map((m) => m.name);
+    return this.matrices.map((m) => m.name!);
   }
 
-  get diagonals() {
+  get dimensions() {
     return this.matrices.length
       ? [this.matrices[0].y, ...this.matrices.map((m) => m.x)]
       : [];
@@ -33,6 +34,10 @@ export class MatrixMultiplicationComponent {
 
   get nextMatrixName() {
     return `A${this.matrices.length + 1}`;
+  }
+
+  get possibleSequences() {
+    return getPossibleSequenceParenthesis(this.matrixNames);
   }
 
   createMatrix() {
@@ -61,10 +66,6 @@ export class MatrixMultiplicationComponent {
   }
 
   multiply() {
-    // const matrix = Matrix.multiply(this.matrices[0], this.matrices[1]);
-    // matrix.name = 'Result';
-    // this.result = matrix;
-
     const result = Matrix.chainMultiply(...this.matrices);
 
     if (result.matrix) {
