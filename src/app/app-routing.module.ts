@@ -5,6 +5,7 @@ import { GalleryComponent } from './component/gallery/gallery.component';
 import { ProjectComponent } from './component/project/project.component';
 import { projects } from './config/projects';
 import { QuickSearchComponent } from './search/component/quick-search/quick-search.component';
+import { SoonComponent } from './component/soon/soon.component';
 
 const routes: Routes = [
   {
@@ -23,22 +24,22 @@ const routes: Routes = [
       },
       {
         path: projects.quickSearch.id,
-        component: QuickSearchComponent,
+        component: SoonComponent,
         data: { project: projects.quickSearch },
       },
       {
         path: projects.minimumPathFinding.id,
-        component: QuickSearchComponent,
+        component: SoonComponent,
         data: { project: projects.minimumPathFinding },
       },
       {
         path: projects.mergeSort.id,
-        component: QuickSearchComponent,
+        component: SoonComponent,
         data: { project: projects.mergeSort },
       },
       {
         path: projects.splitCoins.id,
-        component: QuickSearchComponent,
+        component: SoonComponent,
         data: { project: projects.splitCoins },
       },
     ],

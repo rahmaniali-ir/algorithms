@@ -10,6 +10,7 @@ import { ProjectComponent } from './component/project/project.component';
 import { SearchModule } from './search/search.module';
 import { ProjectCardComponent } from './component/project-card/project-card.component';
 import { CategoryTagComponent } from './component/category-tag/category-tag.component';
+import { SoonComponent } from './component/soon/soon.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CategoryTagComponent } from './component/category-tag/category-tag.comp
     ProjectComponent,
     ProjectCardComponent,
     CategoryTagComponent,
+    SoonComponent,
   ],
   imports: [
     BrowserModule,
