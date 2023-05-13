@@ -6,6 +6,7 @@
     "start": "ng serve -o",
     "build": "ng build",
     "build:gh-pages": "ng build --configuration production --base-href 'https://rahmaniali-ir.github.io/algorithms/'",
+    "compile": "deno compile --allow-read --allow-net --allow-run server.ts",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
