@@ -1,0 +1,25 @@
+<app-section icon="coin" header="Coins">
+  <!-- clear -->
+  <button
+    actions
+    *ngIf="coins.length > 0"
+    (click)="clear()"
+    class="button placeholder clear"
+  >
+    <svg-icon name="trash"></svg-icon>
+    <span>Clear</span>
+  </button>
+
+  <div class="coins">
+    <app-coin
+      *ngFor="let coin of sortedCoins"
+      [amount]="coin.amount"
+      [size]="coin.size"
+    ></app-coin>
+
+    <button (click)="addCoin()" class="button vertical placeholder">
+      <svg-icon name="coin"></svg-icon>
+      <span>Add coin</span>
+    </button>
+  </div>
+</app-section>

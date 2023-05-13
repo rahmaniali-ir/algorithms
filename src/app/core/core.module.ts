@@ -8,6 +8,7 @@ import { PageHeaderComponent } from './component/page-header/page-header.compone
 import { RouterModule } from '@angular/router';
 import { StepComponent } from './component/step/step.component';
 import { CommonModule } from '@angular/common';
+import { SectionComponent } from './component/section/section.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
     FormGroupComponent,
     PageHeaderComponent,
     StepComponent,
+    SectionComponent,
   ],
   imports: [CommonModule, IconModule, RouterModule],
   exports: [
@@ -26,6 +28,7 @@ import { CommonModule } from '@angular/common';
     FormGroupComponent,
     PageHeaderComponent,
     StepComponent,
+    SectionComponent,
   ],
 })
 export class CoreModule {}

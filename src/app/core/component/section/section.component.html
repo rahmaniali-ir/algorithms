@@ -1,0 +1,14 @@
+<nav>
+  <header>
+    <svg-icon [name]="icon"></svg-icon>
+    <strong>{{ header }}</strong>
+  </header>
+
+  <aside class="no-print">
+    <ng-content select="[actions]"></ng-content>
+  </aside>
+</nav>
+
+<main>
+  <ng-content></ng-content>
+</main>

@@ -7,10 +7,10 @@ import { MatrixModule } from './matrix/matrix.module';
 import { GalleryComponent } from './component/gallery/gallery.component';
 import { IconModule } from './icon-pack';
 import { ProjectComponent } from './component/project/project.component';
-import { SearchModule } from './search/search.module';
 import { ProjectCardComponent } from './component/project-card/project-card.component';
 import { CategoryTagComponent } from './component/category-tag/category-tag.component';
 import { SoonComponent } from './component/soon/soon.component';
+import { ChangeCoinsModule } from './change-coins/change-coins.module';
 
 @NgModule({
   declarations: [
@@ -21,13 +21,7 @@ import { SoonComponent } from './component/soon/soon.component';
     CategoryTagComponent,
     SoonComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatrixModule,
-    IconModule,
-    SearchModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, IconModule],
   providers: [],
   bootstrap: [AppComponent],
 })

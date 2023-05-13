@@ -1,0 +1,42 @@
+<modal-card header="Add Coin" description="Fill in size and values">
+  <section class="coins">
+    <app-coin
+      *ngFor="let coin of coins"
+      [amount]="coin.amount"
+      [size]="coin.size"
+    ></app-coin>
+  </section>
+
+  <section>
+    <form-group name="Coin">
+      <form-label label="Amount" target="amount">
+        <input
+          [(ngModel)]="amount"
+          autocomplete="off"
+          id="amount"
+          min="1"
+          max="999"
+          type="number"
+        />
+      </form-label>
+
+      <form-label label="Size" target="size">
+        <input [(ngModel)]="size" id="size" min="1" max="5" type="number" />
+      </form-label>
+
+      <form-label label="Count" target="count">
+        <input [(ngModel)]="count" id="count" min="1" max="10" type="number" />
+      </form-label>
+    </form-group>
+  </section>
+
+  <ng-container footer>
+    <button (click)="modal.dismiss()" class="button neutral">
+      <span>Cancel</span>
+    </button>
+
+    <button (click)="addCoin()" class="button primary filled">
+      <span>Add coin</span>
+    </button>
+  </ng-container>
+</modal-card>

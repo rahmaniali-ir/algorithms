@@ -6,7 +6,7 @@ export type ProjectKey =
   | 'minimumPathFinding'
   | 'quickSearch'
   | 'mergeSort'
-  | 'splitCoins';
+  | 'changeCoins';
 
 export const projects: Record<ProjectKey, Project> = {
   chainedMatrixMultiplication: {
@@ -41,9 +41,9 @@ export const projects: Record<ProjectKey, Project> = {
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
     category: categories.backtracing,
   },
-  splitCoins: {
-    id: 'splitCoins',
-    name: 'Split Coins',
+  changeCoins: {
+    id: 'changeCoins',
+    name: 'Change Coins',
     icon: 'coin',
     description:
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
