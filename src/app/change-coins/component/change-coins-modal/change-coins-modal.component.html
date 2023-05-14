@@ -3,7 +3,7 @@
   description="Enter the target value you want to change to"
 >
   <section>
-    <form-group name="Change to">
+    <form-group (enter)="changeCoins()" name="Change to">
       <form-label label="Target value" target="target">
         <input
           [(ngModel)]="target"

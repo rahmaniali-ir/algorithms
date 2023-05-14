@@ -8,10 +8,11 @@
   </section>
 
   <section>
-    <form-group name="Coin">
+    <form-group (enter)="addCoin()" name="Coin">
       <form-label label="Amount" target="amount">
         <input
           [(ngModel)]="amount"
+          autofocus
           id="amount"
           autocomplete="off"
           min="1"
