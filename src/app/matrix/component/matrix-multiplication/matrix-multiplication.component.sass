@@ -12,47 +12,15 @@
     check-box
       background: var(--background-accent)
 
-  > section
-    display: flex
-    flex-direction: column
-    gap: 8px
-
-    > nav
-      align-items: flex-end
-      display: flex
-      gap: 8px
-      min-height: 32px
-      padding: 0 8px
-
-      > header
-        align-items: center
-        display: flex
-        gap: 8px
-
-        > svg-icon
-          color: var(--accent)
-
-        > strong
-          font-size: 14px
-          opacity: .5
-
-      > aside
-        margin-inline-start: auto
-
-    > main
-      background: var(--background-accent)
-      border-radius: var(--radius)
-      padding: 24px
-
-  section.input
-    > nav .clear
+  .input
+    .clear
       --hover-color: var(--danger)
       font-size: 14px
 
       span
         font-size: 12px
 
-    > main
+    .matrices
       align-items: center
       display: flex
       flex: 1
@@ -73,10 +41,7 @@
       .calculate
         --hover-color: var(--accent)
 
-  section.solution
-    > nav .print
-      font-size: 14px
-
+  .solution
     .matrix-names
       align-items: center
       display: flex

@@ -18,28 +18,21 @@
   ></check-box>
 </nav>
 
-<section class="input">
-  <nav>
-    <header>
-      <svg-icon name="keyboardIn"></svg-icon>
-      <strong>Input</strong>
-    </header>
+<!-- matrices -->
+<app-section header="Input" icon="keyboardIn" class="input">
+  <!-- clear -->
+  <button
+    actions
+    *ngIf="matrices.length > 0"
+    (click)="clear()"
+    class="button placeholder clear"
+  >
+    <svg-icon name="trash"></svg-icon>
+    <span>Clear</span>
+  </button>
 
-    <aside class="no-print">
-      <!-- clear -->
-      <button
-        *ngIf="matrices.length > 0"
-        (click)="clear()"
-        class="button placeholder clear"
-      >
-        <svg-icon name="trash"></svg-icon>
-        <span>Clear</span>
-      </button>
-    </aside>
-  </nav>
-
-  <main>
-    <!-- matrices -->
+  <!-- matrices -->
+  <div class="matrices">
     <div *ngFor="let matrix of matrices; let i = index" class="matrix">
       <svg-icon *ngIf="i > 0" name="times" class="times"></svg-icon>
 
@@ -85,17 +78,11 @@
         [readOnly]="true"
       ></app-matrix>
     </div>
-  </main>
-</section>
+  </div>
+</app-section>
 
-<section class="solution">
-  <nav>
-    <header>
-      <svg-icon name="wrapText"></svg-icon>
-      <strong>Solution</strong>
-    </header>
-  </nav>
-
+<!-- solution -->
+<app-section header="Solution" icon="wrapText" class="solution">
   <main class="steps">
     <app-step
       *ngIf="!matrices.length"
@@ -161,17 +148,9 @@
       </div>
     </app-step>
   </main>
-</section>
+</app-section>
 
-<section class="notes">
-  <nav>
-    <header>
-      <svg-icon name="landscapeFile"></svg-icon>
-      <strong>Notes</strong>
-    </header>
-
-    <aside></aside>
-  </nav>
-
-  <main>Some content will be here soon!</main>
-</section>
+<!-- notes -->
+<app-section header="Notes" icon="landscapeFile" class="notes">
+  Some content will be here soon!
+</app-section>
