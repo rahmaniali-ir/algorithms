@@ -19,9 +19,9 @@ const routes: Routes = [
     component: ProjectComponent,
     children: [
       {
-        path: projects.chainedMatrixMultiplication.id,
+        path: projects.MatrixChainMultiplication.id,
         component: MatrixMultiplicationComponent,
-        data: { project: projects.chainedMatrixMultiplication },
+        data: { project: projects.MatrixChainMultiplication },
       },
       {
         path: projects.quickSearch.id,

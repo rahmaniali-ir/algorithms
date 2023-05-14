@@ -2,16 +2,16 @@ import { Project } from '../type/gallery';
 import { categories, defaultCategory } from './categories';
 
 export type ProjectKey =
-  | 'chainedMatrixMultiplication'
+  | 'MatrixChainMultiplication'
   | 'minimumPathFinding'
   | 'quickSearch'
   | 'mergeSort'
   | 'changeCoins';
 
 export const projects: Record<ProjectKey, Project> = {
-  chainedMatrixMultiplication: {
-    id: 'chainedMatrixMultiplication',
-    name: 'Chained Matrix Multiplication',
+  MatrixChainMultiplication: {
+    id: 'MatrixChainMultiplication',
+    name: 'Matrix Chain Multiplication',
     icon: 'link',
     description:
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
@@ -19,7 +19,7 @@ export const projects: Record<ProjectKey, Project> = {
   },
   minimumPathFinding: {
     id: 'minimumPathFinding',
-    name: 'Minimum Path Finding',
+    name: 'Minimum Path Finding (Soon)',
     icon: 'channel',
     description:
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
@@ -27,7 +27,7 @@ export const projects: Record<ProjectKey, Project> = {
   },
   quickSearch: {
     id: 'quickSearch',
-    name: 'Quick Search',
+    name: 'Quick Search (Soon)',
     icon: 'search',
     description:
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
@@ -35,7 +35,7 @@ export const projects: Record<ProjectKey, Project> = {
   },
   mergeSort: {
     id: 'mergeSort',
-    name: 'Merge Sort',
+    name: 'Merge Sort (Soon)',
     icon: 'sort',
     description:
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
