@@ -1,4 +1,11 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'form-group',
@@ -8,4 +15,10 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class FormGroupComponent {
   @Input() name = '';
+  @Output() enter = new EventEmitter();
+
+  @HostListener('keyup.enter')
+  onEnter() {
+    this.enter.emit();
+  }
 }
