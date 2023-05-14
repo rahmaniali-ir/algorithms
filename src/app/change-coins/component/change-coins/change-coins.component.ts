@@ -93,6 +93,18 @@ export class ChangeCoinsComponent {
     return !!this.solution?.solutionCheck;
   }
 
+  trackBySortedCoin(index: number) {
+    return this.sortedCoins?.[index] || {};
+  }
+
+  trackByChangedCoin(index: number) {
+    return this.changedCoins?.[index] || {};
+  }
+
+  trackByStepSelection(step: GreedyStep<Coin[]>) {
+    return (index: number) => step.selection?.[index] || {};
+  }
+
   addCoin() {
     this.modal.open(AddCoinModalComponent).result.subscribe({
       next: (coins: Coin[]) => {
