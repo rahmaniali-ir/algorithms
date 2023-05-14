@@ -1,0 +1,37 @@
+
+:host
+  display: inline-flex
+  position: relative
+  user-select: none
+
+  > main
+    pointer-events: none
+
+.edge
+  display: block
+  position: absolute
+  pointer-events: none
+
+  svg
+    display: block
+
+    line
+      stroke: var(--text)
+      stroke-width: 2px
+
+.vertex
+  align-items: center
+  background: var(--background-accent)
+  border: 1px solid var(--border)
+  border-radius: 50%
+  display: flex
+  font-size: 12px
+  height: var(--vertex-size, 24px)
+  justify-content: center
+  padding: 4px
+  position: absolute
+  translate: -50% -50%
+  width: var(--vertex-size, 24px)
+
+  > span
+    pointer-events: none

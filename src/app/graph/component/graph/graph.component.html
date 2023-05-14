@@ -1,0 +1,60 @@
+<main>
+  <div>Hovering: {{ hoveringVertex?.name }}</div>
+</main>
+
+<!-- edges -->
+<div
+  *ngIf="drawingEdgePreview"
+  [style.left]="drawingEdgePreview.left + 'px'"
+  [style.top]="drawingEdgePreview.top + 'px'"
+  class="edge drawing-edge-preview"
+>
+  <svg
+    [attr.viewBox]="drawingEdgePreview.viewBox"
+    [attr.height]="drawingEdgePreview.height"
+    [attr.width]="drawingEdgePreview.width"
+  >
+    <line
+      [attr.x1]="drawingEdgePreview.x1"
+      [attr.y1]="drawingEdgePreview.y1"
+      [attr.x2]="drawingEdgePreview.x2"
+      [attr.y2]="drawingEdgePreview.y2"
+    />
+  </svg>
+</div>
+
+<div
+  *ngFor="let line of edgeLines; trackBy: trackByEdgeLine"
+  [style.left]="line.left + 'px'"
+  [style.top]="line.top + 'px'"
+  class="edge"
+>
+  <svg
+    [attr.viewBox]="line.viewBox"
+    [attr.height]="line.height"
+    [attr.width]="line.width"
+  >
+    <line
+      [attr.x1]="line.x1"
+      [attr.y1]="line.y1"
+      [attr.x2]="line.x2"
+      [attr.y2]="line.y2"
+    />
+  </svg>
+</div>
+
+<!-- vertices -->
+<div
+  *ngFor="let vertex of vertices; trackBy: trackByVertex"
+  [style.left]="vertex.position.x + 'px'"
+  [style.top]="vertex.position.y + 'px'"
+  [attr.vertex-index]="vertex.index"
+  (dblclick)="onVertexDblClick(vertex, $event)"
+  (mouseenter)="onVertexMouseEnter(vertex)"
+  (mouseleave)="onVertexMouseLeave()"
+  (mousedown)="onVertexMouseDown()"
+  (mouseup)="onVertexMouseUp()"
+  class="vertex"
+>
+  <span>{{ vertex.name }}</span>
+</div>

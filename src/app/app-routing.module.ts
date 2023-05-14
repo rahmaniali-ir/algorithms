@@ -7,6 +7,7 @@ import { projects } from './config/projects';
 import { QuickSearchComponent } from './search/component/quick-search/quick-search.component';
 import { SoonComponent } from './component/soon/soon.component';
 import { ChangeCoinsComponent } from './change-coins/component/change-coins/change-coins.component';
+import { KruskalComponent } from './graph/component/kruskal/kruskal.component';
 
 const routes: Routes = [
   {
@@ -19,9 +20,19 @@ const routes: Routes = [
     component: ProjectComponent,
     children: [
       {
-        path: projects.MatrixChainMultiplication.id,
+        path: projects.matrixChainMultiplication.id,
         component: MatrixMultiplicationComponent,
-        data: { project: projects.MatrixChainMultiplication },
+        data: { project: projects.matrixChainMultiplication },
+      },
+      {
+        path: projects.changeCoins.id,
+        component: ChangeCoinsComponent,
+        data: { project: projects.changeCoins },
+      },
+      {
+        path: projects.kruskal.id,
+        component: KruskalComponent,
+        data: { project: projects.kruskal },
       },
       {
         path: projects.quickSearch.id,
@@ -37,11 +48,6 @@ const routes: Routes = [
         path: projects.mergeSort.id,
         component: SoonComponent,
         data: { project: projects.mergeSort },
-      },
-      {
-        path: projects.changeCoins.id,
-        component: ChangeCoinsComponent,
-        data: { project: projects.changeCoins },
       },
     ],
   },
