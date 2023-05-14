@@ -1,4 +1,11 @@
 
+.clear
+  --hover-color: var(--danger)
+  font-size: 14px
+
+  span
+    font-size: 12px
+
 .coins
   align-items: center
   display: flex
@@ -10,3 +17,61 @@
 
     svg-icon
       font-size: 24px
+
+  .calculate-change:hover svg-icon
+    color: var(--accent)
+
+.changing .steps
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+
+  app-step
+    --padding: 0
+
+    &:hover
+      section.check
+        > header span, > main
+          opacity: 1 !important
+
+    .content
+      background: var(--background)
+      border-radius: var(--radius)
+      cursor: default
+      display: flex
+      flex-direction: column
+      gap: 16px
+      height: 100%
+      padding: 16px
+
+      > section
+        display: flex
+        flex-direction: column
+        gap: 8px
+
+        > header
+          align-items: center
+          display: flex
+          gap: 4px
+
+          > span
+            font-size: 14px
+            font-weight: bold
+            opacity: .5
+
+      .selection
+        background: var(--background-accent)
+        border-radius: var(--radius)
+        display: flex
+        flex-direction: column
+        gap: 8px
+        padding: 8px
+
+      .check
+        > main
+          font-size: 14px
+          margin-inline: 22px
+          opacity: .5
+
+.result
+  .preview
+    padding: 16px

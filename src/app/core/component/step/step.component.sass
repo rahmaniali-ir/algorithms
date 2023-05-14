@@ -1,4 +1,6 @@
 :host
+  --padding: 8px 24px
+
   display: flex
   flex-direction: column
   gap: 8px
@@ -19,7 +21,8 @@
       opacity: .5
 
   > main
-    padding: 8px 24px
+    flex: 1
+    padding: var(--padding)
 
     &:empty
       display: none

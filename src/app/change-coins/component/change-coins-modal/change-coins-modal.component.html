@@ -1,0 +1,30 @@
+<modal-card
+  header="Change Coins"
+  description="Enter the target value you want to change to"
+>
+  <section>
+    <form-group name="Change to">
+      <form-label label="Target value" target="target">
+        <input
+          [(ngModel)]="target"
+          autofocus
+          id="target"
+          autocomplete="off"
+          min="1"
+          max="999"
+          type="number"
+        />
+      </form-label>
+    </form-group>
+  </section>
+
+  <ng-container footer>
+    <button (click)="modal.dismiss()" class="button neutral">
+      <span>Cancel</span>
+    </button>
+
+    <button (click)="changeCoins()" class="button primary filled">
+      <span>Change coins</span>
+    </button>
+  </ng-container>
+</modal-card>

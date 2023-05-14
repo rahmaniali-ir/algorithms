@@ -1,4 +1,5 @@
-<app-section icon="coin" header="Coins">
+<!-- coins -->
+<app-section header="Available coins" icon="coin">
   <!-- clear -->
   <button
     actions
@@ -10,6 +11,7 @@
     <span>Clear</span>
   </button>
 
+  <!-- coins -->
   <div class="coins">
     <app-coin
       *ngFor="let coin of sortedCoins"
@@ -21,5 +23,118 @@
       <svg-icon name="coin"></svg-icon>
       <span>Add coin</span>
     </button>
+
+    <button
+      *ngIf="sortedCoins.length"
+      (click)="change()"
+      class="button vertical placeholder calculate-change"
+    >
+      <svg-icon name="circleLayer"></svg-icon>
+      <span>Change</span>
+    </button>
+  </div>
+</app-section>
+
+<!-- changing -->
+<app-section
+  *ngIf="changedCoins.length"
+  [header]="'Changing \'' + target + '\''"
+  icon="circleLayer"
+  class="changing"
+>
+  <div class="steps">
+    <app-step
+      *ngFor="let step of changedCoins"
+      [header]="'step ' + (step.step + 1)"
+      icon="coin"
+    >
+      <div class="content">
+        <section class="selection">
+          <header>
+            <span>Selection</span>
+          </header>
+
+          <main class="coins">
+            <app-coin
+              *ngFor="let coin of step.selection"
+              [amount]="coin.amount"
+              [size]="coin.size"
+            ></app-coin>
+          </main>
+        </section>
+
+        <section class="check">
+          <header>
+            <svg-icon
+              *ngIf="step.feasibilityCheck"
+              name="check"
+              class="color-success"
+            ></svg-icon>
+            <svg-icon
+              *ngIf="!step.feasibilityCheck"
+              name="times"
+              class="color-danger"
+            ></svg-icon>
+
+            <span
+              [class.color-success]="step.feasibilityCheck"
+              [class.color-danger]="!step.feasibilityCheck"
+              >Feasibility check</span
+            >
+          </header>
+
+          <main>{{ step.feasibility }}</main>
+        </section>
+
+        <section class="check">
+          <header>
+            <svg-icon
+              *ngIf="step.solutionCheck"
+              name="check"
+              class="color-success"
+            ></svg-icon>
+            <svg-icon
+              *ngIf="!step.solutionCheck"
+              name="times"
+              class="color-danger"
+            ></svg-icon>
+
+            <span
+              [class.color-success]="step.solutionCheck"
+              [class.color-danger]="!step.solutionCheck"
+              >Solution check</span
+            >
+          </header>
+
+          <main>{{ step.solution }}</main>
+        </section>
+      </div>
+    </app-step>
+  </div>
+</app-section>
+
+<!-- Result -->
+<app-section *ngIf="solution" header="Result" icon="out" class="result">
+  <div class="steps">
+    <!-- selected coins -->
+    <app-step header="Selected coins" icon="coin">
+      <div class="coins preview">
+        <app-coin
+          *ngFor="let coin of solution.selection"
+          [amount]="coin.amount"
+          [size]="coin.size"
+        ></app-coin>
+      </div>
+    </app-step>
+
+    <!-- solution -->
+    <app-step header="Solution" [icon]="problemSolved ? 'check' : 'times'">
+      <div *ngIf="problemSolved" class="note color-success">
+        Problem was solved in {{ this.changedCoins.length }} steps!
+      </div>
+      <div *ngIf="!problemSolved" class="note color-danger">
+        Problem was not solved after {{ this.changedCoins.length }} steps!
+      </div>
+    </app-step>
   </div>
 </app-section>

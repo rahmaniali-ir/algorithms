@@ -6,9 +6,10 @@ import { CoreModule } from '../core/core.module';
 import { IconModule } from '../icon-pack';
 import { AddCoinModalComponent } from './component/add-coin-modal/add-coin-modal.component';
 import { FormsModule } from '@angular/forms';
+import { ChangeCoinsModalComponent } from './component/change-coins-modal/change-coins-modal.component';
 
 @NgModule({
-  declarations: [ChangeCoinsComponent, CoinComponent, AddCoinModalComponent],
+  declarations: [ChangeCoinsComponent, CoinComponent, AddCoinModalComponent, ChangeCoinsModalComponent],
   imports: [CommonModule, CoreModule, IconModule, FormsModule],
 })
 export class ChangeCoinsModule {}
