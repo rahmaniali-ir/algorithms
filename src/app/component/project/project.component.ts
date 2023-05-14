@@ -19,4 +19,8 @@ export class ProjectComponent {
   get category() {
     return this.project.category || defaultCategory;
   }
+
+  print() {
+    window.print();
+  }
 }

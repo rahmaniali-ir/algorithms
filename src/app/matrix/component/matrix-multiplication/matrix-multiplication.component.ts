@@ -86,8 +86,4 @@ export class MatrixMultiplicationComponent {
     this.matrices = [];
     this.result = undefined;
   }
-
-  print() {
-    window.print();
-  }
 }
