@@ -1,7 +1,9 @@
 <!-- placeholder -->
 <div *ngIf="noVertex" class="placeholder">
   <svg-icon name="channel"></svg-icon>
-  <span>Double click anywhere to add node!</span>
+
+  <span *ngIf="editable">Double click anywhere to add node!</span>
+  <span *ngIf="!editable">No vertices!</span>
 </div>
 
 <!-- drawing edge preview -->

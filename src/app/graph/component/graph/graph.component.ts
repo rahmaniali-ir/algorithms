@@ -41,6 +41,10 @@ export class GraphComponent implements OnInit {
 
   constructor(private el: ElementRef<HTMLElement>) {}
 
+  ngOnInit(): void {
+    this.updateGraphSize();
+  }
+
   @HostBinding('style.height')
   @HostBinding('style.width')
   get graphSizeStyle() {
@@ -87,10 +91,6 @@ export class GraphComponent implements OnInit {
 
   get noVertex() {
     return !this.vertices.length;
-  }
-
-  ngOnInit(): void {
-    this.updateGraphSize();
   }
 
   updateGraphSize() {

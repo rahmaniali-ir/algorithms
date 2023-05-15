@@ -1,6 +1,8 @@
 
 :host
+  border-radius: var(--radius)
   display: inline-flex
+  padding: 8px
   position: relative
   user-select: none
 
@@ -28,20 +30,22 @@
   align-items: center
   display: flex
   flex-direction: column
-  gap: 8px
+  gap: 16px
   inset: 0
   justify-content: center
-  opacity: .5
+  opacity: .4
   padding: 16px
   pointer-events: none
+  position: absolute
 
   svg-icon
     font-size: 32px
-    opacity: .5
+    opacity: .3
 
   span
     display: block
     font-size: 14px
+    line-height: 1.5em
     text-align: center
 
 .edge
