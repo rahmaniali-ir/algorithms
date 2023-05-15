@@ -1,8 +1,4 @@
-<main>
-  <div>Hovering: {{ hoveringVertex?.name }}</div>
-</main>
-
-<!-- edges -->
+<!-- drawing edge preview -->
 <div
   *ngIf="drawingEdgePreview"
   [style.left]="drawingEdgePreview.left + 'px'"
@@ -23,6 +19,7 @@
   </svg>
 </div>
 
+<!-- edges -->
 <div
   *ngFor="let line of edgeLines; trackBy: trackByEdgeLine"
   [style.left]="line.left + 'px'"
@@ -56,5 +53,6 @@
   (mouseup)="onVertexMouseUp()"
   class="vertex"
 >
-  <span>{{ vertex.name }}</span>
+  <span *ngIf="vertex.name">{{ vertex.name }}</span>
+  <span *ngIf="!vertex.name">V{{ vertex.index }}</span>
 </div>

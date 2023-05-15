@@ -4,6 +4,19 @@
   position: relative
   user-select: none
 
+  &.dragging-vertex
+    cursor: grabbing
+
+    .vertex
+      pointer-events: none
+
+  &.ready-to-draw-edge
+    .vertex
+      cursor: alias
+
+  &.drawing-edge
+    cursor: crosshair
+
   > main
     pointer-events: none
 
@@ -24,6 +37,7 @@
   background: var(--background-accent)
   border: 1px solid var(--border)
   border-radius: 50%
+  cursor: grab
   display: flex
   font-size: 12px
   height: var(--vertex-size, 24px)

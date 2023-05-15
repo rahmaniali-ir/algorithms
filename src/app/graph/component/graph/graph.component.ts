@@ -30,8 +30,13 @@ export class GraphComponent implements OnInit {
   @HostBinding('class.drawing-edge')
   drawingEdge = false;
 
+  @HostBinding('class.ready-to-draw-edge')
+  ctrlDown = false; // if false, dragging vertex moves it; if true, draws line from vertex
   hoveringVertex?: Vertex;
-  drawingEdgeStartingVertex?: Vertex;
+  draggingVertex?: Vertex;
+
+  @HostBinding('class.dragging-vertex')
+  isDraggingVertex = false;
   mousePosition?: Position;
 
   constructor(private el: ElementRef<HTMLElement>) {}
@@ -45,6 +50,11 @@ export class GraphComponent implements OnInit {
   @HostBinding('style.--vertex-size')
   get vertexSizeStyle() {
     return this.vertexSize + 'px';
+  }
+
+  @HostBinding('class.can-drag-vertex')
+  get canMoveVertex() {
+    return !this.ctrlDown && this.draggingVertex;
   }
 
   get vertices() {
@@ -65,15 +75,11 @@ export class GraphComponent implements OnInit {
   }
 
   get drawingEdgePreview(): EdgeLine | undefined {
-    if (
-      !this.drawingEdge ||
-      !this.drawingEdgeStartingVertex ||
-      !this.mousePosition
-    )
+    if (!this.drawingEdge || !this.draggingVertex || !this.mousePosition)
       return undefined;
 
     return getEdgeLine({
-      v1: this.drawingEdgeStartingVertex,
+      v1: this.draggingVertex,
       v2: { index: -1, name: '', position: this.mousePosition },
       weight: 0,
     });
@@ -120,6 +126,8 @@ export class GraphComponent implements OnInit {
 
   @HostListener('mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
+    if (!this.editable) return;
+
     let { offsetX: x, offsetY: y } = e;
 
     if (e.target !== this.el.nativeElement) {
@@ -137,16 +145,21 @@ export class GraphComponent implements OnInit {
     }
 
     this.mousePosition = { x, y };
+
+    if (this.canMoveVertex) {
+      this.draggingVertex!.position = this.mousePosition;
+      this.isDraggingVertex = true;
+    }
   }
 
   @HostListener('mouseleave', ['$event'])
   onMouseLeave(e: MouseEvent) {
-    this.discardDrawingEdge();
+    this.discardDrawingAndDragging();
   }
 
   @HostListener('mouseup', ['$event'])
   onMouseUp(e: MouseEvent) {
-    this.discardDrawingEdge();
+    this.discardDrawingAndDragging();
   }
 
   @HostListener('dblclick', ['$event'])
@@ -154,15 +167,27 @@ export class GraphComponent implements OnInit {
     if (!this.editable) return;
 
     const { offsetX: x, offsetY: y } = e;
-    const name = `V${this.nextVertexIndex}`;
 
     this.graph.addVertex({
-      name,
       index: this.nextVertexIndex,
       position: { x, y },
     });
 
     this.updateGraphSize();
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(e: MouseEvent) {
+    if (!this.editable) return;
+
+    this.ctrlDown = e.ctrlKey;
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  onKeyUp(e: MouseEvent) {
+    if (!this.editable) return;
+
+    this.ctrlDown = false;
   }
 
   onVertexDblClick(vertex: Vertex, e: MouseEvent) {
@@ -183,15 +208,15 @@ export class GraphComponent implements OnInit {
   onVertexMouseDown() {
     if (!this.editable) return;
 
-    this.drawingEdge = true;
-    this.drawingEdgeStartingVertex = this.hoveringVertex;
+    this.draggingVertex = this.hoveringVertex;
+    this.drawingEdge = this.ctrlDown;
   }
 
   onVertexMouseUp() {
     this.drawingEdge = false;
 
-    if (this.drawingEdgeStartingVertex && this.hoveringVertex) {
-      const v1 = this.drawingEdgeStartingVertex;
+    if (this.draggingVertex && this.hoveringVertex) {
+      const v1 = this.draggingVertex;
       const v2 = this.hoveringVertex;
 
       if (!this.graph.edgeExists({ v1, v2 }))
@@ -199,9 +224,12 @@ export class GraphComponent implements OnInit {
     }
   }
 
-  discardDrawingEdge() {
-    this.drawingEdge = false;
-    this.drawingEdgeStartingVertex = undefined;
+  discardDrawingAndDragging() {
     this.mousePosition = undefined;
+
+    this.isDraggingVertex = false;
+    this.draggingVertex = undefined;
+
+    this.drawingEdge = false;
   }
 }

@@ -2,7 +2,7 @@ import { Customizable } from 'src/app/core/type/customizable';
 import { Position } from 'src/app/core/type/position';
 
 export interface Vertex<T = any> extends Customizable<T> {
-  name: string;
+  name?: string;
   index: number;
   position: Position;
 }
