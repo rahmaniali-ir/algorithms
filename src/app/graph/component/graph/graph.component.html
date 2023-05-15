@@ -1,3 +1,9 @@
+<!-- placeholder -->
+<div *ngIf="noVertex" class="placeholder">
+  <svg-icon name="channel"></svg-icon>
+  <span>Double click anywhere to add node!</span>
+</div>
+
 <!-- drawing edge preview -->
 <div
   *ngIf="drawingEdgePreview"
@@ -56,3 +62,10 @@
   <span *ngIf="vertex.name">{{ vertex.name }}</span>
   <span *ngIf="!vertex.name">V{{ vertex.index }}</span>
 </div>
+
+<input
+  [(ngModel)]="graph.name"
+  (dblclick)="$event.stopPropagation()"
+  type="text"
+  class="name"
+/>

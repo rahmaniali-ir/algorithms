@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Graph } from '../../model/graph';
-import { Edge, EdgeLine, Vertex } from '../../type/graph';
+import { EdgeLine, Vertex } from '../../type/graph';
 import { getEdgeLine } from '../../utils/graph';
 import { Position } from 'src/app/core/type/position';
 
@@ -83,6 +83,10 @@ export class GraphComponent implements OnInit {
       v2: { index: -1, name: '', position: this.mousePosition },
       weight: 0,
     });
+  }
+
+  get noVertex() {
+    return !this.vertices.length;
   }
 
   ngOnInit(): void {

@@ -4,10 +4,14 @@
   position: relative
   user-select: none
 
+  &:hover
+    .placeholder svg-icon
+      scale: 1.2
+
   &.dragging-vertex
     cursor: grabbing
 
-    .vertex
+    .vertex, .edge, .name
       pointer-events: none
 
   &.ready-to-draw-edge
@@ -19,6 +23,26 @@
 
   > main
     pointer-events: none
+
+.placeholder
+  align-items: center
+  display: flex
+  flex-direction: column
+  gap: 8px
+  inset: 0
+  justify-content: center
+  opacity: .5
+  padding: 16px
+  pointer-events: none
+
+  svg-icon
+    font-size: 32px
+    opacity: .5
+
+  span
+    display: block
+    font-size: 14px
+    text-align: center
 
 .edge
   display: block
@@ -49,3 +73,15 @@
 
   > span
     pointer-events: none
+
+.name
+  all: unset
+
+  font-size: 14px
+  left: 8px
+  opacity: .5
+  position: absolute
+  text-transform: capitalize
+  text-overflow: ellipsis
+  top: 8px
+  width: 40%
