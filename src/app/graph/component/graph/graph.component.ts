@@ -24,7 +24,7 @@ export class GraphComponent implements OnInit {
   editable = false;
 
   @Input() size = 200;
-  @Input() vertexSize = 24;
+  @Input() vertexSize = 36;
   @Input() padding = 32;
 
   @HostBinding('class.drawing-edge')
