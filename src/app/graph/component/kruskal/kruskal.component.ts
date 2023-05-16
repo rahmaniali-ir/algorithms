@@ -82,7 +82,7 @@ export class KruskalComponent {
           tree,
           edge: addedEdge,
         },
-        feasibility: `Select ${v1Name},${v2Name}`,
+        feasibility: `Step ${i + 1} - Select ${v1Name},${v2Name}`,
         feasibilityCheck,
         solution: '',
         solutionCheck: false,
