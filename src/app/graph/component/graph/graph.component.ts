@@ -230,6 +230,10 @@ export class GraphComponent implements OnInit {
     }
   }
 
+  onLineMouseUp(line: EdgeLine, e: MouseEvent) {
+    if (e.button === 1) this.graph.deleteEdge(line.edge);
+  }
+
   discardDrawingAndDragging() {
     this.mousePosition = undefined;
 

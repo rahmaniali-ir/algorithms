@@ -1,11 +1,31 @@
+<!-- input -->
 <app-section header="Input" icon="channel">
-  <app-graph [graph]="graph" [editable]="true"></app-graph>
-
-  <button (click)="calculateKruskalTree()" class="button">
-    <span>Calculate</span>
+  <!-- clear -->
+  <button
+    actions
+    *ngIf="graph.vertices.length > 0"
+    (click)="clear()"
+    class="button placeholder clear"
+  >
+    <svg-icon name="trash"></svg-icon>
+    <span>Clear</span>
   </button>
+
+  <div class="input">
+    <app-graph [graph]="graph" [editable]="true"></app-graph>
+
+    <button
+      *ngIf="canCalculate"
+      (click)="calculateKruskalTree()"
+      class="button vertical placeholder calculate"
+    >
+      <svg-icon name="channel"></svg-icon>
+      <span>Calculate</span>
+    </button>
+  </div>
 </app-section>
 
+<!-- solution -->
 <app-section *ngIf="steps.length" header="Solution" icon="wrapText">
   <div class="steps">
     <app-step
@@ -18,6 +38,7 @@
   </div>
 </app-section>
 
+<!-- output -->
 <app-section *ngIf="spanningTree" header="Output" icon="out">
   <app-graph
     *ngIf="spanningTree"

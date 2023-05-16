@@ -28,6 +28,12 @@ export class Graph<T = any> {
     return this._edges;
   }
 
+  get isFullyConnected() {
+    return this.vertices.every((v) =>
+      this.edges.some((e) => e.v1 === v || e.v2 === v)
+    );
+  }
+
   getVertexByIndex(index: number) {
     return this.vertices.find((v) => v.index === index);
   }
@@ -67,6 +73,10 @@ export class Graph<T = any> {
     this._edges.push(e);
 
     return e;
+  }
+
+  deleteEdge(edge: Edge<T>) {
+    this._edges = this._edges.filter((e) => e !== edge);
   }
 
   hasCycle() {

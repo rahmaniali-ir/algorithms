@@ -48,7 +48,14 @@
     />
   </svg>
 
-  <input [(ngModel)]="line.edge.weight" type="number" class="weight" />
+  <input
+    [(ngModel)]="line.edge.weight"
+    (dblclick)="$event.stopPropagation()"
+    (mouseup)="onLineMouseUp(line, $event)"
+    [readOnly]="!editable"
+    type="number"
+    class="weight"
+  />
 </div>
 
 <!-- vertices -->

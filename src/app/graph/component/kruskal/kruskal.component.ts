@@ -9,7 +9,7 @@ import { Edge } from '../../type/graph';
   styleUrls: ['./kruskal.component.sass'],
 })
 export class KruskalComponent {
-  graph = new Graph('default');
+  graph = new Graph('Input');
   spanningTree?: Graph;
   changeGraph?: Graph;
   steps: GreedyStep<{ tree: Graph; edge: Edge }>[] = [];
@@ -30,6 +30,10 @@ export class KruskalComponent {
     this.graph.addEdge({ v1: c, v2: d, weight: 4 });
     this.graph.addEdge({ v1: c, v2: e, weight: 2 });
     this.graph.addEdge({ v1: d, v2: e, weight: 5 });
+  }
+
+  get canCalculate() {
+    return this.graph.isFullyConnected && this.graph.edges.length > 1;
   }
 
   // calculate Kruskal's minimum spanning tree
@@ -85,5 +89,9 @@ export class KruskalComponent {
     });
 
     this.spanningTree = spanningTree;
+  }
+
+  clear() {
+    this.graph = new Graph('Input');
   }
 }
