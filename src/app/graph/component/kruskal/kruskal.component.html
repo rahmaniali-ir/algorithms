@@ -44,15 +44,17 @@
 
 <!-- output -->
 <app-section *ngIf="spanningTree" header="Output" icon="out">
-  <app-graph
-    *ngIf="spanningTree"
-    [graph]="spanningTree"
-    [editable]="false"
-  ></app-graph>
+  <div class="output">
+    <app-graph
+      *ngIf="spanningTree"
+      [graph]="spanningTree"
+      [editable]="false"
+    ></app-graph>
 
-  <app-graph
-    *ngIf="changeGraph"
-    [graph]="changeGraph"
-    [editable]="false"
-  ></app-graph>
+    <app-graph
+      *ngIf="changeGraph"
+      [graph]="changeGraph"
+      [editable]="false"
+    ></app-graph>
+  </div>
 </app-section>
