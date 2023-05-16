@@ -16,11 +16,11 @@ export class KruskalComponent {
   calculated = false;
 
   constructor() {
-    this.graph.addVertex({ index: 0, name: 'A', position: { x: 60, y: 60 } });
-    this.graph.addVertex({ index: 1, name: 'B', position: { x: 200, y: 60 } });
-    this.graph.addVertex({ index: 2, name: 'D', position: { x: 60, y: 200 } });
-    this.graph.addVertex({ index: 3, name: 'C', position: { x: 200, y: 200 } });
-    this.graph.addVertex({ index: 4, name: 'E', position: { x: 130, y: 270 } });
+    this.graph.addVertex({ index: 0, name: 'A', position: { x: 75, y: 60 } });
+    this.graph.addVertex({ index: 1, name: 'B', position: { x: 225, y: 60 } });
+    this.graph.addVertex({ index: 2, name: 'D', position: { x: 75, y: 200 } });
+    this.graph.addVertex({ index: 3, name: 'C', position: { x: 225, y: 200 } });
+    this.graph.addVertex({ index: 4, name: 'E', position: { x: 146, y: 270 } });
 
     const [a, b, c, d, e] = this.graph.vertices;
 
