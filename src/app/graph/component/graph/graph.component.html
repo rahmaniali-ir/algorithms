@@ -51,7 +51,8 @@
   <input
     [(ngModel)]="line.edge.weight"
     (dblclick)="$event.stopPropagation()"
-    (mouseup)="onLineMouseUp(line, $event)"
+    (mouseup)="onWeightMouseUp(line, $event)"
+    (input)="onWeightEdit()"
     [readOnly]="!editable"
     type="number"
     class="weight"

@@ -250,8 +250,14 @@ export class GraphComponent implements OnInit {
     }
   }
 
-  onLineMouseUp(line: EdgeLine, e: MouseEvent) {
+  onWeightMouseUp(line: EdgeLine, e: MouseEvent) {
+    e.preventDefault();
+
     if (e.button === 1) this.deleteEdge(line.edge);
+  }
+
+  onWeightEdit() {
+    this.edit.emit();
   }
 
   discardDrawingAndDragging() {
