@@ -100,7 +100,7 @@ export class GraphComponent implements OnInit {
     const x = this.vertices.map((v) => v.position.x);
     const y = this.vertices.map((v) => v.position.y);
 
-    const padding = this.vertexSize / 2 + this.padding;
+    const padding = this.padding;
 
     const minX = Math.min(...x);
     const minY = Math.min(...y);
