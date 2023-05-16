@@ -6,8 +6,8 @@ export function getEdgeLine(edge: Edge): EdgeLine {
     v2: { position: p2 },
   } = edge;
 
-  const height = Math.max(2, Math.abs(p2.y - p1.y));
-  const width = Math.max(2, Math.abs(p2.x - p1.x));
+  const height = Math.max(3, Math.abs(p2.y - p1.y));
+  const width = Math.max(3, Math.abs(p2.x - p1.x));
   const viewBox = `0 0 ${width} ${height}`;
 
   const top = Math.min(p2.y, p1.y);
