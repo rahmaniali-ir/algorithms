@@ -32,6 +32,7 @@
   *ngFor="let line of edgeLines; trackBy: trackByEdgeLine"
   [style.left]="line.left + 'px'"
   [style.top]="line.top + 'px'"
+  [class]="line.edge.className"
   class="edge"
 >
   <svg
@@ -46,6 +47,8 @@
       [attr.y2]="line.y2"
     />
   </svg>
+
+  <input [(ngModel)]="line.edge.weight" type="number" class="weight" />
 </div>
 
 <!-- vertices -->
@@ -67,6 +70,7 @@
 
 <input
   [(ngModel)]="graph.name"
+  [title]="graph.name"
   (dblclick)="$event.stopPropagation()"
   type="text"
   class="name"

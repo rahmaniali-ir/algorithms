@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Graph } from '../../model/graph';
+import { GreedyStep } from 'src/type/greedy';
+import { Edge } from '../../type/graph';
 
 @Component({
   selector: 'app-kruskal',
@@ -8,11 +10,80 @@ import { Graph } from '../../model/graph';
 })
 export class KruskalComponent {
   graph = new Graph('default');
+  spanningTree?: Graph;
+  changeGraph?: Graph;
+  steps: GreedyStep<{ tree: Graph; edge: Edge }>[] = [];
 
   constructor() {
-    // this.graph.addVertex({ name: 'A', index: 0, position: { x: 0, y: 0 } });
-    // this.graph.addVertex({ name: 'B', index: 1, position: { x: 30, y: 0 } });
-    // const [v1, v2] = this.graph.vertices;
-    // this.graph.addEdge({ v1, v2, weight: 1 });
+    this.graph.addVertex({ index: 0, name: 'A', position: { x: 60, y: 60 } });
+    this.graph.addVertex({ index: 1, name: 'B', position: { x: 200, y: 60 } });
+    this.graph.addVertex({ index: 2, name: 'D', position: { x: 60, y: 200 } });
+    this.graph.addVertex({ index: 3, name: 'C', position: { x: 200, y: 200 } });
+    this.graph.addVertex({ index: 4, name: 'E', position: { x: 130, y: 270 } });
+
+    const [a, b, c, d, e] = this.graph.vertices;
+
+    this.graph.addEdge({ v1: a, v2: b, weight: 1 });
+    this.graph.addEdge({ v1: a, v2: c, weight: 3 });
+    this.graph.addEdge({ v1: b, v2: c, weight: 3 });
+    this.graph.addEdge({ v1: b, v2: d, weight: 6 });
+    this.graph.addEdge({ v1: c, v2: d, weight: 4 });
+    this.graph.addEdge({ v1: c, v2: e, weight: 2 });
+    this.graph.addEdge({ v1: d, v2: e, weight: 5 });
+  }
+
+  // calculate Kruskal's minimum spanning tree
+  calculateKruskalTree() {
+    const spanningTree = new Graph(
+      'minimum spanning tree',
+      this.graph.vertices
+    );
+    const sortedEdges = this.graph.edges.sort((a, b) => a.weight - b.weight);
+
+    this.steps = [];
+    sortedEdges.forEach((edge, i) => {
+      if (spanningTree.vertices.length == this.graph.vertices.length - 1)
+        return;
+
+      const e = { ...edge };
+
+      const tree = spanningTree.clone();
+      const addedEdge = tree.addEdge(e)!;
+
+      const feasibilityCheck = !tree.hasCycle();
+
+      if (feasibilityCheck) {
+        spanningTree.addEdge(e);
+
+        addedEdge.className += ' success';
+      } else {
+        addedEdge.className += ' danger';
+      }
+
+      const v1Name = edge.v1.name || `V${edge.v1.index + 1}`;
+      const v2Name = edge.v2.name || `V${edge.v2.index + 1}`;
+
+      this.steps.push({
+        step: i,
+        selection: {
+          tree,
+          edge: addedEdge,
+        },
+        feasibility: `Select ${v1Name},${v2Name}`,
+        feasibilityCheck,
+        solution: '',
+        solutionCheck: false,
+      });
+    });
+
+    this.changeGraph = this.graph.clone();
+    this.changeGraph.name = 'Change graph';
+    this.changeGraph.edges.forEach((e) => {
+      e.className = spanningTree.edgeExists(e.v1.index, e.v2.index)
+        ? ' success'
+        : ' danger';
+    });
+
+    this.spanningTree = spanningTree;
   }
 }

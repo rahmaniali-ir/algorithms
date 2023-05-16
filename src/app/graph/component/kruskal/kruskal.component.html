@@ -1,3 +1,33 @@
-<app-section header="graph" icon="channel">
+<app-section header="Input" icon="channel">
   <app-graph [graph]="graph" [editable]="true"></app-graph>
+
+  <button (click)="calculateKruskalTree()" class="button">
+    <span>Calculate</span>
+  </button>
+</app-section>
+
+<app-section *ngIf="steps.length" header="Solution" icon="wrapText">
+  <div class="steps">
+    <app-step
+      *ngFor="let step of steps"
+      [header]="step.feasibility"
+      [icon]="step.feasibilityCheck ? 'check' : 'times'"
+    >
+      <app-graph [graph]="step.selection.tree" [editable]="false"></app-graph>
+    </app-step>
+  </div>
+</app-section>
+
+<app-section *ngIf="spanningTree" header="Output" icon="out">
+  <app-graph
+    *ngIf="spanningTree"
+    [graph]="spanningTree"
+    [editable]="false"
+  ></app-graph>
+
+  <app-graph
+    *ngIf="changeGraph"
+    [graph]="changeGraph"
+    [editable]="false"
+  ></app-graph>
 </app-section>

@@ -7,12 +7,21 @@ export class Graph<T = any> {
 
   constructor(name: string, vertices: Vertices<T> = [], edges: Edge<T>[] = []) {
     this.name = name;
-    this._vertices = vertices;
-    this._edges = edges;
+
+    this._vertices = vertices.map((v) => ({ ...v }));
+    this._edges = edges.map((e) => ({ ...e }));
   }
 
   get vertices() {
     return this._vertices;
+  }
+
+  get vertexMap() {
+    const map = new Map<number, Vertex>();
+
+    this.vertices.forEach((v) => map.set(v.index, v));
+
+    return map;
   }
 
   get edges() {
@@ -24,7 +33,10 @@ export class Graph<T = any> {
   }
 
   addVertex(vertex: Vertex<T>) {
-    this.vertices.push(vertex);
+    const v = { ...vertex };
+    this._vertices.push(v);
+
+    return v;
   }
 
   deleteVertex(vertex: Vertex<T>) {
@@ -32,18 +44,64 @@ export class Graph<T = any> {
     this._edges = this._edges.filter((e) => e.v1 !== vertex && e.v2 !== vertex);
   }
 
-  edgeExists(edge: Pick<Edge, 'v1' | 'v2'>, ignoreDirection = false) {
+  edgeExists(v1Index: number, v2Index: number, ignoreDirection = false) {
     if (ignoreDirection)
       return this.edges.some(
         (e) =>
-          (e.v1 === edge.v1 && e.v2 === edge.v2) ||
-          (e.v1 === edge.v2 && e.v2 === edge.v1)
+          (e.v1.index === v1Index && e.v2.index === v2Index) ||
+          (e.v1.index === v2Index && e.v2.index === v1Index)
       );
 
-    return this.edges.some((e) => e.v1 === edge.v1 && e.v2 === edge.v2);
+    return this.edges.some(
+      (e) => e.v1.index === v1Index && e.v2.index === v2Index
+    );
   }
 
-  addEdge(edge: Edge<T>) {
-    this.edges.push(edge);
+  addEdge(edge: Edge<T>): Edge<T> | undefined {
+    const v1 = this.vertexMap.get(edge.v1.index);
+    const v2 = this.vertexMap.get(edge.v2.index);
+
+    if (!v1 || !v2) return;
+
+    const e = { ...edge, v1, v2 };
+    this._edges.push(e);
+
+    return e;
+  }
+
+  hasCycle() {
+    const sets = this.vertices.map((v) => [v.index]);
+
+    for (let edge of this.edges) {
+      const v1Set = sets.findIndex((set) => set.includes(edge.v1.index));
+      const v2Set = sets.findIndex((set) => set.includes(edge.v2.index));
+
+      if (v1Set === v2Set) return true;
+
+      sets[v1Set].push(...sets[v2Set]);
+      sets[v2Set] = [];
+    }
+
+    return false;
+  }
+
+  clone() {
+    const graph = new Graph(this.name);
+
+    this.vertices.forEach((vertex) => {
+      const { index, name, position } = vertex;
+
+      graph.addVertex({ ...vertex, index, name, position: { ...position } });
+    });
+
+    this.edges.forEach((edge) => {
+      const { weight, name } = edge;
+      const v1 = this.vertexMap.get(edge.v1.index)!;
+      const v2 = this.vertexMap.get(edge.v2.index)!;
+
+      graph.addEdge({ ...edge, weight, name, v1, v2 });
+    });
+
+    return graph;
   }
 }

@@ -1,5 +1,8 @@
 
 :host
+  --graph-background: var(--background-accent)
+
+  background: var(--graph-background)
   border-radius: var(--radius)
   display: inline-flex
   padding: 8px
@@ -10,18 +13,30 @@
     .placeholder svg-icon
       scale: 1.2
 
-  &.dragging-vertex
-    cursor: grabbing
+  &.editable
+    --graph-background: var(--background)
 
-    .vertex, .edge, .name
-      pointer-events: none
+    &.dragging-vertex
+      cursor: grabbing
 
-  &.ready-to-draw-edge
+      .vertex, .edge, .name
+        pointer-events: none
+
+    &.ready-to-draw-edge
+      .vertex
+        cursor: alias
+
+    &.drawing-edge
+      cursor: crosshair
+
     .vertex
-      cursor: alias
+      cursor: grab
 
-  &.drawing-edge
-    cursor: crosshair
+    .name
+      pointer-events: none
+      right: unset
+      text-align: initial
+      width: 40%
 
   > main
     pointer-events: none
@@ -49,23 +64,51 @@
     text-align: center
 
 .edge
+  color: var(--text)
   display: block
   position: absolute
   pointer-events: none
 
+  &.success
+    color: var(--success)
+
+  &.danger
+    color: var(--danger)
+
   svg
     display: block
+    opacity: .5
 
     line
-      stroke: var(--text)
+      stroke: currentColor
       stroke-width: 2px
+
+  .weight
+    --weight-size: 3ch
+    all: unset
+
+    appearance: textfield
+    background: radial-gradient(var(--graph-background) 40%, transparent, transparent)
+    border-radius: 50%
+    font-size: 14px
+    height: var(--weight-size)
+    left: 50%
+    position: absolute
+    text-align: center
+    top: 50%
+    translate: -50% -50%
+    width: var(--weight-size)
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button
+      -webkit-appearance: none
 
 .vertex
   align-items: center
   background: var(--background-accent)
   border: 1px solid var(--border)
   border-radius: 50%
-  cursor: grab
+  cursor: default
   display: flex
   font-size: 12px
   height: var(--vertex-size, 24px)
@@ -83,9 +126,12 @@
 
   font-size: 14px
   left: 8px
+  min-width: 0
   opacity: .5
+  pointer-events: none
   position: absolute
-  text-transform: capitalize
+  right: 8px
+  text-align: center
   text-overflow: ellipsis
+  text-transform: capitalize
   top: 8px
-  width: 40%

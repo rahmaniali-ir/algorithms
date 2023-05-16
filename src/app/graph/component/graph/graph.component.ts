@@ -20,7 +20,7 @@ export class GraphComponent implements OnInit {
   @Input() graph: Graph = new Graph('default');
 
   @Input()
-  @HostBinding('class.preview')
+  @HostBinding('class.editable')
   editable = false;
 
   @Input() size = 200;
@@ -223,7 +223,9 @@ export class GraphComponent implements OnInit {
       const v1 = this.draggingVertex;
       const v2 = this.hoveringVertex;
 
-      if (!this.graph.edgeExists({ v1, v2 }))
+      if (v1 === v2) return;
+
+      if (!this.graph.edgeExists(v1.index, v2.index))
         this.graph.addEdge({ v1, v2, weight: 1 });
     }
   }
