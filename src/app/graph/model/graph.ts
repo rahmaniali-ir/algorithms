@@ -67,7 +67,7 @@ export class Graph<T = any> {
     const v1 = this.vertexMap.get(edge.v1.index);
     const v2 = this.vertexMap.get(edge.v2.index);
 
-    if (!v1 || !v2) return;
+    if (!v1 || !v2 || v1 === v2 || this.edgeExists(v1.index, v2.index)) return;
 
     const e = { ...edge, v1, v2 };
     this._edges.push(e);

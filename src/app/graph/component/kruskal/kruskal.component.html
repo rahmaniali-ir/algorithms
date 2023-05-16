@@ -12,7 +12,11 @@
   </button>
 
   <div class="input">
-    <app-graph [graph]="graph" [editable]="true"></app-graph>
+    <app-graph
+      [graph]="graph"
+      [editable]="true"
+      (edit)="onInputEdit()"
+    ></app-graph>
 
     <button
       *ngIf="canCalculate"

@@ -13,6 +13,7 @@ export class KruskalComponent {
   spanningTree?: Graph;
   changeGraph?: Graph;
   steps: GreedyStep<{ tree: Graph; edge: Edge }>[] = [];
+  calculated = false;
 
   constructor() {
     this.graph.addVertex({ index: 0, name: 'A', position: { x: 60, y: 60 } });
@@ -33,7 +34,15 @@ export class KruskalComponent {
   }
 
   get canCalculate() {
-    return this.graph.isFullyConnected && this.graph.edges.length > 1;
+    return (
+      this.graph.isFullyConnected &&
+      this.graph.edges.length > 1 &&
+      !this.calculated
+    );
+  }
+
+  onInputEdit() {
+    this.calculated = false;
   }
 
   // calculate Kruskal's minimum spanning tree
@@ -89,6 +98,7 @@ export class KruskalComponent {
     });
 
     this.spanningTree = spanningTree;
+    this.calculated = true;
   }
 
   clear() {

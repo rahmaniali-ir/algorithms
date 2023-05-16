@@ -1,13 +1,15 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   HostBinding,
   HostListener,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
 import { Graph } from '../../model/graph';
-import { EdgeLine, Vertex } from '../../type/graph';
+import { Edge, EdgeLine, Vertex } from '../../type/graph';
 import { getEdgeLine } from '../../utils/graph';
 import { Position } from 'src/app/core/type/position';
 
@@ -18,6 +20,7 @@ import { Position } from 'src/app/core/type/position';
 })
 export class GraphComponent implements OnInit {
   @Input() graph: Graph = new Graph('default');
+  @Output() edit = new EventEmitter();
 
   @Input()
   @HostBinding('class.editable')
@@ -93,7 +96,7 @@ export class GraphComponent implements OnInit {
     return !this.vertices.length;
   }
 
-  updateGraphSize() {
+  private updateGraphSize() {
     const x = this.vertices.map((v) => v.position.x);
     const y = this.vertices.map((v) => v.position.y);
 
@@ -115,6 +118,33 @@ export class GraphComponent implements OnInit {
     const maxY = Math.max(...y) + padding;
 
     this.size = Math.max(maxX, maxY, this.size);
+
+    this.edit.emit();
+  }
+
+  private addVertex(position: Position) {
+    this.graph.addVertex({
+      index: this.nextVertexIndex,
+      position,
+    });
+
+    this.updateGraphSize();
+    this.edit.emit();
+  }
+
+  private deleteVertex(vertex: Vertex) {
+    this.graph.deleteVertex(vertex);
+    this.edit.emit();
+  }
+
+  private addEdge(v1: Vertex, v2: Vertex) {
+    this.graph.addEdge({ v1, v2, weight: 1 });
+    this.edit.emit();
+  }
+
+  private deleteEdge(edge: Edge) {
+    this.graph.deleteEdge(edge);
+    this.edit.emit();
   }
 
   trackByEdgeLine(index: number) {
@@ -171,13 +201,7 @@ export class GraphComponent implements OnInit {
     if (!this.editable) return;
 
     const { offsetX: x, offsetY: y } = e;
-
-    this.graph.addVertex({
-      index: this.nextVertexIndex,
-      position: { x, y },
-    });
-
-    this.updateGraphSize();
+    this.addVertex({ x, y });
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -198,7 +222,7 @@ export class GraphComponent implements OnInit {
     if (!this.editable) return;
     e.stopPropagation();
 
-    this.graph.deleteVertex(vertex);
+    this.deleteVertex(vertex);
   }
 
   onVertexMouseEnter(vertex: Vertex) {
@@ -222,16 +246,12 @@ export class GraphComponent implements OnInit {
     if (this.draggingVertex && this.hoveringVertex) {
       const v1 = this.draggingVertex;
       const v2 = this.hoveringVertex;
-
-      if (v1 === v2) return;
-
-      if (!this.graph.edgeExists(v1.index, v2.index))
-        this.graph.addEdge({ v1, v2, weight: 1 });
+      this.addEdge(v1, v2);
     }
   }
 
   onLineMouseUp(line: EdgeLine, e: MouseEvent) {
-    if (e.button === 1) this.graph.deleteEdge(line.edge);
+    if (e.button === 1) this.deleteEdge(line.edge);
   }
 
   discardDrawingAndDragging() {
