@@ -65,6 +65,7 @@
   [style.left]="vertex.position.x + 'px'"
   [style.top]="vertex.position.y + 'px'"
   [attr.vertex-index]="vertex.index"
+  [ngClass]="vertex.className"
   (dblclick)="onVertexDblClick(vertex, $event)"
   (mouseenter)="onVertexMouseEnter(vertex)"
   (mouseleave)="onVertexMouseLeave()"

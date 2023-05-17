@@ -1,0 +1,76 @@
+<!-- input -->
+<app-section header="Input" icon="channel">
+  <!-- clear -->
+  <button
+    actions
+    *ngIf="graph.vertices.length > 0"
+    (click)="clear()"
+    class="button placeholder clear"
+  >
+    <svg-icon name="trash"></svg-icon>
+    <span>Clear</span>
+  </button>
+
+  <div class="input">
+    <app-graph
+      [graph]="graph"
+      [editable]="true"
+      (edit)="onInputEdit()"
+    ></app-graph>
+
+    <button
+      *ngIf="canCalculate"
+      (click)="calculatePrimTree()"
+      class="button vertical placeholder calculate"
+    >
+      <svg-icon name="channel"></svg-icon>
+      <span>Calculate</span>
+    </button>
+  </div>
+</app-section>
+
+<!-- solution -->
+<app-section *ngIf="steps.length" header="Solution" icon="wrapText">
+  <div class="steps">
+    <app-step
+      *ngFor="let step of steps"
+      [header]="step.feasibility"
+      [icon]="step.feasibilityCheck ? 'check' : 'times'"
+    >
+      <div class="step">
+        <app-graph [graph]="step.selection.tree" [editable]="false"></app-graph>
+
+        <main>
+          <section class="vertices">
+            Selected nodes:
+            <span
+              *ngFor="let vertex of step.selection.vertices"
+              (mouseenter)="onVertexMouseEnter(step.selection.tree, vertex)"
+              (mouseleave)="onVertexMouseLeave(step.selection.tree, vertex)"
+              class="vertex"
+            >
+              {{ vertex.name }}
+            </span>
+          </section>
+        </main>
+      </div>
+    </app-step>
+  </div>
+</app-section>
+
+<!-- output -->
+<app-section *ngIf="spanningTree" header="Output" icon="out">
+  <div class="output">
+    <app-graph
+      *ngIf="spanningTree"
+      [graph]="spanningTree"
+      [editable]="false"
+    ></app-graph>
+
+    <app-graph
+      *ngIf="changeGraph"
+      [graph]="changeGraph"
+      [editable]="false"
+    ></app-graph>
+  </div>
+</app-section>

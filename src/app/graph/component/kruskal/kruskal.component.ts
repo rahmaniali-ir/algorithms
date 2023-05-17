@@ -3,6 +3,7 @@ import { Graph } from '../../model/graph';
 import { GreedyStep } from 'src/type/greedy';
 import { Edge } from '../../type/graph';
 import { getVertexName } from '../../utils/graph';
+import { getClassList } from 'src/app/core/util/customizable';
 
 @Component({
   selector: 'app-kruskal',
@@ -69,9 +70,9 @@ export class KruskalComponent {
       if (feasibilityCheck) {
         spanningTree.addEdge(e);
 
-        addedEdge.className += ' success';
+        getClassList(addedEdge).add('success');
       } else {
-        addedEdge.className += ' danger';
+        getClassList(addedEdge).add('danger');
       }
 
       const v1Name = getVertexName(edge.v1);
@@ -93,9 +94,9 @@ export class KruskalComponent {
     this.changeGraph = this.graph.clone();
     this.changeGraph.name = 'Change graph';
     this.changeGraph.edges.forEach((e) => {
-      e.className = spanningTree.edgeExists(e.v1.index, e.v2.index)
-        ? ' success'
-        : ' danger';
+      getClassList(e).add(
+        spanningTree.edgeExists(e.v1.index, e.v2.index) ? 'success' : 'danger'
+      );
     });
 
     this.spanningTree = spanningTree;

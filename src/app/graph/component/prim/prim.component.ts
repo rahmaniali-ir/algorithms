@@ -1,0 +1,161 @@
+import { Component } from '@angular/core';
+import { Graph } from '../../model/graph';
+import { GreedyStep } from 'src/type/greedy';
+import { Edge, Vertex, Vertices } from '../../type/graph';
+import { getVertexName } from '../../utils/graph';
+import { getClassList } from 'src/app/core/util/customizable';
+
+@Component({
+  selector: 'app-prim',
+  templateUrl: './prim.component.html',
+  styleUrls: ['./prim.component.sass'],
+})
+export class PrimComponent {
+  graph = new Graph('Input');
+  spanningTree?: Graph;
+  changeGraph?: Graph;
+  steps: GreedyStep<{
+    tree: Graph;
+    edge?: Edge;
+    edges: Edge[];
+    vertices: Vertices;
+  }>[] = [];
+  calculated = false;
+
+  constructor() {
+    this.graph.addVertex({ index: 0, name: 'A', position: { x: 75, y: 60 } });
+    this.graph.addVertex({ index: 1, name: 'B', position: { x: 225, y: 60 } });
+    this.graph.addVertex({ index: 2, name: 'D', position: { x: 75, y: 200 } });
+    this.graph.addVertex({ index: 3, name: 'C', position: { x: 225, y: 200 } });
+    this.graph.addVertex({ index: 4, name: 'E', position: { x: 146, y: 270 } });
+
+    const [a, b, c, d, e] = this.graph.vertices;
+
+    this.graph.addEdge({ v1: a, v2: b, weight: 1 });
+    this.graph.addEdge({ v1: a, v2: c, weight: 3 });
+    this.graph.addEdge({ v1: b, v2: c, weight: 3 });
+    this.graph.addEdge({ v1: b, v2: d, weight: 6 });
+    this.graph.addEdge({ v1: c, v2: d, weight: 4 });
+    this.graph.addEdge({ v1: c, v2: e, weight: 2 });
+    this.graph.addEdge({ v1: d, v2: e, weight: 5 });
+
+    // console.log(this.graph.adjacencyMatrix.plainMatrix);
+    console.log(this.graph.getVertexGroupEdges([0, 1, 3]));
+    // this.graph.vertices.forEach((v) => {
+    //   console.log(this.graph.getConnectedVertices(v.index));
+    // });
+  }
+
+  get canCalculate() {
+    return (
+      this.graph.isFullyConnected &&
+      this.graph.edges.length > 1 &&
+      !this.calculated
+    );
+  }
+
+  onInputEdit() {
+    this.calculated = false;
+  }
+
+  // calculate Prim's minimum spanning tree
+  calculatePrimTree() {
+    this.steps = [];
+    const graphVertices = [...this.graph.vertices].map((v) => ({
+      ...v,
+      name: getVertexName(v),
+      className: 'inactive',
+    }));
+
+    graphVertices[0].className = '';
+
+    const spanningTree = new Graph('minimum spanning tree', [graphVertices[0]]);
+
+    this.steps.push({
+      step: 0,
+      selection: {
+        tree: new Graph(`Minimum spanning tree`, graphVertices),
+        edges: [],
+        vertices: [graphVertices[0]],
+      },
+      feasibility: '',
+      feasibilityCheck: false,
+      solution: '',
+      solutionCheck: false,
+    });
+
+    for (let i = 1; i < this.graph.vertices.length; i++) {
+      const stepTree = new Graph(`Minimum spanning tree`, graphVertices);
+
+      const vertices = spanningTree.vertices.map((v) => v.index);
+      vertices.forEach((v) => {
+        stepTree.getVertexByIndex(v)!.className = '';
+      });
+
+      let edges = this.graph.getVertexGroupEdges(vertices);
+      edges
+        .filter((e) => spanningTree.edgeExists(e.v1.index, e.v2.index))
+        .forEach((edge) => stepTree.addEdge(edge));
+
+      edges = edges.filter((e) => {
+        return (
+          !spanningTree.edgeExists(e.v1.index, e.v2.index) &&
+          (!vertices.includes(e.v1.index) || !vertices.includes(e.v2.index))
+        );
+      });
+      edges.forEach((edge) => {
+        const { v1, v2 } = edge;
+        const exists = spanningTree.edgeExists(v1.index, v2.index);
+
+        let e = stepTree.getEdge(v1.index, v2.index) || stepTree.addEdge(edge)!;
+        e.className = exists ? '' : 'danger';
+      });
+
+      const e = edges.sort((a, b) => a.weight - b.weight)[0];
+      stepTree.getEdge(e.v1.index, e.v2.index)!.className = 'success';
+
+      if (!spanningTree.vertexExists(e.v1.index)) {
+        spanningTree.addVertex(e.v1);
+        stepTree.getVertexByIndex(e.v1.index)!.className = '';
+      }
+
+      if (!spanningTree.vertexExists(e.v2.index)) {
+        spanningTree.addVertex(e.v2);
+        stepTree.getVertexByIndex(e.v2.index)!.className = '';
+      }
+      spanningTree.addEdge(e);
+
+      this.steps.push({
+        step: 0,
+        selection: {
+          tree: stepTree,
+          edges,
+          edge: e,
+          vertices: spanningTree.vertices.map((v) => ({
+            ...v,
+            name: getVertexName(v),
+          })),
+        },
+        feasibility: '',
+        feasibilityCheck: false,
+        solution: '',
+        solutionCheck: false,
+      });
+    }
+
+    this.spanningTree = spanningTree;
+    this.calculated = true;
+  }
+
+  clear() {
+    this.graph = new Graph('Input');
+  }
+
+  onVertexMouseEnter(graph: Graph, vertex: Vertex) {
+    getClassList(graph.getVertexByIndex(vertex.index)!).add('hovered');
+  }
+
+  onVertexMouseLeave(graph: Graph, vertex: Vertex) {
+    getClassList(graph.getVertexByIndex(vertex.index)!).remove('hovered');
+  }
+}

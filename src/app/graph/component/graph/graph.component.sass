@@ -120,6 +120,14 @@
   translate: -50% -50%
   width: var(--vertex-size, 24px)
 
+  &.hovered
+    font-weight: bold
+    scale: 1.2
+
+  &.inactive
+    background: radial-gradient(var(--background-accent), transparent)
+    filter: contrast(.9)
+
   > span
     pointer-events: none
 

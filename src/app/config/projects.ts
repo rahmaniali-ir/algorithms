@@ -5,6 +5,7 @@ export type ProjectKey =
   | 'matrixChainMultiplication'
   | 'changeCoins'
   | 'kruskal'
+  | 'prim'
   | 'minimumPathFinding'
   | 'quickSearch'
   | 'mergeSort';
@@ -34,6 +35,15 @@ export const projects: Record<ProjectKey, Project> = {
     icon: 'channel',
     description:
       "Kruskal's algorithm finds a minimum spanning forest of an undirected edge-weighted graph.",
+    category: categories.greedyApproach,
+  },
+
+  prim: {
+    id: 'prim',
+    name: 'Prim',
+    icon: 'channel',
+    description:
+      "Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.",
     category: categories.greedyApproach,
   },
 

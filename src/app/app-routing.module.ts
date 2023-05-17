@@ -8,6 +8,7 @@ import { QuickSearchComponent } from './search/component/quick-search/quick-sear
 import { SoonComponent } from './component/soon/soon.component';
 import { ChangeCoinsComponent } from './change-coins/component/change-coins/change-coins.component';
 import { KruskalComponent } from './graph/component/kruskal/kruskal.component';
+import { PrimComponent } from './graph/component/prim/prim.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
         path: projects.kruskal.id,
         component: KruskalComponent,
         data: { project: projects.kruskal },
+      },
+      {
+        path: projects.prim.id,
+        component: PrimComponent,
+        data: { project: projects.prim },
       },
       {
         path: projects.quickSearch.id,
