@@ -1,11 +1,33 @@
-<a [routerLink]="'project/' + project.id" class="card">
-  <header>
-    <svg-icon [name]="project.icon"></svg-icon>
-  </header>
+<a
+  [routerLink]="'project/' + project.id"
+  [class.hovered]="hovered"
+  (mousemove)="onMouseMove($event)"
+  (mouseleave)="onMouseLeave()"
+  class="card"
+>
+  <div class="background">
+    <div
+      *ngFor="let color of colors"
+      [style.left]="mouse?.x + 'px'"
+      [style.top]="mouse?.y + 'px'"
+      class="shape"
+    >
+      <div [style.--color]="color" class="circle"></div>
+    </div>
+  </div>
 
-  <h3>{{ project.name }}</h3>
+  <svg-icon [name]="project.icon"></svg-icon>
 
-  <p>{{ project.description }}</p>
+  <div class="content">
+    <header>
+      <h3>
+        <svg-icon [name]="project.icon"></svg-icon>
+        <span>{{ project.name }}</span>
+      </h3>
+    </header>
 
-  <category-tag [category]="category"></category-tag>
+    <p>{{ project.description }}</p>
+  </div>
+
+  <!-- <category-tag [category]="category"></category-tag> -->
 </a>
