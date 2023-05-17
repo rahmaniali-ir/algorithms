@@ -155,7 +155,11 @@ export class PrimComponent {
   }
 
   clear() {
+    this.calculated = false;
     this.graph = new Graph('Input');
+    this.spanningTree = undefined;
+    this.changeGraph = undefined;
+    this.steps = [];
   }
 
   onVertexMouseEnter(graph: Graph, vertex: Vertex) {
