@@ -1,16 +1,21 @@
+@import /src/style/common
 
 :host
+  border-radius: var(--radius)
   display: flex
 
 a
-  background: var(--background-accent)
   align-items: flex-start
-  border-radius: var(--radius)
-  box-shadow: 0 6px 10px #00000008
+  border-radius: inherit
+  border: 2px solid var(--border)
   color: var(--text)
   display: flex
+  flex: 1
   flex-direction: column
+  isolation: isolate
   padding: 32px
+  overflow: hidden
+  position: relative
   text-decoration: none
 
   &:hover
@@ -18,29 +23,118 @@ a
       color: var(--accent)
       scale: 1.2
 
-    h3
-      color: var(--primary)
+    .content header h3
+      font-weight: 500
 
-  header
-    align-items: center
-    background: var(--background)
-    border-radius: 50%
-    display: flex
-    font-size: 28px
-    height: 68px
-    justify-content: center
-    width: 68px
+  &.hovered
+    .background
+      .shape > *
+        scale: 1
+        opacity: 1
 
-  category-tag
-    margin-top: 8px
+  &::before, &::after, .background
+    @include cover-parent
+    z-index: 0
 
-  h3
-    font-size: 24px
-    margin: 8px 0 8px
-    transition: all .3s ease
+  &::before
+    backdrop-filter: blur(25px)
 
-  p
-    font-size: 16px
-    margin: 0
+  &::after
+    background: var(--background-accent)
     opacity: .5
-    transition: all .3s ease
+
+  > *
+    pointer-events: none
+
+  .background
+    overflow: hidden
+    z-index: -1
+
+    .shape
+      position: absolute
+      top: -50px
+
+      &:nth-child(1)
+        transition: all 7s ease-out
+
+        .circle
+          scale: .9 .8
+
+      &:nth-child(2)
+        transition: all 5s ease-in-out
+
+        .circle
+          scale: 1
+
+      &:nth-child(3)
+        transition: all 4s ease-in
+
+        .circle
+          scale: .8 .9
+
+      > *
+        transition: all 2s ease
+
+    .circle
+      animation: shape 15s ease-in-out alternate infinite
+      background: var(--color, currentColor)
+      border-radius: 50%
+      height: 100px
+      opacity: 0
+      transform-origin: 50% 80%
+      scale: .8
+      width: 100px
+
+  > svg-icon
+    --height: 100%
+    --width: 100%
+    left: 100%
+    opacity: .02
+    position: absolute
+    top: 100%
+    translate: -90% -90%
+
+  .content
+    display: flex
+    flex-direction: column
+    flex: 1
+    position: relative
+    z-index: 2
+
+    header
+      align-items: center
+      display: flex
+      flex: 1
+
+      h3
+        font-weight: 300
+        font-size: 24px
+        margin: 8px 0 8px
+        transition: all .3s ease
+
+        svg-icon
+          display: inline-block
+          margin: 0 8px 4px 0
+          vertical-align: middle
+
+    p
+      font-weight: 300
+      font-size: 14px
+      margin: 0
+      opacity: .6
+      transition: all .3s ease
+
+@keyframes shape
+  0%, 100%
+    translate: 0 0
+    z-index: 1
+
+  0%
+    rotate: 0deg
+
+  50%
+    translate: 0 -10%
+    z-index: 2
+
+  100%
+    rotate: 360deg
