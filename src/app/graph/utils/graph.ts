@@ -1,4 +1,4 @@
-import { Edge, EdgeLine } from '../type/graph';
+import { Edge, EdgeLine, Vertex } from '../type/graph';
 
 export function getEdgeLine(edge: Edge): EdgeLine {
   const {
@@ -37,4 +37,8 @@ export function getEdgeLine(edge: Edge): EdgeLine {
   }
 
   return { edge, viewBox, top, left, height, width, x1, y1, x2, y2 };
+}
+
+export function getVertexName(vertex: Vertex) {
+  return vertex.name || `V${vertex.index + 1}`;
 }

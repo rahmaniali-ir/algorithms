@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Graph } from '../../model/graph';
 import { GreedyStep } from 'src/type/greedy';
 import { Edge } from '../../type/graph';
+import { getVertexName } from '../../utils/graph';
 
 @Component({
   selector: 'app-kruskal',
@@ -73,8 +74,8 @@ export class KruskalComponent {
         addedEdge.className += ' danger';
       }
 
-      const v1Name = edge.v1.name || `V${edge.v1.index + 1}`;
-      const v2Name = edge.v2.name || `V${edge.v2.index + 1}`;
+      const v1Name = getVertexName(edge.v1);
+      const v2Name = getVertexName(edge.v2);
 
       this.steps.push({
         step: i,
