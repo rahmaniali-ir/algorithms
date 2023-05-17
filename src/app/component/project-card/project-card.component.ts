@@ -20,7 +20,6 @@ export class ProjectCardComponent {
     this.colors.push(`hsl(${Math.floor(color * 0.8)}deg 100% 50%)`);
     this.colors.push(`hsl(${color}deg 100% 50%)`);
     this.colors.push(`hsl(${Math.floor(color * 1.2)}deg 100% 50%)`);
-    console.log(this.colors);
   }
 
   get category() {
