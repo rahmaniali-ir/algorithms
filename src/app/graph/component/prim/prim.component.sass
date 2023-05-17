@@ -40,28 +40,15 @@ app-graph
   display: flex
   gap: 8px
 
-.vertices .vertex:hover, .edges .edge:hover .vertex
+.vertices app-vertex:hover, .edges .edge:hover app-vertex
   font-weight: bold
   scale: 1.2
-    
-.vertex
-  align-items: center
-  background: var(--background-accent)
-  border-radius: 50%
-  border: 1px solid var(--border)
-  cursor: default
-  display: inline-flex
-  font-size: 12px
-  height: var(--vertex-size, 24px)
-  justify-content: center
-  padding: 4px
-  width: var(--vertex-size, 24px)
 
 .edge
   align-items: center
   display: flex
 
-  .vertex
+  app-vertex
     position: relative
     z-index: 2
 

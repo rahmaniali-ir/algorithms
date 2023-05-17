@@ -43,14 +43,12 @@
         <main class="steps">
           <app-step header="Selected nodes" icon="checkedCircle">
             <div class="vertices">
-              <div
+              <app-vertex
                 *ngFor="let vertex of step.selection.vertices"
                 (mouseenter)="onVertexMouseEnter(step.selection.tree, vertex)"
                 (mouseleave)="onVertexMouseLeave(step.selection.tree, vertex)"
-                class="vertex"
-              >
-                {{ vertex.name }}
-              </div>
+                [vertex]="vertex"
+              ></app-vertex>
             </div>
           </app-step>
 
@@ -64,15 +62,11 @@
                 (mouseleave)="onEdgeMouseLeave(step.selection.tree, edge)"
                 class="edge"
               >
-                <div class="vertex">
-                  {{ edge.v1.name || "V" + edge.v1.index }}
-                </div>
+                <app-vertex [vertex]="edge.v1"></app-vertex>
                 <div class="weight">
                   <span>{{ edge.weight }}</span>
                 </div>
-                <div class="vertex">
-                  {{ edge.v2.name || "V" + edge.v2.index }}
-                </div>
+                <app-vertex [vertex]="edge.v2"></app-vertex>
               </div>
             </div>
           </app-step>

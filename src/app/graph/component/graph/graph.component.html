@@ -60,8 +60,9 @@
 </div>
 
 <!-- vertices -->
-<div
+<app-vertex
   *ngFor="let vertex of vertices; trackBy: trackByVertex"
+  [vertex]="vertex"
   [style.left]="vertex.position.x + 'px'"
   [style.top]="vertex.position.y + 'px'"
   [attr.vertex-index]="vertex.index"
@@ -71,11 +72,7 @@
   (mouseleave)="onVertexMouseLeave()"
   (mousedown)="onVertexMouseDown()"
   (mouseup)="onVertexMouseUp()"
-  class="vertex"
->
-  <span *ngIf="vertex.name">{{ vertex.name }}</span>
-  <span *ngIf="!vertex.name">V{{ vertex.index }}</span>
-</div>
+></app-vertex>
 
 <input
   [(ngModel)]="graph.name"

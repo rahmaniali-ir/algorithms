@@ -6,9 +6,10 @@ import { CoreModule } from '../core/core.module';
 import { IconModule } from '../icon-pack';
 import { FormsModule } from '@angular/forms';
 import { PrimComponent } from './component/prim/prim.component';
+import { VertexComponent } from './component/vertex/vertex.component';
 
 @NgModule({
-  declarations: [GraphComponent, KruskalComponent, PrimComponent],
+  declarations: [GraphComponent, KruskalComponent, PrimComponent, VertexComponent],
   imports: [CommonModule, CoreModule, IconModule, FormsModule],
 })
 export class GraphModule {}
