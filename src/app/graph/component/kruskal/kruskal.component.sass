@@ -1,0 +1,28 @@
+
+.clear
+  --hover-color: var(--danger)
+  font-size: 14px
+
+  span
+    font-size: 12px
+
+.input, .output
+  align-items: center
+  display: flex
+  gap: 16px
+
+  .placeholder
+    padding: 16px
+
+    svg-icon
+      font-size: 24px
+
+    &.calculate:hover svg-icon
+      color: var(--accent)
+
+.steps
+  app-graph
+    --graph-background: #eee
+
+app-graph
+  border: 1px solid var(--border)

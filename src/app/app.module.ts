@@ -11,6 +11,7 @@ import { ProjectCardComponent } from './component/project-card/project-card.comp
 import { CategoryTagComponent } from './component/category-tag/category-tag.component';
 import { SoonComponent } from './component/soon/soon.component';
 import { ChangeCoinsModule } from './change-coins/change-coins.module';
+import { GraphModule } from './graph/graph.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,14 @@ import { ChangeCoinsModule } from './change-coins/change-coins.module';
     CategoryTagComponent,
     SoonComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, IconModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    IconModule,
+    MatrixModule,
+    ChangeCoinsModule,
+    GraphModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

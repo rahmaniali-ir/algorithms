@@ -1,0 +1,76 @@
+
+.clear
+  --hover-color: var(--danger)
+  font-size: 14px
+
+  span
+    font-size: 12px
+
+.input, .output
+  align-items: center
+  display: flex
+  gap: 16px
+
+  .placeholder
+    padding: 16px
+
+    svg-icon
+      font-size: 24px
+
+    &.calculate:hover svg-icon
+      color: var(--accent)
+
+.steps
+  .step
+    display: flex
+    gap: 16px
+
+    > main
+      flex: 1
+      padding: 16px 0
+
+  app-graph
+    --graph-background: #eee
+
+app-graph
+  border: 1px solid var(--border)
+
+.vertices, .edges
+  align-items: center
+  display: flex
+  gap: 8px
+
+.vertices app-vertex:hover, .edges .edge:hover app-vertex
+  font-weight: bold
+  scale: 1.2
+
+.edge
+  align-items: center
+  display: flex
+
+  app-vertex
+    position: relative
+    z-index: 2
+
+  .weight
+    position: relative
+
+    &::before
+      background: currentColor
+      content: ''
+      display: block
+      height: 2px
+      left: 0
+      position: absolute
+      top: 50%
+      translate: 0 -50%
+      width: 100%
+
+    > span
+      background: linear-gradient(to right, transparent, var(--background-accent) 25%, var(--background-accent) 75%, transparent)
+      cursor: default
+      display: block
+      font-size: 12px
+      padding: 0 8px
+      position: relative
+      z-index: 2

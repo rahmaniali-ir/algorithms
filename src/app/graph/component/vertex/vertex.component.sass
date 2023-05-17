@@ -1,0 +1,23 @@
+:host
+  align-items: center
+  background: var(--background-accent)
+  border: 1px solid var(--border)
+  border-radius: 50%
+  cursor: default
+  display: inline-flex
+  font-size: 12px
+  height: var(--vertex-size, 24px)
+  justify-content: center
+  padding: 4px
+  width: var(--vertex-size, 24px)
+
+  &.hovered
+    font-weight: bold
+    scale: 1.2
+
+  &.inactive
+    background: radial-gradient(var(--background-accent), transparent)
+    filter: contrast(.9)
+
+  > span
+    pointer-events: none

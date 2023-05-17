@@ -1,0 +1,132 @@
+
+:host
+  --graph-background: var(--background-accent)
+
+  background: var(--graph-background)
+  border-radius: var(--radius)
+  display: inline-flex
+  padding: 8px
+  position: relative
+  user-select: none
+
+  &:hover
+    .placeholder svg-icon
+      scale: 1.2
+
+  &.editable
+    --graph-background: var(--background)
+
+    &.dragging-vertex
+      cursor: grabbing
+
+      app-vertex, .edge, .name
+        pointer-events: none
+
+    &.ready-to-draw-edge
+      .edge
+        pointer-events: none
+        
+      app-vertex
+        cursor: alias
+
+    &.drawing-edge
+      cursor: crosshair
+
+    app-vertex
+      cursor: grab
+
+    .name
+      pointer-events: all
+      right: unset
+      text-align: initial
+      width: 40%
+
+  > main
+    pointer-events: none
+
+.placeholder
+  align-items: center
+  display: flex
+  flex-direction: column
+  gap: 16px
+  inset: 0
+  justify-content: center
+  opacity: .4
+  padding: 16px
+  pointer-events: none
+  position: absolute
+
+  svg-icon
+    font-size: 32px
+    opacity: .3
+
+  span
+    display: block
+    font-size: 14px
+    line-height: 1.5em
+    text-align: center
+
+.edge
+  color: var(--text)
+  display: block
+  position: absolute
+
+  &.success
+    color: var(--success)
+
+  &.danger
+    color: var(--danger)
+  
+  &.primary
+    color: var(--primary)
+
+  &.hovered
+    .weight
+      font-weight: bold
+
+  svg
+    display: block
+    opacity: .5
+
+    line
+      stroke: currentColor
+      stroke-width: 2px
+
+  .weight
+    --weight-size: 3ch
+    all: unset
+
+    appearance: textfield
+    background: radial-gradient(var(--graph-background) 40%, transparent, transparent)
+    border-radius: 50%
+    font-size: 14px
+    height: var(--weight-size)
+    left: 50%
+    position: absolute
+    text-align: center
+    top: 50%
+    translate: -50% -50%
+    width: var(--weight-size)
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button
+      -webkit-appearance: none
+
+app-vertex
+  position: absolute
+  translate: -50% -50%
+
+.name
+  all: unset
+
+  font-size: 14px
+  left: 8px
+  min-width: 0
+  opacity: .5
+  pointer-events: none
+  position: absolute
+  right: 8px
+  text-align: center
+  text-overflow: ellipsis
+  text-transform: capitalize
+  top: 8px

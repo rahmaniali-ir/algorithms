@@ -1,0 +1,100 @@
+<!-- input -->
+<app-section header="Input" icon="channel">
+  <!-- clear -->
+  <button
+    actions
+    *ngIf="graph.vertices.length > 0"
+    (click)="clear()"
+    class="button placeholder clear"
+  >
+    <svg-icon name="trash"></svg-icon>
+    <span>Clear</span>
+  </button>
+
+  <div class="input">
+    <app-graph
+      [graph]="graph"
+      [editable]="true"
+      (edit)="onInputEdit()"
+    ></app-graph>
+
+    <button
+      *ngIf="canCalculate"
+      (click)="calculatePrimTree()"
+      class="button vertical placeholder calculate"
+    >
+      <svg-icon name="channel"></svg-icon>
+      <span>Calculate</span>
+    </button>
+  </div>
+</app-section>
+
+<!-- solution -->
+<app-section *ngIf="steps.length" header="Solution" icon="wrapText">
+  <div class="steps">
+    <app-step
+      *ngFor="let step of steps"
+      [header]="'Step ' + step.step"
+      icon="infoCircle"
+    >
+      <div class="step">
+        <app-graph [graph]="step.selection.tree" [editable]="false"></app-graph>
+
+        <main class="steps">
+          <app-step header="Selected nodes" icon="checkedCircle">
+            <div class="vertices">
+              <app-vertex
+                *ngFor="let vertex of step.selection.vertices"
+                (mouseenter)="onVertexMouseEnter(step.selection.tree, vertex)"
+                (mouseleave)="onVertexMouseLeave(step.selection.tree, vertex)"
+                [vertex]="vertex"
+              ></app-vertex>
+            </div>
+          </app-step>
+
+          <app-step header="Available edges" icon="exchange">
+            <div class="edges">
+              <div
+                *ngFor="let edge of step.selection.edges"
+                [class.color-success]="step.selection.edge === edge"
+                [class.color-danger]="step.selection.edge !== edge"
+                (mouseenter)="onEdgeMouseEnter(step.selection.tree, edge)"
+                (mouseleave)="onEdgeMouseLeave(step.selection.tree, edge)"
+                class="edge"
+              >
+                <app-vertex [vertex]="edge.v1"></app-vertex>
+                <div class="weight">
+                  <span>{{ edge.weight }}</span>
+                </div>
+                <app-vertex [vertex]="edge.v2"></app-vertex>
+              </div>
+            </div>
+          </app-step>
+        </main>
+      </div>
+    </app-step>
+  </div>
+</app-section>
+
+<!-- output -->
+<app-section *ngIf="spanningTree" header="Output" icon="out">
+  <app-step header="Minimum spanning tree" icon="channel">
+    <div class="output">
+      <app-graph
+        *ngIf="spanningTree"
+        [graph]="spanningTree"
+        [editable]="false"
+      ></app-graph>
+
+      <app-graph
+        *ngIf="changeGraph"
+        [graph]="changeGraph"
+        [editable]="false"
+      ></app-graph>
+
+      <app-step header="Total weight" icon="weight">
+        <strong>{{ spanningTree.totalWeight }}</strong>
+      </app-step>
+    </div>
+  </app-step>
+</app-section>

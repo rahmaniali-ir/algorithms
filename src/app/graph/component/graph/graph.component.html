@@ -1,0 +1,83 @@
+<!-- placeholder -->
+<div *ngIf="noVertex" class="placeholder">
+  <svg-icon name="channel"></svg-icon>
+
+  <span *ngIf="editable">Double click anywhere to add node!</span>
+  <span *ngIf="!editable">No vertices!</span>
+</div>
+
+<!-- drawing edge preview -->
+<div
+  *ngIf="drawingEdgePreview"
+  [style.left]="drawingEdgePreview.left + 'px'"
+  [style.top]="drawingEdgePreview.top + 'px'"
+  class="edge drawing-edge-preview"
+>
+  <svg
+    [attr.viewBox]="drawingEdgePreview.viewBox"
+    [attr.height]="drawingEdgePreview.height"
+    [attr.width]="drawingEdgePreview.width"
+  >
+    <line
+      [attr.x1]="drawingEdgePreview.x1"
+      [attr.y1]="drawingEdgePreview.y1"
+      [attr.x2]="drawingEdgePreview.x2"
+      [attr.y2]="drawingEdgePreview.y2"
+    />
+  </svg>
+</div>
+
+<!-- edges -->
+<div
+  *ngFor="let line of edgeLines; trackBy: trackByEdgeLine"
+  [style.left]="line.left + 'px'"
+  [style.top]="line.top + 'px'"
+  [class]="line.edge.className"
+  class="edge"
+>
+  <svg
+    [attr.viewBox]="line.viewBox"
+    [attr.height]="line.height"
+    [attr.width]="line.width"
+  >
+    <line
+      [attr.x1]="line.x1"
+      [attr.y1]="line.y1"
+      [attr.x2]="line.x2"
+      [attr.y2]="line.y2"
+    />
+  </svg>
+
+  <input
+    [(ngModel)]="line.edge.weight"
+    (dblclick)="$event.stopPropagation()"
+    (mouseup)="onWeightMouseUp(line, $event)"
+    (input)="onWeightEdit()"
+    [readOnly]="!editable"
+    type="number"
+    class="weight"
+  />
+</div>
+
+<!-- vertices -->
+<app-vertex
+  *ngFor="let vertex of vertices; trackBy: trackByVertex"
+  [vertex]="vertex"
+  [style.left]="vertex.position.x + 'px'"
+  [style.top]="vertex.position.y + 'px'"
+  [attr.vertex-index]="vertex.index"
+  [ngClass]="vertex.className"
+  (dblclick)="onVertexDblClick(vertex, $event)"
+  (mouseenter)="onVertexMouseEnter(vertex)"
+  (mouseleave)="onVertexMouseLeave()"
+  (mousedown)="onVertexMouseDown()"
+  (mouseup)="onVertexMouseUp()"
+></app-vertex>
+
+<input
+  [(ngModel)]="graph.name"
+  [title]="graph.name"
+  (dblclick)="$event.stopPropagation()"
+  type="text"
+  class="name"
+/>
