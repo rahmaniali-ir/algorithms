@@ -74,6 +74,14 @@ export class Graph<T = any> {
     );
   }
 
+  get totalWeight() {
+    let total = 0;
+
+    for (let edge of this.edges) total += edge.weight;
+
+    return total;
+  }
+
   vertexExists(index: number) {
     return this.vertices.some((v) => v.index === index);
   }
