@@ -12,14 +12,14 @@ export function getClassList(customizable: Customizable) {
     customizable.className = toString();
   };
 
-  const add = (className: string) => {
-    list.push(className);
+  const add = (...classNames: string[]) => {
+    list.push(...classNames);
 
     updateCustomizable();
   };
 
-  const remove = (className: string) => {
-    list = list.filter((i) => i !== className);
+  const remove = (...classNames: string[]) => {
+    list = list.filter((i) => !classNames.includes(i));
 
     updateCustomizable();
   };

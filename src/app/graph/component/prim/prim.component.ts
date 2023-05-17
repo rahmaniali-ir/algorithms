@@ -38,12 +38,6 @@ export class PrimComponent {
     this.graph.addEdge({ v1: c, v2: d, weight: 4 });
     this.graph.addEdge({ v1: c, v2: e, weight: 2 });
     this.graph.addEdge({ v1: d, v2: e, weight: 5 });
-
-    // console.log(this.graph.adjacencyMatrix.plainMatrix);
-    console.log(this.graph.getVertexGroupEdges([0, 1, 3]));
-    // this.graph.vertices.forEach((v) => {
-    //   console.log(this.graph.getConnectedVertices(v.index));
-    // });
   }
 
   get canCalculate() {
@@ -72,7 +66,7 @@ export class PrimComponent {
     const spanningTree = new Graph('minimum spanning tree', [graphVertices[0]]);
 
     this.steps.push({
-      step: 0,
+      step: 1,
       selection: {
         tree: new Graph(`Minimum spanning tree`, graphVertices),
         edges: [],
@@ -111,26 +105,29 @@ export class PrimComponent {
         e.className = exists ? '' : 'danger';
       });
 
-      const e = edges.sort((a, b) => a.weight - b.weight)[0];
-      stepTree.getEdge(e.v1.index, e.v2.index)!.className = 'success';
+      const selectedEdge = edges.sort((a, b) => a.weight - b.weight)[0];
+      stepTree.getEdge(
+        selectedEdge.v1.index,
+        selectedEdge.v2.index
+      )!.className = 'success';
 
-      if (!spanningTree.vertexExists(e.v1.index)) {
-        spanningTree.addVertex(e.v1);
-        stepTree.getVertexByIndex(e.v1.index)!.className = '';
+      if (!spanningTree.vertexExists(selectedEdge.v1.index)) {
+        spanningTree.addVertex(selectedEdge.v1);
+        stepTree.getVertexByIndex(selectedEdge.v1.index)!.className = '';
       }
 
-      if (!spanningTree.vertexExists(e.v2.index)) {
-        spanningTree.addVertex(e.v2);
-        stepTree.getVertexByIndex(e.v2.index)!.className = '';
+      if (!spanningTree.vertexExists(selectedEdge.v2.index)) {
+        spanningTree.addVertex(selectedEdge.v2);
+        stepTree.getVertexByIndex(selectedEdge.v2.index)!.className = '';
       }
-      spanningTree.addEdge(e);
+      spanningTree.addEdge(selectedEdge);
 
       this.steps.push({
-        step: 0,
+        step: i + 1,
         selection: {
           tree: stepTree,
           edges,
-          edge: e,
+          edge: selectedEdge,
           vertices: spanningTree.vertices.map((v) => ({
             ...v,
             name: getVertexName(v),
@@ -157,5 +154,22 @@ export class PrimComponent {
 
   onVertexMouseLeave(graph: Graph, vertex: Vertex) {
     getClassList(graph.getVertexByIndex(vertex.index)!).remove('hovered');
+  }
+
+  onEdgeMouseEnter(graph: Graph, { v1, v2 }: Edge) {
+    this.onVertexMouseEnter(graph, v1);
+    this.onVertexMouseEnter(graph, v2);
+
+    getClassList(graph.getEdge(v1.index, v2.index)!).add('hovered', 'primary');
+  }
+
+  onEdgeMouseLeave(graph: Graph, { v1, v2 }: Edge) {
+    this.onVertexMouseLeave(graph, v1);
+    this.onVertexMouseLeave(graph, v2);
+
+    getClassList(graph.getEdge(v1.index, v2.index)!).remove(
+      'hovered',
+      'primary'
+    );
   }
 }

@@ -26,6 +26,7 @@
     gap: 16px
 
     > main
+      flex: 1
       padding: 16px 0
 
   app-graph
@@ -34,23 +35,55 @@
 app-graph
   border: 1px solid var(--border)
 
-.vertices
+.vertices, .edges
+  align-items: center
   display: flex
   gap: 8px
-    
-  .vertex
-    align-items: center
-    background: var(--background-accent)
-    border-radius: 50%
-    border: 1px solid var(--border)
-    cursor: default
-    display: inline-flex
-    font-size: 12px
-    height: var(--vertex-size, 24px)
-    justify-content: center
-    padding: 4px
-    width: var(--vertex-size, 24px)
 
-    &:hover
-      font-weight: bold
-      scale: 1.2
+.vertices .vertex:hover, .edges .edge:hover .vertex
+  font-weight: bold
+  scale: 1.2
+    
+.vertex
+  align-items: center
+  background: var(--background-accent)
+  border-radius: 50%
+  border: 1px solid var(--border)
+  cursor: default
+  display: inline-flex
+  font-size: 12px
+  height: var(--vertex-size, 24px)
+  justify-content: center
+  padding: 4px
+  width: var(--vertex-size, 24px)
+
+.edge
+  align-items: center
+  display: flex
+
+  .vertex
+    position: relative
+    z-index: 2
+
+  .weight
+    position: relative
+
+    &::before
+      background: currentColor
+      content: ''
+      display: block
+      height: 2px
+      left: 0
+      position: absolute
+      top: 50%
+      translate: 0 -50%
+      width: 100%
+
+    > span
+      background: linear-gradient(to right, transparent, var(--background-accent) 25%, var(--background-accent) 75%, transparent)
+      cursor: default
+      display: block
+      font-size: 12px
+      padding: 0 8px
+      position: relative
+      z-index: 2

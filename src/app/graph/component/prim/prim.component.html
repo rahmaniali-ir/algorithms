@@ -34,24 +34,48 @@
   <div class="steps">
     <app-step
       *ngFor="let step of steps"
-      [header]="step.feasibility"
-      [icon]="step.feasibilityCheck ? 'check' : 'times'"
+      [header]="'Step ' + step.step"
+      icon="infoCircle"
     >
       <div class="step">
         <app-graph [graph]="step.selection.tree" [editable]="false"></app-graph>
 
-        <main>
-          <section class="vertices">
-            Selected nodes:
-            <span
-              *ngFor="let vertex of step.selection.vertices"
-              (mouseenter)="onVertexMouseEnter(step.selection.tree, vertex)"
-              (mouseleave)="onVertexMouseLeave(step.selection.tree, vertex)"
-              class="vertex"
-            >
-              {{ vertex.name }}
-            </span>
-          </section>
+        <main class="steps">
+          <app-step header="Selected nodes" icon="checkedCircle">
+            <div class="vertices">
+              <div
+                *ngFor="let vertex of step.selection.vertices"
+                (mouseenter)="onVertexMouseEnter(step.selection.tree, vertex)"
+                (mouseleave)="onVertexMouseLeave(step.selection.tree, vertex)"
+                class="vertex"
+              >
+                {{ vertex.name }}
+              </div>
+            </div>
+          </app-step>
+
+          <app-step header="Available edges" icon="exchange">
+            <div class="edges">
+              <div
+                *ngFor="let edge of step.selection.edges"
+                [class.color-success]="step.selection.edge === edge"
+                [class.color-danger]="step.selection.edge !== edge"
+                (mouseenter)="onEdgeMouseEnter(step.selection.tree, edge)"
+                (mouseleave)="onEdgeMouseLeave(step.selection.tree, edge)"
+                class="edge"
+              >
+                <div class="vertex">
+                  {{ edge.v1.name || "V" + edge.v1.index }}
+                </div>
+                <div class="weight">
+                  <span>{{ edge.weight }}</span>
+                </div>
+                <div class="vertex">
+                  {{ edge.v2.name || "V" + edge.v2.index }}
+                </div>
+              </div>
+            </div>
+          </app-step>
         </main>
       </div>
     </app-step>
