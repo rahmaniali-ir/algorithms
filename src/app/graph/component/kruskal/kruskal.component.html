@@ -44,17 +44,23 @@
 
 <!-- output -->
 <app-section *ngIf="spanningTree" header="Output" icon="out">
-  <div class="output">
-    <app-graph
-      *ngIf="spanningTree"
-      [graph]="spanningTree"
-      [editable]="false"
-    ></app-graph>
+  <app-step header="Minimum spanning tree" icon="channel">
+    <div class="output">
+      <app-graph
+        *ngIf="spanningTree"
+        [graph]="spanningTree"
+        [editable]="false"
+      ></app-graph>
 
-    <app-graph
-      *ngIf="changeGraph"
-      [graph]="changeGraph"
-      [editable]="false"
-    ></app-graph>
-  </div>
+      <app-graph
+        *ngIf="changeGraph"
+        [graph]="changeGraph"
+        [editable]="false"
+      ></app-graph>
+
+      <app-step header="Total weight" icon="weight">
+        <strong>{{ spanningTree.totalWeight }}</strong>
+      </app-step>
+    </div>
+  </app-step>
 </app-section>
