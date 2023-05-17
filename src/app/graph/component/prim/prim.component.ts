@@ -140,6 +140,16 @@ export class PrimComponent {
       });
     }
 
+    this.changeGraph = this.graph.clone();
+    this.changeGraph.name = 'Change graph';
+    this.changeGraph.edges.forEach((edge) => {
+      getClassList(edge).add(
+        spanningTree.edgeExists(edge.v1.index, edge.v2.index)
+          ? 'success'
+          : 'danger'
+      );
+    });
+
     this.spanningTree = spanningTree;
     this.calculated = true;
   }
