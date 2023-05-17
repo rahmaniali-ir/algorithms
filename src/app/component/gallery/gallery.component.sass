@@ -1,6 +1,7 @@
 
 :host
   background: linear-gradient(to top right,#d8dbf2, transparent 15%, transparent 75%, #d8dbf2)
+  cursor: default
   display: block
   padding: 0 10vw
 
@@ -20,13 +21,13 @@
       a
         text-decoration: none
 
-        &:first-of-type
+        &.ali
           color: var(--primary)
 
           &:hover
             color: var(--accent)
 
-        &:last-of-type
+        &.hossein
           color: var(--accent)
 
           &:hover
@@ -46,15 +47,48 @@
     flex-wrap: wrap
     gap: 6px
     justify-content: center
-    padding: 32px
+    padding: 32px 0
 
-    svg-icon
-      color: var(--danger)
-
-    a
-      color: var(--text)
-      font-weight: 500
-      text-decoration: none
+    .feedback
+      align-items: center
+      color: var(--text-accent)
+      display: flex
+      gap: 6px
+      
+      span
+        font-size: 14px
 
       &:hover
+        color: var(--text)
+
+    > main
+      display: flex
+      flex-wrap: wrap
+      gap: 6px
+      margin: 0 auto
+
+      svg-icon
         color: var(--danger)
+
+      a
+        color: var(--text)
+        font-weight: 500
+        text-decoration: none
+
+        &:hover
+          color: var(--danger)
+
+    .powered-by
+      align-items: center
+      color: var(--text-accent)
+      display: flex
+      gap: 6px
+
+      a
+        color: var(--text-accent)
+        display: flex
+        font-size: 24px
+
+        &:hover
+          color: var(--danger)
+          scale: 1.2
