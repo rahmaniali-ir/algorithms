@@ -10,4 +10,5 @@ export interface Project {
   description: string;
   id: string;
   category: Category;
+  component: any;
 }

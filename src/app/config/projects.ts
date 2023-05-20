@@ -1,7 +1,14 @@
+import { ChangeCoinsComponent } from '../change-coins/component/change-coins/change-coins.component';
+import { SoonComponent } from '../component/soon/soon.component';
+import { KruskalComponent } from '../graph/component/kruskal/kruskal.component';
+import { PrimComponent } from '../graph/component/prim/prim.component';
+import { MatrixMultiplicationComponent } from '../matrix/component/matrix-multiplication/matrix-multiplication.component';
+import { BinarySearchComponent } from '../search/component/binary-search/binary-search.component';
 import { Project } from '../type/gallery';
 import { categories, defaultCategory } from './categories';
 
 export type ProjectKey =
+  | 'binarySearch'
   | 'matrixChainMultiplication'
   | 'changeCoins'
   | 'kruskal'
@@ -11,6 +18,16 @@ export type ProjectKey =
   | 'mergeSort';
 
 export const projects: Record<ProjectKey, Project> = {
+  binarySearch: {
+    id: 'binarySearch',
+    name: 'Binary Search',
+    icon: 'search',
+    description:
+      'Binary search is an efficient algorithm for finding an item from a sorted list of items.',
+    category: categories.divideAndConquer,
+    component: BinarySearchComponent,
+  },
+
   matrixChainMultiplication: {
     id: 'matrixChainMultiplication',
     name: 'Matrix Chain Multiplication',
@@ -18,6 +35,7 @@ export const projects: Record<ProjectKey, Project> = {
     description:
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
     category: categories.divideAndConquer,
+    component: MatrixMultiplicationComponent,
   },
 
   changeCoins: {
@@ -27,6 +45,7 @@ export const projects: Record<ProjectKey, Project> = {
     description:
       'The change-making problem addresses the question of finding the minimum number of coins that add up to a given amount of money.',
     category: categories.greedyApproach,
+    component: ChangeCoinsComponent,
   },
 
   kruskal: {
@@ -36,6 +55,7 @@ export const projects: Record<ProjectKey, Project> = {
     description:
       "Kruskal's algorithm finds a minimum spanning forest of an undirected edge-weighted graph.",
     category: categories.greedyApproach,
+    component: KruskalComponent,
   },
 
   prim: {
@@ -45,6 +65,7 @@ export const projects: Record<ProjectKey, Project> = {
     description:
       "Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.",
     category: categories.greedyApproach,
+    component: PrimComponent,
   },
 
   minimumPathFinding: {
@@ -53,6 +74,7 @@ export const projects: Record<ProjectKey, Project> = {
     icon: 'channel',
     description: 'Lorem Ipsum!',
     category: categories.dynamicProgramming,
+    component: SoonComponent,
   },
   quickSearch: {
     id: 'quickSearch',
@@ -60,6 +82,7 @@ export const projects: Record<ProjectKey, Project> = {
     icon: 'search',
     description: 'Lorem Ipsum!',
     category: categories.greedyApproach,
+    component: SoonComponent,
   },
   mergeSort: {
     id: 'mergeSort',
@@ -67,6 +90,7 @@ export const projects: Record<ProjectKey, Project> = {
     icon: 'sort',
     description: 'Lorem Ipsum!',
     category: categories.backtracing,
+    component: SoonComponent,
   },
 };
 
@@ -80,4 +104,5 @@ export const defaultProject: Project = {
   icon: '',
   description: '',
   category: defaultCategory,
+  component: null,
 };
