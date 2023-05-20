@@ -8,11 +8,11 @@
   <div class="background">
     <div
       *ngFor="let color of colors"
-      [style.left]="mouse?.x + 'px'"
-      [style.top]="mouse?.y + 'px'"
+      [style.left]="position.x"
+      [style.top]="position.y"
       class="shape"
     >
-      <div [style.--color]="color" class="circle"></div>
+      <svg-icon [style.--color]="color" name="filledSquare"></svg-icon>
     </div>
   </div>
 
@@ -28,6 +28,4 @@
 
     <p>{{ project.description }}</p>
   </div>
-
-  <!-- <category-tag [category]="category"></category-tag> -->
 </a>

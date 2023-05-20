@@ -55,29 +55,31 @@ a
       top: -50px
 
       &:nth-child(1)
-        transition: all 7s ease-out
+        transition: all 6s linear
 
-        .circle
-          scale: .9 .8
+        svg-icon
+          scale: 1.5
+          rotate: 43deg
 
       &:nth-child(2)
-        transition: all 5s ease-in-out
+        transition: all 5s linear
 
-        .circle
+        svg-icon
           scale: 1
 
       &:nth-child(3)
-        transition: all 4s ease-in
+        transition: all 4s linear
 
-        .circle
-          scale: .8 .9
+        svg-icon
+          scale: .6
+          rotate: 90deg
 
       > *
         transition: all 2s ease
 
-    .circle
+    svg-icon
       animation: shape 15s ease-in-out alternate infinite
-      background: var(--color, currentColor)
+      color: var(--color, currentColor)
       border-radius: 50%
       height: 100px
       opacity: 0
@@ -127,14 +129,12 @@ a
 @keyframes shape
   0%, 100%
     translate: 0 0
-    z-index: 1
 
   0%
     rotate: 0deg
 
   50%
     translate: 0 -10%
-    z-index: 2
 
   100%
     rotate: 360deg
