@@ -12,6 +12,7 @@ import { CategoryTagComponent } from './component/category-tag/category-tag.comp
 import { SoonComponent } from './component/soon/soon.component';
 import { ChangeCoinsModule } from './change-coins/change-coins.module';
 import { GraphModule } from './graph/graph.module';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { GraphModule } from './graph/graph.module';
     MatrixModule,
     ChangeCoinsModule,
     GraphModule,
+    SearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

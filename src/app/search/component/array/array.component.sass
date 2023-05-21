@@ -1,0 +1,104 @@
+
+:host
+  align-items: center
+  display: flex
+  gap: 8px
+
+  > header
+    align-items: center
+    cursor: default
+    display: flex
+    line-height: 1em
+    opacity: .5
+
+    &:empty
+      display: none
+
+    &::after
+      content: ':'
+      margin: 0 4px
+
+  > main
+    align-items: center
+    display: flex
+
+    .item
+      --item-size: 32px
+
+      border: 2px solid var(--border-accent)
+      border-inline-start-width: 1px
+      border-inline-end-width: 1px
+      display: flex
+      position: relative
+
+      &:hover, &.hovered
+        background: var(--background)
+
+        .labels.top
+          opacity: 1
+          translate: 0 2px
+
+          > svg-icon
+            color: var(--accent)
+
+      &.disabled
+        background: var(--background)
+        opacity: .5
+
+        input
+          scale: .8
+
+      &.success
+        background: var(--success)
+        color: var(--background-accent)
+
+        .labels
+          > svg-icon
+            color: var(--success)
+
+      &:first-child
+        border-inline-start-width: 2px
+
+      &:last-child
+        border-inline-end-width: 2px
+
+      &:first-child
+        border-start-start-radius: var(--radius)
+        border-end-start-radius: var(--radius)
+
+      &:last-child
+        border-start-end-radius: var(--radius)
+        border-end-end-radius: var(--radius)
+
+      input
+        all: unset
+        height: var(--item-size)
+        min-width: var(--item-size)
+        text-align: center
+        width: calc(var(--size) * 2ch)
+
+      .labels
+        align-items: center
+        bottom: 100%
+        display: flex
+        flex-direction: column
+        left: 0
+        opacity: .5
+        position: absolute
+        right: 0
+        transition: all .3s ease
+
+        > main
+          align-items: center
+          display: flex
+          flex-direction: column
+          font-size: 12px
+          gap: 4px
+
+          .label
+            align-items: center
+            display: flex
+            gap: 2px
+
+        > svg-icon
+          transition: all .3s ease

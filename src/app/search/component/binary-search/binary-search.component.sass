@@ -1,0 +1,33 @@
+
+.input
+  align-items: center
+  display: flex
+  gap: 16px
+
+.solution
+  .step
+    display: flex
+    flex-wrap: wrap
+    
+    p
+      color: var(--text-accent)
+      font-size: 14px
+      margin: 0 0 8px
+      padding: 16px
+      position: relative
+      width: 100%
+
+      &::before
+        background: var(--accent)
+        border-radius: var(--radius)
+        content: ''
+        display: block
+        height: 50%
+        left: 0
+        position: absolute
+        top: 50%
+        translate: 0 -50%
+        width: 4px
+
+    app-array
+      margin-inline-start: auto

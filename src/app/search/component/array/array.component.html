@@ -1,0 +1,43 @@
+<header *ngIf="name">
+  {{ name }}
+</header>
+
+<main>
+  <div
+    *ngFor="let viewItem of viewItems; let index = index; trackBy: trackByItem"
+    [title]="viewItem.title"
+    [ngClass]="viewItem.item.meta?.className"
+    class="item"
+  >
+    <div *ngIf="viewItem.topLabels.length" class="labels top">
+      <main>
+        <div
+          *ngFor="let label of viewItem.item.meta?.labels"
+          [ngClass]="label.className"
+          class="label"
+        >
+          <svg-icon *ngIf="label.icon" [name]="label.icon"></svg-icon>
+          <span>{{ label.label }}</span>
+        </div>
+      </main>
+
+      <svg-icon name="angleDown"></svg-icon>
+    </div>
+
+    <input
+      #input
+      [(ngModel)]="viewItem.item.value"
+      [style.--size]="viewItem.size"
+      [readOnly]="!editable"
+      (mouseup)="onInputMouseUp(index, $event)"
+      class="no-controls"
+      type="number"
+    />
+  </div>
+</main>
+
+<footer *ngIf="editable">
+  <button (click)="addItem()" class="button">
+    <svg-icon name="plus"></svg-icon>
+  </button>
+</footer>

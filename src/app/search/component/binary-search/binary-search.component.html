@@ -1,1 +1,34 @@
-<p>binary-search works!</p>
+<app-section header="Array" icon="list">
+  <div class="input">
+    <app-array [input]="input" [editable]="true" name="input"></app-array>
+
+    <button (click)="search()" class="button placeholder vertical">
+      <svg-icon name="search"></svg-icon>
+      <span>Search</span>
+    </button>
+  </div>
+</app-section>
+
+<app-section
+  *ngIf="steps.length > 0"
+  header="Solution"
+  icon="wrapText"
+  class="solution"
+>
+  <div class="steps">
+    <app-step
+      *ngFor="let step of steps; let index = index"
+      [header]="'Step ' + (index + 1)"
+      [icon]="step.icon || ''"
+    >
+      <div class="step">
+        <p>{{ step.description }}</p>
+        <app-array
+          *ngIf="step.data"
+          [input]="step.data.value"
+          [name]="step.data.name"
+        ></app-array>
+      </div>
+    </app-step>
+  </div>
+</app-section>
