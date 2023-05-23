@@ -4,6 +4,7 @@ import { KruskalComponent } from '../graph/component/kruskal/kruskal.component';
 import { PrimComponent } from '../graph/component/prim/prim.component';
 import { MatrixMultiplicationComponent } from '../matrix/component/matrix-multiplication/matrix-multiplication.component';
 import { BinarySearchComponent } from '../search/component/binary-search/binary-search.component';
+import { MergeSortComponent } from '../sort/component/merge-sort/merge-sort.component';
 import { Project } from '../type/gallery';
 import { categories, defaultCategory } from './categories';
 
@@ -26,6 +27,16 @@ export const projects: Record<ProjectKey, Project> = {
       'Binary search is an efficient algorithm for finding an item from a sorted list of items.',
     category: categories.divideAndConquer,
     component: BinarySearchComponent,
+  },
+
+  mergeSort: {
+    id: 'mergeSort',
+    name: 'Merge Sort',
+    icon: 'sort',
+    description:
+      'Merge sort continuously cuts down a list into multiple sublists until each has only one item, then merges those sublists into a sorted list.',
+    category: categories.divideAndConquer,
+    component: MergeSortComponent,
   },
 
   matrixChainMultiplication: {
@@ -82,14 +93,6 @@ export const projects: Record<ProjectKey, Project> = {
     icon: 'search',
     description: 'Lorem Ipsum!',
     category: categories.greedyApproach,
-    component: SoonComponent,
-  },
-  mergeSort: {
-    id: 'mergeSort',
-    name: 'Merge Sort (Soon)',
-    icon: 'sort',
-    description: 'Lorem Ipsum!',
-    category: categories.backtracing,
     component: SoonComponent,
   },
 };
