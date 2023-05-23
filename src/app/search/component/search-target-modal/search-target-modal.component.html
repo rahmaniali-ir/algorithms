@@ -1,0 +1,30 @@
+<modal-card
+  header="Search target"
+  description="Enter the target value you are searching for"
+>
+  <section>
+    <form-group (enter)="submitTarget()" name="Search for">
+      <form-label label="Target value" target="target">
+        <input
+          [(ngModel)]="target"
+          autofocus
+          id="target"
+          autocomplete="off"
+          min="1"
+          max="999"
+          type="number"
+        />
+      </form-label>
+    </form-group>
+  </section>
+
+  <ng-container footer>
+    <button (click)="modal.dismiss()" class="button neutral">
+      <span>Cancel</span>
+    </button>
+
+    <button (click)="submitTarget()" class="button primary filled">
+      <span>Search</span>
+    </button>
+  </ng-container>
+</modal-card>

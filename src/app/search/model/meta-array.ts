@@ -32,6 +32,12 @@ export class MetaArray<T = any, M = Record<string, any>> {
     item.meta = meta;
   }
 
+  updateMeta(index: number, updateFn: (m: ArrayMeta<M>) => ArrayMeta<M>) {
+    const item = this._metaArray[index];
+    item.meta = updateFn(item.meta || {});
+    console.log(item);
+  }
+
   append(item: T, meta?: ArrayMeta<M>) {
     this._metaArray.push({
       value: item,

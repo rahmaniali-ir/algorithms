@@ -21,6 +21,8 @@
   > main
     align-items: center
     display: flex
+    flex-wrap: wrap
+    row-gap: 32px
 
     .item
       --item-size: 32px
@@ -49,12 +51,13 @@
           scale: .8
 
       &.success
-        background: var(--success)
-        color: var(--background-accent)
-
         .labels
           > svg-icon
             color: var(--success)
+
+        input
+          background: var(--success)
+          color: var(--background-accent)
 
       &:first-child
         border-inline-start-width: 2px
@@ -72,6 +75,7 @@
 
       input
         all: unset
+        border-radius: inherit
         height: var(--item-size)
         min-width: var(--item-size)
         text-align: center
@@ -94,11 +98,24 @@
           flex-direction: column
           font-size: 12px
           gap: 4px
+          width: 100%
 
           .label
             align-items: center
             display: flex
             gap: 2px
+            max-width: 100%
+
+            &.bold
+              font-weight: bold
+              text-transform: uppercase
+
+            > span
+              display: block
+              max-width: 100%
+              overflow: hidden
+              text-overflow: ellipsis
+              white-space: nowrap
 
         > svg-icon
           transition: all .3s ease

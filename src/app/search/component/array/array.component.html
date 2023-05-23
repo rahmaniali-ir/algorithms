@@ -14,6 +14,7 @@
         <div
           *ngFor="let label of viewItem.item.meta?.labels"
           [ngClass]="label.className"
+          [title]="label.label"
           class="label"
         >
           <svg-icon *ngIf="label.icon" [name]="label.icon"></svg-icon>

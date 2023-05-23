@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MetaArray } from '../../model/meta-array';
 import { BinarySearchStep } from '../../type/binary-search';
 import { getClassList } from 'src/app/core/util/customizable';
+import { ModalService } from '@rahmaniali.ir/angular-modal';
+import { SearchTargetModalComponent } from '../search-target-modal/search-target-modal.component';
 
 @Component({
   selector: 'binary-search',
@@ -13,28 +15,10 @@ export class BinarySearchComponent {
   steps: BinarySearchStep[] = [];
   target?: number = 15;
 
-  constructor() {
-    this.input.append(14, {
-      labels: [
-        {
-          label: 'left',
-        },
-      ],
-    });
-    this.input.append(8, {
-      labels: [{ label: 'hight' }, { label: 'current' }],
-      className: 'current',
-    });
-    this.input.append(12, {});
-    this.input.append(7, {});
-    this.input.append(15, {});
-    this.input.append(24, {
-      labels: [
-        {
-          label: 'right',
-        },
-      ],
-    });
+  constructor(private modal: ModalService) {
+    [10, 12, 13, 14, 18, 20, 25, 27, 30, 35, 40, 45, 47].forEach((i) =>
+      this.input.append(i)
+    );
   }
 
   binarySearch(target: number) {
@@ -63,13 +47,7 @@ export class BinarySearchComponent {
       const stepArray = metaArray.clone();
 
       const leftMeta = stepArray.metaArray[left].meta;
-      const midMeta = stepArray.metaArray[mid].meta;
-      const rightMeta = stepArray.metaArray[right].meta;
-
       const leftLabels = leftMeta?.labels || [];
-      const midLabels = midMeta?.labels || [];
-      const rightLabels = rightMeta?.labels || [];
-
       stepArray.addMeta(left, {
         ...leftMeta,
         labels: [
@@ -79,6 +57,9 @@ export class BinarySearchComponent {
           },
         ],
       });
+
+      const midMeta = stepArray.metaArray[mid].meta;
+      const midLabels = midMeta?.labels || [];
       stepArray.addMeta(mid, {
         ...midMeta,
         labels: [
@@ -88,6 +69,9 @@ export class BinarySearchComponent {
           },
         ],
       });
+
+      const rightMeta = stepArray.metaArray[right].meta;
+      const rightLabels = rightMeta?.labels || [];
       stepArray.addMeta(right, {
         ...rightMeta,
         labels: [
@@ -112,22 +96,25 @@ export class BinarySearchComponent {
 
       // Check if the middle element is the target
       if (stepArray.array[mid] === target) {
-        stepArray.addMeta(mid, {
-          ...midMeta,
-          labels: [
-            ...midLabels,
-            {
+        stepArray.updateMeta(mid, (meta) => {
+          getClassList(meta).add('hovered', 'success');
+
+          let oldMidLabel = meta.labels?.find((label) => label.label === 'Mid');
+          if (!oldMidLabel) {
+            oldMidLabel = {
               label: 'Mid',
-              icon: '',
-              className: 'color-success',
-            },
-          ],
-          className: 'hovered success',
+            };
+            meta.labels?.push(oldMidLabel);
+          }
+
+          getClassList(oldMidLabel).add('color-success', 'bold');
+
+          return meta;
         });
 
         this.steps.push({
           index: stepIndex,
-          description: 'Found the answer',
+          description: `Found the answer at ${mid + 1}th position.`,
           data: {
             name: 'Result',
             value: stepArray,
@@ -156,7 +143,9 @@ export class BinarySearchComponent {
 
     this.steps.push({
       index: stepIndex,
-      description: 'Divided the array',
+      description: `The searched item was not found after ${
+        stepIndex + 1
+      } steps!`,
       icon: 'times',
     });
   }
@@ -164,7 +153,13 @@ export class BinarySearchComponent {
   search() {
     if (this.target === undefined) return;
 
-    this.steps = [];
-    this.binarySearch(this.target);
+    this.modal.open(SearchTargetModalComponent).result.subscribe({
+      next: (target: number) => {
+        this.steps = [];
+        this.target = target;
+        this.binarySearch(target);
+      },
+      error: () => {},
+    });
   }
 }

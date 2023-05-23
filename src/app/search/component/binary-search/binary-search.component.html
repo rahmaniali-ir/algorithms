@@ -2,7 +2,7 @@
   <div class="input">
     <app-array [input]="input" [editable]="true" name="input"></app-array>
 
-    <button (click)="search()" class="button placeholder vertical">
+    <button (click)="search()" class="button placeholder search">
       <svg-icon name="search"></svg-icon>
       <span>Search</span>
     </button>
@@ -18,7 +18,7 @@
   <div class="steps">
     <app-step
       *ngFor="let step of steps; let index = index"
-      [header]="'Step ' + (index + 1)"
+      [header]="'Step ' + (index + 1) + '- Searching for ' + target"
       [icon]="step.icon || ''"
     >
       <div class="step">

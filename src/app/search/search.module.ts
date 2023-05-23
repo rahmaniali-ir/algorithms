@@ -6,9 +6,10 @@ import { CoreModule } from '../core/core.module';
 import { IconModule } from '../icon-pack';
 import { ArrayComponent } from './component/array/array.component';
 import { FormsModule } from '@angular/forms';
+import { SearchTargetModalComponent } from './component/search-target-modal/search-target-modal.component';
 
 @NgModule({
-  declarations: [QuickSearchComponent, BinarySearchComponent, ArrayComponent],
+  declarations: [QuickSearchComponent, BinarySearchComponent, ArrayComponent, SearchTargetModalComponent],
   imports: [CommonModule, CoreModule, IconModule, FormsModule],
 })
 export class SearchModule {}
