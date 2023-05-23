@@ -11,15 +11,13 @@ import { SearchTargetModalComponent } from '../search-target-modal/search-target
   styleUrls: ['./binary-search.component.sass'],
 })
 export class BinarySearchComponent {
-  input = new MetaArray<number>();
+  input = new MetaArray<number>([
+    10, 12, 13, 14, 18, 20, 25, 27, 30, 35, 40, 45, 47,
+  ]);
   steps: BinarySearchStep[] = [];
   target?: number = 15;
 
-  constructor(private modal: ModalService) {
-    [10, 12, 13, 14, 18, 20, 25, 27, 30, 35, 40, 45, 47].forEach((i) =>
-      this.input.append(i)
-    );
-  }
+  constructor(private modal: ModalService) {}
 
   binarySearch(target: number) {
     const metaArray = this.input.clone();
