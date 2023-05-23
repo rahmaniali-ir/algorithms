@@ -4,13 +4,6 @@ import { MergeSortStep } from '../../type/merge-sort';
 import { Tree } from 'src/app/graph/model/tree';
 import { TreeNodeAddress } from 'src/app/graph/type/tree';
 
-const t = new Tree();
-// t.addLeaf(0, 0, 'A');
-// t.addLeaf(0, 0, 'B');
-// console.log(t.getLevel(1));
-// t.addLeaf(1, 1, 'C');
-// console.log(t.getLeaf(1, 1));
-
 @Component({
   selector: 'merge-sort',
   templateUrl: './merge-sort.component.html',
