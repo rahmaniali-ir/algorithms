@@ -62,6 +62,9 @@ export class ArrayComponent {
   onInputMouseUp(index: number, e: MouseEvent) {
     if (!this.editable) return;
 
-    if (e.button === 1) this.removeItem(index);
+    if (e.button === 1) {
+      e.preventDefault();
+      this.removeItem(index);
+    }
   }
 }
