@@ -19,7 +19,7 @@ import { Position } from 'src/app/core/type/position';
   styleUrls: ['./graph.component.sass'],
 })
 export class GraphComponent implements OnInit {
-  @Input() graph: Graph = new Graph('default');
+  @Input() graph: Graph = new Graph<{ position: Position }>('default');
   @Output() edit = new EventEmitter();
 
   @Input()
@@ -87,7 +87,7 @@ export class GraphComponent implements OnInit {
 
     return getEdgeLine({
       v1: this.draggingVertex,
-      v2: { index: -1, name: '', position: this.mousePosition },
+      v2: { index: -1, name: '', data: { position: this.mousePosition } },
       weight: 0,
     });
   }
@@ -97,8 +97,8 @@ export class GraphComponent implements OnInit {
   }
 
   private updateGraphSize() {
-    const x = this.vertices.map((v) => v.position.x);
-    const y = this.vertices.map((v) => v.position.y);
+    const x = this.vertices.map((v) => v.data.position.x);
+    const y = this.vertices.map((v) => v.data.position.y);
 
     const padding = this.padding;
 
@@ -109,8 +109,8 @@ export class GraphComponent implements OnInit {
       const offset = padding - min;
 
       this.vertices.forEach((vertex) => {
-        vertex.position.x += offset;
-        vertex.position.y += offset;
+        vertex.data.position.x += offset;
+        vertex.data.position.y += offset;
       });
     }
 
@@ -125,7 +125,7 @@ export class GraphComponent implements OnInit {
   private addVertex(position: Position) {
     this.graph.addVertex({
       index: this.nextVertexIndex,
-      position,
+      data: { position },
     });
 
     this.updateGraphSize();
@@ -172,8 +172,8 @@ export class GraphComponent implements OnInit {
         const vertex = this.graph.getVertexByIndex(Number(vertexIndex));
 
         if (vertex) {
-          x = vertex.position.x;
-          y = vertex.position.y;
+          x = vertex.data.position.x;
+          y = vertex.data.position.y;
         }
       }
     }
@@ -181,7 +181,7 @@ export class GraphComponent implements OnInit {
     this.mousePosition = { x, y };
 
     if (this.canMoveVertex) {
-      this.draggingVertex!.position = this.mousePosition;
+      this.draggingVertex!.data.position = this.mousePosition;
       this.isDraggingVertex = true;
     }
   }

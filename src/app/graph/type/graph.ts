@@ -4,7 +4,6 @@ import { Position } from 'src/app/core/type/position';
 export interface Vertex<T = any> extends Customizable<T> {
   name?: string;
   index: number;
-  position: Position;
 }
 
 export type Vertices<T = any> = Vertex<T>[];

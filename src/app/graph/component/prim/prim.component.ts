@@ -4,6 +4,7 @@ import { GreedyStep } from 'src/type/greedy';
 import { Edge, Vertex, Vertices } from '../../type/graph';
 import { getVertexName } from '../../utils/graph';
 import { getClassList } from 'src/app/core/util/customizable';
+import { Position } from 'src/app/core/type/position';
 
 @Component({
   selector: 'app-prim',
@@ -11,9 +12,9 @@ import { getClassList } from 'src/app/core/util/customizable';
   styleUrls: ['./prim.component.sass'],
 })
 export class PrimComponent {
-  graph = new Graph('Input');
-  spanningTree?: Graph;
-  changeGraph?: Graph;
+  graph = new Graph<{ position: Position }>('Input');
+  spanningTree?: Graph<{ position: Position }>;
+  changeGraph?: Graph<{ position: Position }>;
   steps: GreedyStep<{
     tree: Graph;
     edge?: Edge;
@@ -23,11 +24,31 @@ export class PrimComponent {
   calculated = false;
 
   constructor() {
-    this.graph.addVertex({ index: 0, name: 'A', position: { x: 75, y: 60 } });
-    this.graph.addVertex({ index: 1, name: 'B', position: { x: 225, y: 60 } });
-    this.graph.addVertex({ index: 2, name: 'D', position: { x: 75, y: 200 } });
-    this.graph.addVertex({ index: 3, name: 'C', position: { x: 225, y: 200 } });
-    this.graph.addVertex({ index: 4, name: 'E', position: { x: 146, y: 270 } });
+    this.graph.addVertex({
+      index: 0,
+      name: 'A',
+      data: { position: { x: 75, y: 60 } },
+    });
+    this.graph.addVertex({
+      index: 1,
+      name: 'B',
+      data: { position: { x: 225, y: 60 } },
+    });
+    this.graph.addVertex({
+      index: 2,
+      name: 'D',
+      data: { position: { x: 75, y: 200 } },
+    });
+    this.graph.addVertex({
+      index: 3,
+      name: 'C',
+      data: { position: { x: 225, y: 200 } },
+    });
+    this.graph.addVertex({
+      index: 4,
+      name: 'E',
+      data: { position: { x: 146, y: 270 } },
+    });
 
     const [a, b, c, d, e] = this.graph.vertices;
 

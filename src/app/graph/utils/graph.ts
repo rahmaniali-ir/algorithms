@@ -2,8 +2,12 @@ import { Edge, EdgeLine, Vertex } from '../type/graph';
 
 export function getEdgeLine(edge: Edge): EdgeLine {
   const {
-    v1: { position: p1 },
-    v2: { position: p2 },
+    v1: {
+      data: { position: p1 },
+    },
+    v2: {
+      data: { position: p2 },
+    },
   } = edge;
 
   const height = Math.max(3, Math.abs(p2.y - p1.y));

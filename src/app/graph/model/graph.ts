@@ -198,9 +198,9 @@ export class Graph<T = any> {
     const graph = new Graph(this.name);
 
     this.vertices.forEach((vertex) => {
-      const { index, name, position } = vertex;
+      const { index, name } = vertex;
 
-      graph.addVertex({ ...vertex, index, name, position: { ...position } });
+      graph.addVertex({ ...vertex, index, name });
     });
 
     this.edges.forEach((edge) => {
