@@ -10,13 +10,20 @@ import { categories, defaultCategory } from './categories';
 
 export type ProjectKey =
   | 'binarySearch'
-  | 'matrixChainMultiplication'
-  | 'changeCoins'
-  | 'kruskal'
-  | 'prim'
-  | 'minimumPathFinding'
+  | 'mergeSort'
   | 'quickSearch'
-  | 'mergeSort';
+  | 'largeIntegerMultiplication'
+  | 'binomialCoefficient'
+  | 'floydShortestPath'
+  | 'matrixChainMultiplication'
+  | 'bottleneckTravelingSalesman'
+  | 'changeCoins'
+  | 'prim'
+  | 'kruskal'
+  | 'dijkstraMinimumSpanningTree'
+  | 'schedule'
+  | 'huffmanCoding'
+  | 'rucksack';
 
 export const projects: Record<ProjectKey, Project> = {
   binarySearch: {
@@ -39,14 +46,59 @@ export const projects: Record<ProjectKey, Project> = {
     component: MergeSortComponent,
   },
 
+  quickSearch: {
+    id: 'quickSearch',
+    name: 'Quick Search (Soon)',
+    icon: 'search',
+    description: 'Lorem Ipsum!',
+    category: categories.divideAndConquer,
+    component: SoonComponent,
+  },
+
+  largeIntegerMultiplication: {
+    id: 'largeIntegerMultiplication',
+    name: 'Large integer multiplication',
+    icon: 'abacus',
+    description: 'Lorem Ipsum!',
+    category: categories.divideAndConquer,
+    component: SoonComponent,
+  },
+
+  binomialCoefficient: {
+    id: 'binomialCoefficient',
+    name: 'Binomial coefficient',
+    icon: 'flipV',
+    description: 'Lorem Ipsum!',
+    category: categories.dynamicProgramming,
+    component: SoonComponent,
+  },
+
+  floydShortestPath: {
+    id: 'floydShortestPath',
+    name: 'Floyd shortest path',
+    icon: 'channel',
+    description: 'Lorem Ipsum!',
+    category: categories.dynamicProgramming,
+    component: SoonComponent,
+  },
+
   matrixChainMultiplication: {
     id: 'matrixChainMultiplication',
     name: 'Matrix Chain Multiplication',
     icon: 'link',
     description:
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
-    category: categories.divideAndConquer,
+    category: categories.dynamicProgramming,
     component: MatrixMultiplicationComponent,
+  },
+
+  bottleneckTravelingSalesman: {
+    id: 'bottleneckTravelingSalesman',
+    name: 'Bottleneck traveling salesman',
+    icon: 'store',
+    description: 'Lorem Ipsum!',
+    category: categories.dynamicProgramming,
+    component: SoonComponent,
   },
 
   changeCoins: {
@@ -59,19 +111,9 @@ export const projects: Record<ProjectKey, Project> = {
     component: ChangeCoinsComponent,
   },
 
-  kruskal: {
-    id: 'kruskal',
-    name: 'Kruskal',
-    icon: 'channel',
-    description:
-      "Kruskal's algorithm finds a minimum spanning forest of an undirected edge-weighted graph.",
-    category: categories.greedyApproach,
-    component: KruskalComponent,
-  },
-
   prim: {
     id: 'prim',
-    name: 'Prim',
+    name: 'Prim’s minimum spanning tree',
     icon: 'channel',
     description:
       "Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.",
@@ -79,18 +121,48 @@ export const projects: Record<ProjectKey, Project> = {
     component: PrimComponent,
   },
 
-  minimumPathFinding: {
-    id: 'minimumPathFinding',
-    name: 'Minimum Path Finding (Soon)',
+  kruskal: {
+    id: 'kruskal',
+    name: 'Kruskal’s minimum spanning tree',
     icon: 'channel',
+    description:
+      "Kruskal's algorithm finds a minimum spanning forest of an undirected edge-weighted graph.",
+    category: categories.greedyApproach,
+    component: KruskalComponent,
+  },
+
+  dijkstraMinimumSpanningTree: {
+    id: 'dijkstraMinimumSpanningTree',
+    name: 'Dijkstra minimum spanning tree',
+    icon: 'channel',
+    description:
+      "Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.",
+    category: categories.greedyApproach,
+    component: PrimComponent,
+  },
+
+  schedule: {
+    id: 'schedule',
+    name: 'Schedule',
+    icon: 'history',
     description: 'Lorem Ipsum!',
-    category: categories.dynamicProgramming,
+    category: categories.greedyApproach,
     component: SoonComponent,
   },
-  quickSearch: {
-    id: 'quickSearch',
-    name: 'Quick Search (Soon)',
-    icon: 'search',
+
+  huffmanCoding: {
+    id: 'huffmanCoding',
+    name: 'Huffman coding',
+    icon: 'compress',
+    description: 'Lorem Ipsum!',
+    category: categories.greedyApproach,
+    component: SoonComponent,
+  },
+
+  rucksack: {
+    id: 'rucksack',
+    name: 'Rucksack',
+    icon: 'bag',
     description: 'Lorem Ipsum!',
     category: categories.greedyApproach,
     component: SoonComponent,
