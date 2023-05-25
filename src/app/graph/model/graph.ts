@@ -118,6 +118,18 @@ export class Graph<T = any> {
     return v;
   }
 
+  addVertexFrom(origin: Vertex<T>, vertex: Vertex<T>, weight: number = 1) {
+    const v = this.addVertex(vertex);
+
+    const e = this.addEdge({
+      v1: origin,
+      v2: vertex,
+      weight,
+    });
+
+    return { vertex: v, edge: e };
+  }
+
   deleteVertex(vertex: Vertex<T>) {
     this._vertices = this._vertices.filter((v) => v !== vertex);
     this._edges = this._edges.filter((e) => e.v1 !== vertex && e.v2 !== vertex);
