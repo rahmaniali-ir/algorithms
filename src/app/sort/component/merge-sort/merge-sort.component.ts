@@ -3,6 +3,8 @@ import { MetaArray } from 'src/app/search/model/meta-array';
 import { MergeSortStep } from '../../type/merge-sort';
 import { Tree } from 'src/app/graph/model/tree';
 import { TreeNodeAddress } from 'src/app/graph/type/tree';
+import { Graph } from 'src/app/graph/model/graph';
+import { Position } from 'src/app/core/type/position';
 
 @Component({
   selector: 'merge-sort',
@@ -14,6 +16,8 @@ export class MergeSortComponent {
   steps: MergeSortStep[] = [];
   result?: MetaArray<number>;
   callTree?: Tree<MetaArray<number>>;
+  callGraph?: Graph<{ array: MetaArray<number>; position: Position }>;
+  sorted = false;
 
   merge(a: MetaArray<number>, b: MetaArray<number>): MetaArray<number> {
     const merged = new MetaArray<number>();
@@ -76,14 +80,16 @@ export class MergeSortComponent {
     const sortedLeft = this.mergeSort(left, [...nodeAddress, 0]);
     const sortedRight = this.mergeSort(right, [...nodeAddress, 1]);
 
-    return this.merge(sortedLeft, sortedRight);
+    const merged = this.merge(sortedLeft, sortedRight);
+
+    return merged;
   }
 
   sort() {
     this.steps = [];
-    this.callTree = new Tree<MetaArray<number>>(this.input.clone());
     this.result = undefined;
 
+    this.callTree = new Tree<MetaArray<number>>(this.input.clone());
     this.result = this.mergeSort(this.input.clone(), []);
 
     for (let i = 0; i <= this.callTree.levels; i++) {
@@ -96,5 +102,25 @@ export class MergeSortComponent {
         data: level.map((leaf) => leaf.data),
       });
     }
+
+    for (let i = this.callTree.levels - 1; i >= 0; i--) {
+      const level = this.callTree.getLevel(i);
+      if (!level) break;
+
+      const sorted = level.map((leaf) => {
+        const array: MetaArray<number> = leaf.data.clone();
+        array.sort((a, b) => a - b);
+
+        return array;
+      });
+
+      this.steps.push({
+        index: i,
+        description: '',
+        data: sorted,
+      });
+    }
+
+    this.sorted = true;
   }
 }
