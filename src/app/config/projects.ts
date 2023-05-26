@@ -4,6 +4,7 @@ import { KruskalComponent } from '../graph/component/kruskal/kruskal.component';
 import { PrimComponent } from '../graph/component/prim/prim.component';
 import { MatrixMultiplicationComponent } from '../matrix/component/matrix-multiplication/matrix-multiplication.component';
 import { BinarySearchComponent } from '../search/component/binary-search/binary-search.component';
+import { QuickSortComponent } from '../sort/component/quick-sort/quick-sort.component';
 import { MergeSortComponent } from '../sort/component/merge-sort/merge-sort.component';
 import { Project } from '../type/gallery';
 import { categories, defaultCategory } from './categories';
@@ -11,7 +12,7 @@ import { categories, defaultCategory } from './categories';
 export type ProjectKey =
   | 'binarySearch'
   | 'mergeSort'
-  | 'quickSearch'
+  | 'quickSort'
   | 'largeIntegerMultiplication'
   | 'binomialCoefficient'
   | 'floydShortestPath'
@@ -46,13 +47,14 @@ export const projects: Record<ProjectKey, Project> = {
     component: MergeSortComponent,
   },
 
-  quickSearch: {
-    id: 'quickSearch',
-    name: 'Quick Search (Soon)',
-    icon: 'search',
-    description: 'Lorem Ipsum!',
+  quickSort: {
+    id: 'quickSort',
+    name: 'Quick Sort',
+    icon: 'sort',
+    description:
+      'Quick Sort picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.',
     category: categories.divideAndConquer,
-    component: SoonComponent,
+    component: QuickSortComponent,
   },
 
   largeIntegerMultiplication: {

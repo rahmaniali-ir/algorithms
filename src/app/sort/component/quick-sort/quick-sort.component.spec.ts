@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuickSearchComponent } from './quick-search.component';
+import { QuickSortComponent } from './quick-sort.component';
 
-describe('QuickSearchComponent', () => {
-  let component: QuickSearchComponent;
-  let fixture: ComponentFixture<QuickSearchComponent>;
+describe('QuickSortComponent', () => {
+  let component: QuickSortComponent;
+  let fixture: ComponentFixture<QuickSortComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuickSearchComponent ]
+      declarations: [ QuickSortComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(QuickSearchComponent);
+    fixture = TestBed.createComponent(QuickSortComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
