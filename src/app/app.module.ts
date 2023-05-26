@@ -14,6 +14,7 @@ import { ChangeCoinsModule } from './change-coins/change-coins.module';
 import { GraphModule } from './graph/graph.module';
 import { SearchModule } from './search/search.module';
 import { SortModule } from './sort/sort.module';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
 
 @NgModule({
   declarations: [

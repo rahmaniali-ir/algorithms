@@ -8,15 +8,21 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Graph } from '../../model/graph';
-import { Edge, EdgeLine, Vertex } from '../../type/graph';
-import { getEdgeLine } from '../../utils/graph';
+import { Graph } from './model/graph';
+import { Edge, EdgeLine, Vertex } from './type/graph';
+import { getEdgeLine } from './utils/graph';
 import { Position } from 'src/app/core/type/position';
+import { CommonModule } from '@angular/common';
+import { VertexComponent } from '../vertex/vertex.component';
+import { FormsModule } from '@angular/forms';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
 
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.sass'],
+  standalone: true,
+  imports: [CommonModule, VertexComponent, FormsModule, SvgIconModule],
 })
 export class GraphComponent implements OnInit {
   @Input() graph: Graph = new Graph<{ position: Position }>('default');

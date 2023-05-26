@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Graph } from '../../model/graph';
+import { Graph } from '../../../generic/graph/model/graph';
 import { GreedyStep } from 'src/type/greedy';
-import { Edge, Vertex, Vertices } from '../../type/graph';
-import { getVertexName } from '../../utils/graph';
+import { Edge, Vertex, Vertices } from '../../../generic/graph/type/graph';
+import { getVertexName } from '../../../generic/graph/utils/graph';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from 'src/app/core/type/position';
 
