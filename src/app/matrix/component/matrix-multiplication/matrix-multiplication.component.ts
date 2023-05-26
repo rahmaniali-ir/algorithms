@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Matrix } from '../../model/matrix';
+import { Matrix } from '../../../generic/matrix/model/matrix';
 import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { CreateMatrixModalComponent } from '../create-matrix-modal/create-matrix-modal.component';
-import { getPossibleSequenceParenthesis } from '../../utils/matrix';
+import { getPossibleSequenceParenthesis } from '../../../generic/matrix/utils/matrix';
 
 @Component({
   selector: 'matrix-multiplication',

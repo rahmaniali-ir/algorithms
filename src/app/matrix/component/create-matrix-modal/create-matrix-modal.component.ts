@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Matrix, PlainMatrix } from '../../model/matrix';
+import { Matrix, PlainMatrix } from '../../../generic/matrix/model/matrix';
 import { getRandom } from 'src/app/core/util/random';
 import { ActiveModal } from '@rahmaniali.ir/angular-modal';
 import { getAlphabetLetter } from 'src/app/core/util/alphabet';

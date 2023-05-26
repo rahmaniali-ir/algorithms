@@ -1,4 +1,4 @@
-import { Matrix } from 'src/app/matrix/model/matrix';
+import { Matrix } from 'src/app/generic/matrix/model/matrix';
 import { Edge, Vertex, Vertices } from '../type/graph';
 
 export class Graph<T = any> {

@@ -1,19 +1,23 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { Matrix } from '../../model/matrix';
+import { Matrix } from './model/matrix';
 import { Position } from 'src/app/core/type/position';
-import { MatrixView } from '../../type/matrix';
+import { MatrixView } from './type/matrix';
 import { getRange } from 'src/app/core/util/array';
 import {
   getCellView,
   getFilledRowView,
   matrixRowToRowView,
   plainMatrixToMatrixView,
-} from '../../utils/matrix';
+} from './utils/matrix';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-matrix',
   templateUrl: './matrix.component.html',
   styleUrls: ['./matrix.component.sass'],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
 })
 export class MatrixComponent {
   @Input() matrix: Matrix<any> = new Matrix(0, 0);
