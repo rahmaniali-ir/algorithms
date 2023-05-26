@@ -1,4 +1,4 @@
-import { MetaArray } from '../model/meta-array';
+import { MetaArray } from '../../generic/array/model/meta-array';
 
 export interface BinarySearchStepData {
   name: string;

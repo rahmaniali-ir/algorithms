@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MetaArray } from '../../model/meta-array';
+import { MetaArray } from '../../../generic/array/model/meta-array';
 import { BinarySearchStep } from '../../type/binary-search';
 import { getClassList } from 'src/app/core/util/customizable';
 import { ModalService } from '@rahmaniali.ir/angular-modal';

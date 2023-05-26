@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MetaArray } from 'src/app/search/model/meta-array';
+import { MetaArray } from 'src/app/generic/array/model/meta-array';
 import { MergeSortStep } from '../../type/merge-sort';
 import { Tree } from 'src/app/graph/model/tree';
 import { TreeNodeAddress } from 'src/app/graph/type/tree';

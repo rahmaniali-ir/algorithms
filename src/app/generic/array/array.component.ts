@@ -5,13 +5,18 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core';
-import { MetaArray } from '../../model/meta-array';
-import { ArrayItemView } from '../../type/array-item-view';
+import { MetaArray } from './model/meta-array';
+import { ArrayItemView } from './type/array-item-view';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
 
 @Component({
   selector: 'app-array',
   templateUrl: './array.component.html',
   styleUrls: ['./array.component.sass'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, SvgIconModule],
 })
 export class ArrayComponent {
   @Input() name = '';

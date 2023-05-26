@@ -1,4 +1,4 @@
-import { MetaArray } from 'src/app/search/model/meta-array';
+import { MetaArray } from 'src/app/generic/array/model/meta-array';
 
 export interface MergeSortStep {
   index: number;

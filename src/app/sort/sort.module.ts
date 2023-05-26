@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { MergeSortComponent } from './component/merge-sort/merge-sort.component';
 import { CoreModule } from '../core/core.module';
 import { IconModule } from '../icon-pack';
-import { SearchModule } from '../search/search.module';
+import { ArrayComponent } from '../generic/array/array.component';
 
 @NgModule({
   declarations: [MergeSortComponent],
-  imports: [CommonModule, CoreModule, IconModule, SearchModule],
+  imports: [CommonModule, CoreModule, IconModule, ArrayComponent],
 })
 export class SortModule {}
