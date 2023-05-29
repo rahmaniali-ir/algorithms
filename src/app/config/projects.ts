@@ -55,6 +55,7 @@ export const projects: Record<ProjectKey, Project> = {
       'Quick Sort picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.',
     category: categories.divideAndConquer,
     component: QuickSortComponent,
+    className: 'soon',
   },
 
   largeIntegerMultiplication: {
