@@ -64,6 +64,7 @@ export const projects: Record<ProjectKey, Project> = {
     description: 'Lorem Ipsum!',
     category: categories.divideAndConquer,
     component: SoonComponent,
+    className: 'soon',
   },
 
   binomialCoefficient: {
@@ -73,6 +74,7 @@ export const projects: Record<ProjectKey, Project> = {
     description: 'Lorem Ipsum!',
     category: categories.dynamicProgramming,
     component: SoonComponent,
+    className: 'soon',
   },
 
   floydShortestPath: {
@@ -82,6 +84,7 @@ export const projects: Record<ProjectKey, Project> = {
     description: 'Lorem Ipsum!',
     category: categories.dynamicProgramming,
     component: SoonComponent,
+    className: 'soon',
   },
 
   matrixChainMultiplication: {
@@ -101,6 +104,7 @@ export const projects: Record<ProjectKey, Project> = {
     description: 'Lorem Ipsum!',
     category: categories.dynamicProgramming,
     component: SoonComponent,
+    className: 'soon',
   },
 
   changeCoins: {
@@ -141,6 +145,7 @@ export const projects: Record<ProjectKey, Project> = {
       "Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.",
     category: categories.greedyApproach,
     component: PrimComponent,
+    className: 'soon',
   },
 
   schedule: {
@@ -150,6 +155,7 @@ export const projects: Record<ProjectKey, Project> = {
     description: 'Lorem Ipsum!',
     category: categories.greedyApproach,
     component: SoonComponent,
+    className: 'soon',
   },
 
   huffmanCoding: {
@@ -159,6 +165,7 @@ export const projects: Record<ProjectKey, Project> = {
     description: 'Lorem Ipsum!',
     category: categories.greedyApproach,
     component: SoonComponent,
+    className: 'soon',
   },
 
   rucksack: {
@@ -168,6 +175,7 @@ export const projects: Record<ProjectKey, Project> = {
     description: 'Lorem Ipsum!',
     category: categories.greedyApproach,
     component: SoonComponent,
+    className: 'soon',
   },
 };
 

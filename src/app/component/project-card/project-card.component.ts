@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { BehaviorSubject, Subject, debounceTime, throttleTime } from 'rxjs';
 import { defaultProject } from 'src/app/config/projects';
 import { Position } from 'src/app/core/type/position';
@@ -63,6 +63,11 @@ export class ProjectCardComponent {
       x: 0,
       y: 0,
     };
+  }
+
+  @HostBinding('class')
+  get className() {
+    return this.project.className || '';
   }
 
   onMouseMove(e: MouseEvent) {
