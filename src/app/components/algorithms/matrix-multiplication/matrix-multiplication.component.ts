@@ -5,7 +5,6 @@ import { CreateMatrixModalComponent } from '@modals/create-matrix-modal/create-m
 import { getPossibleSequenceParenthesis } from '@utils/matrix';
 import { CheckBoxComponent } from '@core/components/check-box/check-box.component';
 import { SectionComponent } from '@core/components/section/section.component';
-import { NgIf, NgFor } from '@angular/common';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { MatrixComponent } from '@common/matrix/matrix.component';
 import { StepComponent } from '@core/components/step/step.component';
@@ -18,9 +17,7 @@ import { StepComponent } from '@core/components/step/step.component';
   imports: [
     CheckBoxComponent,
     SectionComponent,
-    NgIf,
     SvgIconComponent,
-    NgFor,
     MatrixComponent,
     StepComponent,
   ],

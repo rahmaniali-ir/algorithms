@@ -21,20 +21,20 @@
 <!-- matrices -->
 <app-section header="Input" icon="keyboardIn" class="input">
   <!-- clear -->
-  <button
-    actions
-    *ngIf="matrices.length > 0"
-    (click)="clear()"
-    class="button placeholder clear"
-  >
+  @if(matrices.length) {
+  <button actions (click)="clear()" class="button placeholder clear">
     <svg-icon name="trash"></svg-icon>
     <span>Clear</span>
   </button>
+  }
 
   <!-- matrices -->
   <div class="matrices">
-    <div *ngFor="let matrix of matrices; let i = index" class="matrix">
-      <svg-icon *ngIf="i > 0" name="times" class="times"></svg-icon>
+    @for(matrix of matrices; track $index) {
+    <div class="matrix">
+      @if(!$first) {
+      <svg-icon name="times" class="times"></svg-icon>
+      }
 
       <app-matrix
         [matrix]="matrix"
@@ -44,6 +44,7 @@
         [readOnly]="true"
       ></app-matrix>
     </div>
+    }
 
     <!-- add matrix -->
     <button
@@ -52,23 +53,29 @@
     >
       <svg-icon name="addX"></svg-icon>
 
-      <span *ngIf="!matrices.length">Add First Matrix</span>
-      <span *ngIf="matrices.length === 1">Add Second Matrix</span>
-      <span *ngIf="matrices.length > 1">Add More</span>
+      @if(!matrices.length) {
+      <span>Add First Matrix</span>
+      } @else if(matrices.length === 1) {
+      <span>Add Second Matrix</span>
+      } @else if(matrices.length > 1) {
+      <span>Add More</span>
+      }
     </button>
 
     <!-- calculate result -->
+    @if(matrices.length > 1 && !result) {
     <button
-      *ngIf="matrices.length > 1 && !result"
       (click)="multiply()"
       class="button vertical placeholder calculate no-print"
     >
       <svg-icon name="calculator"></svg-icon>
       <span>Calculate</span>
     </button>
+    }
 
     <!-- result -->
-    <div *ngIf="result" class="matrix">
+    @if(result) {
+    <div class="matrix">
       <svg-icon name="equal" class="equal"></svg-icon>
 
       <app-matrix
@@ -78,68 +85,83 @@
         [readOnly]="true"
       ></app-matrix>
     </div>
+    }
   </div>
 </app-section>
 
 <!-- solution -->
 <app-section header="Solution" icon="wrapText" class="solution">
   <main class="steps">
-    <app-step
-      *ngIf="!matrices.length"
-      header="Multiply at least two matrices to get the solution!"
-      icon="infoCircle"
-    ></app-step>
-
+    @if(matrices.length) {
     <!-- input data -->
-    <app-step *ngIf="matrices.length > 0" header="Input data" icon="infoCircle">
+    <app-step header="Input data" icon="infoCircle">
       <div class="equation matrix-names">
         <div class="name">
           <span>Question :</span>
         </div>
 
-        <div *ngFor="let name of matrixNames; let i = index" class="name">
-          <svg-icon *ngIf="i !== 0" name="times"></svg-icon>
+        @for(name of matrixNames; track $index) {
+        <div class="name">
+          @if(!$first) {
+          <svg-icon name="times"></svg-icon>
+          }
+
           <span>{{ name }}</span>
         </div>
+        }
       </div>
 
       <div class="equation dimensions">
         <span>Dimensions :</span>
 
-        <div *ngFor="let d of dimensions; let i = index" class="equation">
-          <span *ngIf="i !== 0">,</span>
+        @for(d of dimensions; track $index) {
+        <div class="equation">
+          @if(!$first) {
+          <span>,</span>
+          }
+
           <span class="dimension">
             d
-            <span class="index">{{ i }}</span>
+            <span class="index">{{ $index }}</span>
             =
             <span class="d">{{ d }}</span>
           </span>
         </div>
+        }
       </div>
     </app-step>
+    } @else {
+    <app-step
+      header="Multiply at least two matrices to get the solution!"
+      icon="infoCircle"
+    ></app-step>
+    }
 
     <!-- possible orders -->
+    @if(matrices.length > 2) {
     <app-step
-      *ngIf="matrices.length > 2"
       header="Possibles multiplication"
       icon="infoCircle"
       class="sequences"
     >
       <ul>
-        <li *ngFor="let sequence of possibleSequences">
+        @for(sequence of possibleSequences; track $index) {
+        <li>
           <span class="equation">{{ sequence }}</span>
         </li>
+        }
       </ul>
     </app-step>
+    }
 
     <!-- m -->
-    <app-step *ngIf="m" header="Minimum multiplications" icon="infoCircle">
+    @if(m) {
+    <app-step header="Minimum multiplications" icon="infoCircle">
       <div class="m equation">
         m
         <svg-icon name="equal"></svg-icon>
 
         <app-matrix
-          *ngIf="m"
           [matrix]="m"
           [showDetails]="showDetails"
           [showAxis]="showAxis"
@@ -147,6 +169,7 @@
         ></app-matrix>
       </div>
     </app-step>
+    }
   </main>
 </app-section>
 

@@ -1,7 +1,9 @@
 <main>
-  <div *ngIf="showAxis" class="indexes x">
+  @if(showAxis) {
+  <div class="indexes x">
     <span></span>
-    <div *ngFor="let i of xIndexes">
+    @for(i of xIndexes; track $index) {
+    <div>
       <span
         [class.hovered]="i === hoveredCell?.x"
         [class.focused]="i === focusedCell?.x"
@@ -9,11 +11,15 @@
         {{ i === undefined ? "" : i + 1 }}
       </span>
     </div>
+    }
   </div>
+  }
 
   <div>
-    <div *ngIf="showAxis" class="indexes y">
-      <div *ngFor="let i of yIndexes">
+    @if(showAxis) {
+    <div class="indexes y">
+      @for(i of yIndexes; track $index) {
+      <div>
         <span
           [class.hovered]="i === hoveredCell?.y"
           [class.focused]="i === focusedCell?.y"
@@ -21,16 +27,15 @@
           {{ i === undefined ? "" : i + 1 }}
         </span>
       </div>
+      }
     </div>
+    }
 
     <div class="matrix" (mouseleave)="resetHoveredCell()">
-      <div
-        *ngFor="let row of viewRows; trackBy: trackByRow"
-        [class]="row.className"
-        class="row"
-      >
+      @for(row of viewRows; track row.index) {
+      <div [class]="row.className" class="row">
+        @for(cell of row.cells; track $index) {
         <input
-          *ngFor="let cell of row.cells; trackBy: trackByColumn"
           [ngModel]="cell.value ?? ''"
           [title]="cell.title"
           [type]="cell.type"
@@ -43,13 +48,18 @@
           (blur)="resetFocusedCell()"
           class="col"
         />
+        }
       </div>
+      }
     </div>
   </div>
 </main>
 
-<footer *ngIf="showDetails">
-  <div *ngIf="matrix.name" class="name">{{ matrix.name }}</div>
+@if(showDetails) {
+<footer>
+  @if(matrix.name) {
+  <div class="name">{{ matrix.name }}</div>
+  }
 
   <div class="size">
     <span class="y">{{ matrix.y }}</span>
@@ -57,3 +67,4 @@
     <span class="x">{{ matrix.x }}</span>
   </div>
 </footer>
+}

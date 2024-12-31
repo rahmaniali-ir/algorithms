@@ -1,44 +1,51 @@
-<header *ngIf="name">
+@if(name) {
+<header>
   {{ name }}
 </header>
+}
 
 <main>
+  @for(viewItem of viewItems; track viewItems?.[$index]) {
   <div
-    *ngFor="let viewItem of viewItems; let index = index; trackBy: trackByItem"
     [title]="viewItem.title"
     [ngClass]="viewItem.item.meta?.className"
     class="item"
   >
-    <div *ngIf="viewItem.topLabels.length" class="labels top">
+    @if(viewItem.topLabels.length) {
+    <div class="labels top">
       <main>
-        <div
-          *ngFor="let label of viewItem.item.meta?.labels"
-          [ngClass]="label.className"
-          [title]="label.label"
-          class="label"
-        >
-          <svg-icon *ngIf="label.icon" [name]="label.icon"></svg-icon>
+        @for(label of viewItem.item.meta?.labels; track $index) {
+        <div [ngClass]="label.className" [title]="label.label" class="label">
+          @if(label.icon) {
+          <svg-icon [name]="label.icon"></svg-icon>
+          }
+
           <span>{{ label.label }}</span>
         </div>
+        }
       </main>
 
       <svg-icon name="angleDown"></svg-icon>
     </div>
+    }
 
     <input
       #input
       [(ngModel)]="viewItem.item.value"
       [style.--size]="viewItem.size"
       [readOnly]="!editable"
-      (mouseup)="onInputMouseUp(index, $event)"
+      (mouseup)="onInputMouseUp($index, $event)"
       class="no-controls"
       type="number"
     />
   </div>
+  }
 </main>
 
-<footer *ngIf="editable">
+@if(editable) {
+<footer>
   <button (click)="addItem()" class="button">
     <svg-icon name="plus"></svg-icon>
   </button>
 </footer>
+}

@@ -1,14 +1,19 @@
 <!-- placeholder -->
-<div *ngIf="noVertex" class="placeholder">
+@if(noVertex) {
+<div class="placeholder">
   <svg-icon name="channel"></svg-icon>
 
-  <span *ngIf="editable">Double click anywhere to add node!</span>
-  <span *ngIf="!editable">No vertices!</span>
+  @if(editable) {
+  <span>Double click anywhere to add node!</span>
+  } @else {
+  <span>No vertices!</span>
+  }
 </div>
+}
 
 <!-- drawing edge preview -->
+@if(drawingEdgePreview) {
 <div
-  *ngIf="drawingEdgePreview"
   [style.left]="drawingEdgePreview.left + 'px'"
   [style.top]="drawingEdgePreview.top + 'px'"
   class="edge drawing-edge-preview"
@@ -26,10 +31,12 @@
     />
   </svg>
 </div>
+}
 
 <!-- edges -->
+@for(line of edgeLines; track edgeLines?.[$index]?.left + ',' +
+edgeLines?.[$index]?.top) {
 <div
-  *ngFor="let line of edgeLines; trackBy: trackByEdgeLine"
   [style.left]="line.left + 'px'"
   [style.top]="line.top + 'px'"
   [class]="line.edge.className"
@@ -58,10 +65,11 @@
     class="weight"
   />
 </div>
+}
 
 <!-- vertices -->
+@for(vertex of vertices; track vertices?.[$index]?.index) {
 <app-vertex
-  *ngFor="let vertex of vertices; trackBy: trackByVertex"
   [vertex]="vertex"
   [style.left]="vertex.data.position.x + 'px'"
   [style.top]="vertex.data.position.y + 'px'"
@@ -73,6 +81,7 @@
   (mousedown)="onVertexMouseDown()"
   (mouseup)="onVertexMouseUp()"
 ></app-vertex>
+}
 
 <input
   [(ngModel)]="graph.name"

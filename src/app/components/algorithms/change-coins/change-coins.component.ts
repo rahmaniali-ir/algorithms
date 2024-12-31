@@ -5,7 +5,6 @@ import { AddCoinModalComponent } from '../../modals/add-coin-modal/add-coin-moda
 import { GreedyStep } from 'src/type/greedy';
 import { ChangeCoinsModalComponent } from '../../modals/change-coins-modal/change-coins-modal.component';
 import { SectionComponent } from '../../../core/components/section/section.component';
-import { NgIf, NgFor } from '@angular/common';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { CoinComponent } from '../../common/coin/coin.component';
 import { StepComponent } from '../../../core/components/step/step.component';
@@ -15,14 +14,7 @@ import { StepComponent } from '../../../core/components/step/step.component';
   templateUrl: './change-coins.component.html',
   styleUrls: ['./change-coins.component.sass'],
   standalone: true,
-  imports: [
-    SectionComponent,
-    NgIf,
-    SvgIconComponent,
-    NgFor,
-    CoinComponent,
-    StepComponent,
-  ],
+  imports: [SectionComponent, SvgIconComponent, CoinComponent, StepComponent],
 })
 export class ChangeCoinsComponent {
   coins: Coin[] = [

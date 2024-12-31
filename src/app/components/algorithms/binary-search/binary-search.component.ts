@@ -6,7 +6,6 @@ import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { SectionComponent } from '@core/components/section/section.component';
 import { ArrayComponent } from '@common/array/array.component';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
-import { NgIf, NgFor } from '@angular/common';
 import { StepComponent } from '@core/components/step/step.component';
 import { SearchTargetModalComponent } from '@components/modals/search-target-modal/search-target-modal.component';
 
@@ -15,14 +14,7 @@ import { SearchTargetModalComponent } from '@components/modals/search-target-mod
   templateUrl: './binary-search.component.html',
   styleUrls: ['./binary-search.component.sass'],
   standalone: true,
-  imports: [
-    SectionComponent,
-    ArrayComponent,
-    SvgIconComponent,
-    NgIf,
-    NgFor,
-    StepComponent,
-  ],
+  imports: [SectionComponent, ArrayComponent, SvgIconComponent, StepComponent],
 })
 export class BinarySearchComponent {
   input = new MetaArray<number>([

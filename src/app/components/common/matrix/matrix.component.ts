@@ -10,14 +10,13 @@ import {
   plainMatrixToMatrixView,
 } from '@utils/matrix';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-matrix',
   templateUrl: './matrix.component.html',
   styleUrls: ['./matrix.component.sass'],
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
 })
 export class MatrixComponent {
   @Input() matrix: Matrix<any> = new Matrix(0, 0);
@@ -98,14 +97,6 @@ export class MatrixComponent {
     }
 
     return rowViews;
-  }
-
-  trackByRow(index: number) {
-    return index;
-  }
-
-  trackByColumn(index: number) {
-    return index;
   }
 
   updateValue(position: Position, event: Event) {

@@ -9,16 +9,22 @@
   </div>
 </app-section>
 
-<app-section *ngIf="result" header="Sort" icon="sort">
+@if(result) {
+<app-section header="Sort" icon="sort">
   <div class="steps">
-    <app-step *ngFor="let step of steps">
+    @for(step of steps; track step.index) {
+    <app-step>
       <div class="arrays">
-        <app-array *ngFor="let array of step.data" [input]="array"></app-array>
+        @for(array of step.data; track $index) {
+        <app-array [input]="array"></app-array>
+        }
       </div>
     </app-step>
+    }
   </div>
 </app-section>
-
-<app-section *ngIf="result" header="Sorted array" icon="out">
+} @if(result) {
+<app-section header="Sorted array" icon="out">
   <app-array [input]="result" name="Sorted"></app-array>
 </app-section>
+}

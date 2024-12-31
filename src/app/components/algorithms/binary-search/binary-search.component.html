@@ -9,26 +9,26 @@
   </div>
 </app-section>
 
-<app-section
-  *ngIf="steps.length > 0"
-  header="Solution"
-  icon="wrapText"
-  class="solution"
->
+@if(steps.length) {
+<app-section header="Solution" icon="wrapText" class="solution">
   <div class="steps">
+    @for(step of steps; track step.index) {
     <app-step
-      *ngFor="let step of steps; let index = index"
-      [header]="'Step ' + (index + 1) + '- Searching for ' + target"
+      [header]="'Step ' + (step.index + 1) + '- Searching for ' + target"
       [icon]="step.icon || ''"
     >
       <div class="step">
         <p>{{ step.description }}</p>
+
+        @if(step.data) {
         <app-array
-          *ngIf="step.data"
           [input]="step.data.value"
           [name]="step.data.name"
         ></app-array>
+        }
       </div>
     </app-step>
+    }
   </div>
 </app-section>
+}

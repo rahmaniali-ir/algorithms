@@ -3,7 +3,6 @@ import { GreedyStep } from 'src/type/greedy';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from '@type/position';
 import { SectionComponent } from '../../../core/components/section/section.component';
-import { NgIf, NgFor } from '@angular/common';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { StepComponent } from '@core/components/step/step.component';
 import { GraphComponent } from '@components/common/graph/graph.component';
@@ -19,10 +18,8 @@ import { getVertexName } from '@utils/graph';
   standalone: true,
   imports: [
     SectionComponent,
-    NgIf,
     SvgIconComponent,
     GraphComponent,
-    NgFor,
     StepComponent,
     VertexComponent,
   ],

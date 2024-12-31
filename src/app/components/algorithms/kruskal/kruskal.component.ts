@@ -6,7 +6,6 @@ import { getVertexName } from '@utils/graph';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from '@type/position';
 import { SectionComponent } from '@core/components/section/section.component';
-import { NgIf, NgFor } from '@angular/common';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { GraphComponent } from '@common/graph/graph.component';
 import { StepComponent } from '@core/components/step/step.component';
@@ -16,14 +15,7 @@ import { StepComponent } from '@core/components/step/step.component';
   templateUrl: './kruskal.component.html',
   styleUrls: ['./kruskal.component.sass'],
   standalone: true,
-  imports: [
-    SectionComponent,
-    NgIf,
-    SvgIconComponent,
-    GraphComponent,
-    NgFor,
-    StepComponent,
-  ],
+  imports: [SectionComponent, SvgIconComponent, GraphComponent, StepComponent],
 })
 export class KruskalComponent {
   graph = new Graph<{ position: Position }>('Input');

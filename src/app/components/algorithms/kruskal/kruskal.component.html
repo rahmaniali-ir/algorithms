@@ -1,15 +1,12 @@
 <!-- input -->
 <app-section header="Input" icon="channel">
   <!-- clear -->
-  <button
-    actions
-    *ngIf="graph.vertices.length > 0"
-    (click)="clear()"
-    class="button placeholder clear"
-  >
+  @if(graph.vertices.length) {
+  <button actions (click)="clear()" class="button placeholder clear">
     <svg-icon name="trash"></svg-icon>
     <span>Clear</span>
   </button>
+  }
 
   <div class="input">
     <app-graph
@@ -18,45 +15,44 @@
       (edit)="onInputEdit()"
     ></app-graph>
 
+    @if(canCalculate) {
     <button
-      *ngIf="canCalculate"
       (click)="calculateKruskalTree()"
       class="button vertical placeholder calculate"
     >
       <svg-icon name="channel"></svg-icon>
       <span>Calculate</span>
     </button>
+    }
   </div>
 </app-section>
 
 <!-- solution -->
-<app-section *ngIf="steps.length" header="Solution" icon="wrapText">
+@if(steps.length) {
+<app-section header="Solution" icon="wrapText">
   <div class="steps">
+    @for(step of steps; track step.step) {
     <app-step
-      *ngFor="let step of steps"
       [header]="step.feasibility"
       [icon]="step.feasibilityCheck ? 'check' : 'times'"
     >
       <app-graph [graph]="step.selection.tree" [editable]="false"></app-graph>
     </app-step>
+    }
   </div>
 </app-section>
+}
 
 <!-- output -->
-<app-section *ngIf="spanningTree" header="Output" icon="out">
+@if(spanningTree) {
+<app-section header="Output" icon="out">
   <app-step header="Minimum spanning tree" icon="channel">
     <div class="output">
-      <app-graph
-        *ngIf="spanningTree"
-        [graph]="spanningTree"
-        [editable]="false"
-      ></app-graph>
+      <app-graph [graph]="spanningTree" [editable]="false"></app-graph>
 
-      <app-graph
-        *ngIf="changeGraph"
-        [graph]="changeGraph"
-        [editable]="false"
-      ></app-graph>
+      @if(changeGraph) {
+      <app-graph [graph]="changeGraph" [editable]="false"></app-graph>
+      }
 
       <app-step header="Total weight" icon="weight">
         <strong>{{ spanningTree.totalWeight }}</strong>
@@ -64,3 +60,4 @@
     </div>
   </app-step>
 </app-section>
+}

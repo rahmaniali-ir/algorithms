@@ -6,7 +6,6 @@ import { getAlphabetLetter } from 'src/app/core/util/alphabet';
 import { ModalCardComponent } from '@core/components/modal-card/modal-card.component';
 import { FormGroupComponent } from '@core/components/form-group/form-group.component';
 import { FormLabelComponent } from '@core/components/form-label/form-label.component';
-import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CheckBoxComponent } from '@core/components/check-box/check-box.component';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
@@ -21,7 +20,6 @@ import { MatrixComponent } from '@common/matrix/matrix.component';
     ModalCardComponent,
     FormGroupComponent,
     FormLabelComponent,
-    NgIf,
     FormsModule,
     CheckBoxComponent,
     SvgIconComponent,

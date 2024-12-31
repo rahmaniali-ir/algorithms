@@ -2,23 +2,17 @@
   <section>
     <form-group name="Matrix Size">
       <form-label label="Rows" target="rows">
+        @if(isRowFixed) {
+        <input [value]="rows" readonly id="rows" min="1" type="number" />
+        } @else {
         <input
-          *ngIf="isRowFixed"
-          [value]="rows"
-          readonly
-          id="rows"
-          min="1"
-          type="number"
-        />
-
-        <input
-          *ngIf="!isRowFixed"
           [(ngModel)]="rows"
           (input)="changeInputMatrixSize()"
           id="rows"
           min="1"
           type="number"
         />
+        }
       </form-label>
 
       <form-label label="Columns" target="columns">
@@ -43,8 +37,8 @@
       description="Fill matrix with random values"
     ></check-box>
 
+    @if(randomize) {
     <button
-      *ngIf="randomize"
       (click)="useRandomMatrix()"
       class="button neutral"
       title="Edit randomized matrix"
@@ -53,17 +47,18 @@
     </button>
 
     <button
-      *ngIf="randomize"
       (click)="updateRandomMatrix()"
       class="button neutral"
       title="Randomize again"
     >
       <svg-icon name="refresh"></svg-icon>
     </button>
+    }
   </section>
 
+  @if(randomize) {
   <section class="random">
-    <form-group *ngIf="randomize" name="Random Range">
+    <form-group name="Random Range">
       <form-label label="Min (inclusive)" target="random-min">
         <input
           [(ngModel)]="randomMin"
@@ -85,6 +80,7 @@
       </form-label>
     </form-group>
   </section>
+  }
 
   <section class="matrix">
     <app-matrix
