@@ -7,23 +7,23 @@ import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from 'src/app/core/type/position';
 import { SectionComponent } from '../../../core/component/section/section.component';
 import { NgIf, NgFor } from '@angular/common';
-import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { GraphComponent } from '../../../generic/graph/graph.component';
 import { StepComponent } from '../../../core/component/step/step.component';
 
 @Component({
-    selector: 'app-kruskal',
-    templateUrl: './kruskal.component.html',
-    styleUrls: ['./kruskal.component.sass'],
-    standalone: true,
-    imports: [
-        SectionComponent,
-        NgIf,
-        SvgIconModule,
-        GraphComponent,
-        NgFor,
-        StepComponent,
-    ],
+  selector: 'app-kruskal',
+  templateUrl: './kruskal.component.html',
+  styleUrls: ['./kruskal.component.sass'],
+  standalone: true,
+  imports: [
+    SectionComponent,
+    NgIf,
+    SvgIconComponent,
+    GraphComponent,
+    NgFor,
+    StepComponent,
+  ],
 })
 export class KruskalComponent {
   graph = new Graph<{ position: Position }>('Input');

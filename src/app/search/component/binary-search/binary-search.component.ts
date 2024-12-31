@@ -6,7 +6,7 @@ import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { SearchTargetModalComponent } from '../search-target-modal/search-target-modal.component';
 import { SectionComponent } from '../../../core/component/section/section.component';
 import { ArrayComponent } from '../../../generic/array/array.component';
-import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { NgIf, NgFor } from '@angular/common';
 import { StepComponent } from '../../../core/component/step/step.component';
 
@@ -18,7 +18,7 @@ import { StepComponent } from '../../../core/component/step/step.component';
     imports: [
         SectionComponent,
         ArrayComponent,
-        SvgIconModule,
+        SvgIconComponent,
         NgIf,
         NgFor,
         StepComponent,

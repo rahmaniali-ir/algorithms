@@ -6,24 +6,24 @@ import { getPossibleSequenceParenthesis } from '../../../generic/matrix/utils/ma
 import { CheckBoxComponent } from '../../../core/component/check-box/check-box.component';
 import { SectionComponent } from '../../../core/component/section/section.component';
 import { NgIf, NgFor } from '@angular/common';
-import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { MatrixComponent } from '../../../generic/matrix/matrix.component';
 import { StepComponent } from '../../../core/component/step/step.component';
 
 @Component({
-    selector: 'matrix-multiplication',
-    templateUrl: './matrix-multiplication.component.html',
-    styleUrls: ['./matrix-multiplication.component.sass'],
-    standalone: true,
-    imports: [
-        CheckBoxComponent,
-        SectionComponent,
-        NgIf,
-        SvgIconModule,
-        NgFor,
-        MatrixComponent,
-        StepComponent,
-    ],
+  selector: 'matrix-multiplication',
+  templateUrl: './matrix-multiplication.component.html',
+  styleUrls: ['./matrix-multiplication.component.sass'],
+  standalone: true,
+  imports: [
+    CheckBoxComponent,
+    SectionComponent,
+    NgIf,
+    SvgIconComponent,
+    NgFor,
+    MatrixComponent,
+    StepComponent,
+  ],
 })
 export class MatrixMultiplicationComponent {
   matrices: Matrix<number>[] = [];

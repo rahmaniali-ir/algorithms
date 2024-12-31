@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 
 @Component({
-    selector: 'app-section',
-    templateUrl: './section.component.html',
-    styleUrls: ['./section.component.sass'],
-    standalone: true,
-    imports: [SvgIconModule],
+  selector: 'app-section',
+  templateUrl: './section.component.html',
+  styleUrls: ['./section.component.sass'],
+  standalone: true,
+  imports: [SvgIconComponent],
 })
 export class SectionComponent {
   @Input() icon = '';

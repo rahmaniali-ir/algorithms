@@ -9,24 +9,24 @@ import { FormLabelComponent } from '../../../core/component/form-label/form-labe
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CheckBoxComponent } from '../../../core/component/check-box/check-box.component';
-import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { MatrixComponent } from '../../../generic/matrix/matrix.component';
 
 @Component({
-    selector: 'create-matrix-modal',
-    templateUrl: './create-matrix-modal.component.html',
-    styleUrls: ['./create-matrix-modal.component.sass'],
-    standalone: true,
-    imports: [
-        ModalCardComponent,
-        FormGroupComponent,
-        FormLabelComponent,
-        NgIf,
-        FormsModule,
-        CheckBoxComponent,
-        SvgIconModule,
-        MatrixComponent,
-    ],
+  selector: 'create-matrix-modal',
+  templateUrl: './create-matrix-modal.component.html',
+  styleUrls: ['./create-matrix-modal.component.sass'],
+  standalone: true,
+  imports: [
+    ModalCardComponent,
+    FormGroupComponent,
+    FormLabelComponent,
+    NgIf,
+    FormsModule,
+    CheckBoxComponent,
+    SvgIconComponent,
+    MatrixComponent,
+  ],
 })
 export class CreateMatrixModalComponent implements OnInit {
   @Input() name = getAlphabetLetter(0);

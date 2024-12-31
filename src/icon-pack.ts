@@ -1,6 +1,6 @@
-import { IconPack, SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { IconPack } from '@rahmaniali.ir/angular-svg-icon';
 
-const iconPack: IconPack = {
+export const iconPack: IconPack = {
   abacus: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 2a1 1 0 00-1 1v3h-4V5a1 1 0 00-2 0v1h-2V5a1 1 0 00-2 0v1H8V5a1 1 0 00-2 0v1H4V3a1 1 0 00-2 0v16a3 3 0 003 3h14a3 3 0 003-3V3a1 1 0 00-1-1zm-1 17a1 1 0 01-1 1H5a1 1 0 01-1-1v-3h2v1a1 1 0 102 0v-1h2v1a1 1 0 002 0v-1h4v1a1 1 0 002 0v-1h2v3zm0-5h-2v-1a1 1 0 00-2 0v1h-4v-1a1 1 0 00-2 0v1H8v-1a1 1 0 10-2 0v1H4V8h2v1a1 1 0 002 0V8h2v1a1 1 0 002 0V8h2v1a1 1 0 002 0V8h4v6z" /></svg>`,
   addX: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.71 7.29a1 1 0 00-1.42 0L11 9.59l-2.29-2.3a1.004 1.004 0 10-1.42 1.42L9.59 11l-2.3 2.29a1 1 0 00.325 1.639 1 1 0 001.095-.219l2.29-2.3 2.29 2.3a1.002 1.002 0 001.639-.325 1 1 0 00-.219-1.095L12.41 11l2.3-2.29a1 1 0 000-1.42zM7 18a3 3 0 01-3-3V7a3 3 0 013-3 1 1 0 000-2 5 5 0 00-5 5v8a5 5 0 005 5 1 1 0 000-2zM18 7v6a1 1 0 002 0V7a5 5 0 00-5-5 1 1 0 100 2 3 3 0 013 3zm3 11h-1v-1a1 1 0 00-2 0v1h-1a1 1 0 000 2h1v1a1 1 0 002 0v-1h1a1 1 0 000-2z" /></svg>`,
   angleDown: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 9.17a1 1 0 00-1.41 0L12 12.71 8.46 9.17a1 1 0 10-1.41 1.42l4.24 4.24a1.002 1.002 0 001.42 0L17 10.59a1.002 1.002 0 000-1.42z" /></svg>`,
@@ -51,7 +51,3 @@ const iconPack: IconPack = {
   weight: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1.45A3.08 3.08 0 0017 3a3 3 0 00-2.25-1H9.27A3 3 0 007 3a3.08 3.08 0 00-.57 1H5a3 3 0 00-3 3v12a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm-10.48.34A1 1 0 019.27 4h5.46a1 1 0 01.75.34 1 1 0 01.25.78l-.5 4a1 1 0 01-1 .88h-1.64l1.14-2.4a1 1 0 00-1.8-.86L10.37 10h-.6a1 1 0 01-1-.88l-.5-4a1 1 0 01.25-.78zM20 19a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h1.37l.42 3.37a3 3 0 003 2.63h4.46a3 3 0 003-2.63L17.63 6H19a1 1 0 011 1v12zm-6-3h-4a1 1 0 000 2h4a1 1 0 000-2z" /></svg>`,
   wrapText: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7h18a1 1 0 100-2H3a1 1 0 000 2zm6 8H3a1 1 0 000 2h6a1 1 0 000-2zm9.5-5H3a1 1 0 000 2h15.5a1.5 1.5 0 110 3h-3.09l.3-.29a1.004 1.004 0 10-1.42-1.42l-2 2a1 1 0 00-.21.33 1 1 0 000 .76 1 1 0 00.21.33l2 2a1.002 1.002 0 001.639-.325 1 1 0 00-.219-1.095l-.3-.29h3.09a3.5 3.5 0 100-7z" /></svg>`,
 };
-
-export const IconModule = SvgIconModule.config({
-  iconPack,
-});

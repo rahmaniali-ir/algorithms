@@ -15,14 +15,14 @@ import { Position } from 'src/app/core/type/position';
 import { CommonModule } from '@angular/common';
 import { VertexComponent } from '../vertex/vertex.component';
 import { FormsModule } from '@angular/forms';
-import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.sass'],
   standalone: true,
-  imports: [CommonModule, VertexComponent, FormsModule, SvgIconModule],
+  imports: [CommonModule, VertexComponent, FormsModule, SvgIconComponent],
 })
 export class GraphComponent implements OnInit {
   @Input() graph: Graph = new Graph<{ position: Position }>('default');
