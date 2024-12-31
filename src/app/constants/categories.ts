@@ -1,4 +1,4 @@
-import { Category } from '../type/gallery';
+import { Category } from '../types/category';
 
 export const categories = {
   divideAndConquer: {

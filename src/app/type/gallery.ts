@@ -1,10 +1,5 @@
 import { Customizable } from '../core/type/customizable';
-
-export interface Category {
-  id: string;
-  name: string;
-  icon: string;
-}
+import { Category } from '../types/category';
 
 export interface Project extends Customizable {
   icon: string;

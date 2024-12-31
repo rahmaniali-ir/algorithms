@@ -5,11 +5,11 @@ import { Tree } from 'src/app/graph/model/tree';
 import { TreeNodeAddress } from 'src/app/graph/type/tree';
 import { Graph } from 'src/app/generic/graph/model/graph';
 import { Position } from 'src/app/core/type/position';
-import { SectionComponent } from '../../../core/component/section/section.component';
+import { SectionComponent } from '@core/components/section/section.component';
 import { ArrayComponent } from '../../../generic/array/array.component';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { NgIf, NgFor } from '@angular/common';
-import { StepComponent } from '../../../core/component/step/step.component';
+import { StepComponent } from '@core/components/step/step.component';
 
 @Component({
   selector: 'merge-sort',

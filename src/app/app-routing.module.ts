@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GalleryComponent } from './component/gallery/gallery.component';
+import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { ProjectComponent } from './component/project/project.component';
-import { projectsArray } from './config/projects';
+import { projectsArray } from './constants/projects';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: GalleryComponent,
+    component: HomePageComponent,
   },
   {
     path: 'project',

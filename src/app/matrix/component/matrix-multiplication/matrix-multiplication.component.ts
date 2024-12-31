@@ -3,12 +3,12 @@ import { Matrix } from '../../../generic/matrix/model/matrix';
 import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { CreateMatrixModalComponent } from '../create-matrix-modal/create-matrix-modal.component';
 import { getPossibleSequenceParenthesis } from '../../../generic/matrix/utils/matrix';
-import { CheckBoxComponent } from '../../../core/component/check-box/check-box.component';
-import { SectionComponent } from '../../../core/component/section/section.component';
+import { CheckBoxComponent } from '../../../core/components/check-box/check-box.component';
+import { SectionComponent } from '../../../core/components/section/section.component';
 import { NgIf, NgFor } from '@angular/common';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { MatrixComponent } from '../../../generic/matrix/matrix.component';
-import { StepComponent } from '../../../core/component/step/step.component';
+import { StepComponent } from '../../../core/components/step/step.component';
 
 @Component({
   selector: 'matrix-multiplication',

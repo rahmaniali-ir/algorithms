@@ -3,12 +3,12 @@ import { Matrix, PlainMatrix } from '../../../generic/matrix/model/matrix';
 import { getRandom } from 'src/app/core/util/random';
 import { ActiveModal } from '@rahmaniali.ir/angular-modal';
 import { getAlphabetLetter } from 'src/app/core/util/alphabet';
-import { ModalCardComponent } from '../../../core/component/modal-card/modal-card.component';
-import { FormGroupComponent } from '../../../core/component/form-group/form-group.component';
-import { FormLabelComponent } from '../../../core/component/form-label/form-label.component';
+import { ModalCardComponent } from '../../../core/components/modal-card/modal-card.component';
+import { FormGroupComponent } from '../../../core/components/form-group/form-group.component';
+import { FormLabelComponent } from '../../../core/components/form-label/form-label.component';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CheckBoxComponent } from '../../../core/component/check-box/check-box.component';
+import { CheckBoxComponent } from '../../../core/components/check-box/check-box.component';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { MatrixComponent } from '../../../generic/matrix/matrix.component';
 

@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { BehaviorSubject, Subject, debounceTime, throttleTime } from 'rxjs';
-import { defaultProject } from 'src/app/config/projects';
+import { Subject, throttleTime } from 'rxjs';
+import { defaultProject } from 'src/app/constants/projects';
 import { Position } from 'src/app/core/type/position';
 import { getRandom } from 'src/app/core/util/random';
 import { Project } from 'src/app/type/gallery';

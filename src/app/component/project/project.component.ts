@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
-import { defaultCategory } from 'src/app/config/categories';
-import { defaultProject } from 'src/app/config/projects';
+import { defaultCategory } from 'src/app/constants/categories';
+import { defaultProject } from 'src/app/constants/projects';
 import { Project } from 'src/app/type/gallery';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
-import { CategoryTagComponent } from '../category-tag/category-tag.component';
+import { CategoryTagComponent } from '../../core/components/category-tag/category-tag.component';
 
 @Component({
   selector: 'app-project',

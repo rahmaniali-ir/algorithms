@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MetaArray } from 'src/app/generic/array/model/meta-array';
-import { SectionComponent } from '../../../core/component/section/section.component';
+import { SectionComponent } from '../../../core/components/section/section.component';
 import { ArrayComponent } from '../../../generic/array/array.component';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 

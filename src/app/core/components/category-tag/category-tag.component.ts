@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { defaultCategory } from 'src/app/config/categories';
+import { defaultCategory } from 'src/app/constants/categories';
 import { Category } from 'src/app/type/gallery';
 import { RouterLink } from '@angular/router';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';

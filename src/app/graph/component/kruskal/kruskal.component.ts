@@ -5,11 +5,11 @@ import { Edge } from '../../../generic/graph/type/graph';
 import { getVertexName } from '../../../generic/graph/utils/graph';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from 'src/app/core/type/position';
-import { SectionComponent } from '../../../core/component/section/section.component';
+import { SectionComponent } from '../../../core/components/section/section.component';
 import { NgIf, NgFor } from '@angular/common';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { GraphComponent } from '../../../generic/graph/graph.component';
-import { StepComponent } from '../../../core/component/step/step.component';
+import { StepComponent } from '../../../core/components/step/step.component';
 
 @Component({
   selector: 'app-kruskal',
