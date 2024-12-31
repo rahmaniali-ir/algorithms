@@ -25,8 +25,11 @@
       "@components/*": ["src/app/components/*"],
       "@common/*": ["src/app/components/common/*"],
       "@pages/*": ["src/app/components/pages/*"],
+      "@modals/*": ["src/app/components/modals/*"],
       "@const/*": ["src/app/constants/*"],
-      "@types/*": ["src/app/types/*"]
+      "@models/*": ["src/app/models/*"],
+      "@utils/*": ["src/app/utils/*"],
+      "@type/*": ["src/app/types/*"]
     }
   },
   "angularCompilerOptions": {

@@ -1,4 +1,4 @@
-import { Customizable } from '../type/customizable';
+import { Customizable } from '../../types/customizable';
 
 export function getClassList(customizable: Customizable) {
   const className = customizable.className || '';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './components/pages/home-page/home-page.component';
+import { HomeComponent } from './components/pages/home/home.component';
 import { ProjectComponent } from './component/project/project.component';
 import { projectsArray } from './constants/projects';
 
@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomePageComponent,
+    component: HomeComponent,
   },
   {
     path: 'project',

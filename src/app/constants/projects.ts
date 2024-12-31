@@ -1,13 +1,13 @@
-import { ChangeCoinsComponent } from '../change-coins/component/change-coins/change-coins.component';
-import { SoonComponent } from '../component/soon/soon.component';
-import { KruskalComponent } from '../graph/component/kruskal/kruskal.component';
-import { PrimComponent } from '../graph/component/prim/prim.component';
-import { MatrixMultiplicationComponent } from '../matrix/component/matrix-multiplication/matrix-multiplication.component';
-import { BinarySearchComponent } from '../search/component/binary-search/binary-search.component';
-import { QuickSortComponent } from '../sort/component/quick-sort/quick-sort.component';
-import { MergeSortComponent } from '../sort/component/merge-sort/merge-sort.component';
-import { Project } from '../type/gallery';
+import { ChangeCoinsComponent } from '../components/algorithms/change-coins/change-coins.component';
+import { Project } from '@type/gallery';
 import { categories, defaultCategory } from './categories';
+import { SoonComponent } from '@components/algorithms/soon/soon.component';
+import { BinarySearchComponent } from '@components/algorithms/binary-search/binary-search.component';
+import { MergeSortComponent } from '@components/algorithms/merge-sort/merge-sort.component';
+import { QuickSortComponent } from '@components/algorithms/quick-sort/quick-sort.component';
+import { MatrixMultiplicationComponent } from '@components/algorithms/matrix-multiplication/matrix-multiplication.component';
+import { PrimComponent } from '@components/algorithms/prim/prim.component';
+import { KruskalComponent } from '@components/algorithms/kruskal/kruskal.component';
 
 export type ProjectKey =
   | 'binarySearch'
@@ -145,7 +145,7 @@ export const projects: Record<ProjectKey, Project> = {
     description:
       "Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.",
     category: categories.greedyApproach,
-    component: PrimComponent,
+    component: SoonComponent,
     className: 'soon',
   },
 

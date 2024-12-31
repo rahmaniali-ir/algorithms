@@ -1,9 +1,9 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { Subject, throttleTime } from 'rxjs';
-import { defaultProject } from 'src/app/constants/projects';
-import { Position } from 'src/app/core/type/position';
+import { defaultProject } from '@const/projects';
+import { Position } from '@type/position';
 import { getRandom } from 'src/app/core/util/random';
-import { Project } from 'src/app/type/gallery';
+import { Project } from '@type/gallery';
 import { RouterLink } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
