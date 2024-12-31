@@ -1,30 +1,20 @@
-<a
-  [routerLink]="'algorithm/' + algorithm.id"
-  [class.hovered]="hovered"
-  (mousemove)="onMouseMove($event)"
-  (mouseleave)="onMouseLeave()"
-  class="button"
->
-  <div class="background">
-    @for(color of colors; track color) {
-    <div [style.left]="position.x" [style.top]="position.y" class="shape">
-      <svg-icon [style.--color]="color" name="filledSquare" />
+<a [routerLink]="'algorithm/' + algorithm.id" class="flex-1 flex rounded-xl">
+  <glass-card class="flex-1">
+    <svg-icon
+      [name]="algorithm.icon"
+      class="text-8xl scale-150 absolute opacity-40 top-1/2 -translate-y-1/2 right-8 text-slate-50"
+    />
+
+    <div
+      class="flex flex-col flex-1 items-start relative z-20 gap-4 justify-end"
+    >
+      <p class="text-xs opacity-50 max-w-44">{{ algorithm.description }}</p>
+
+      <strong class="font-semibold items-center flex gap-2">
+        <svg-icon [name]="algorithm.icon" class="text-2xl" />
+
+        <span class="leading-tight">{{ algorithm.name }}</span>
+      </strong>
     </div>
-    }
-  </div>
-
-  <svg-icon
-    [name]="algorithm.icon"
-    class="text-8xl scale-150 absolute opacity-25 top-1/2 -translate-y-1/2 right-8 text-slate-50"
-  />
-
-  <div class="flex flex-col flex-1 relative z-20 gap-4 justify-end">
-    <p class="text-xs opacity-50">{{ algorithm.description }}</p>
-
-    <strong class="font-semibold items-center flex gap-2">
-      <svg-icon [name]="algorithm.icon" class="text-2xl" />
-
-      <span class="leading-tight">{{ algorithm.name }}</span>
-    </strong>
-  </div>
+  </glass-card>
 </a>

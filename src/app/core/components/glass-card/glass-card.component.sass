@@ -1,0 +1,62 @@
+
+:host
+  @apply relative flex flex-col items-start rounded-inherit border-2 bg-slate-200/50 border-slate-200 overflow-hidden p-4 isolate
+
+  &.hovered
+    .shape > *
+      scale: 1
+      opacity: 1
+
+  > *
+    pointer-events: none
+
+.shape
+  @apply blur-xl
+  position: absolute
+  top: -50px
+
+  &:nth-child(1)
+    transition: all 6s linear
+
+    svg-icon
+      scale: 1.5
+      rotate: 43deg
+
+  &:nth-child(2)
+    transition: all 5s linear
+
+    svg-icon
+      scale: 1
+
+  &:nth-child(3)
+    transition: all 4s linear
+
+    svg-icon
+      scale: .6
+      rotate: 90deg
+
+  > *
+    transition: all 2s ease
+
+  svg-icon
+    animation: shape 15s ease-in-out alternate infinite
+    color: var(--color, currentColor)
+    border-radius: 50%
+    height: 100px
+    opacity: 0
+    transform-origin: 50% 80%
+    scale: .8
+    width: 100px
+
+@keyframes shape
+  0%, 100%
+    translate: 0 0
+
+  0%
+    rotate: 0deg
+
+  50%
+    translate: 0 -10%
+
+  100%
+    rotate: 360deg

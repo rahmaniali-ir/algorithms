@@ -38,10 +38,16 @@ module.exports = {
             translate: "0 0",
           },
         },
+        attract: {
+          "0%": { scale: "1" },
+          "40%": { scale: "1.2" },
+          "100%": { scale: "1" },
+        },
       },
       animation: {
         appear:
           "opacity-in .3s ease forwards, translate-y-up .3s ease forwards",
+        attract: "attract .3s ease forwards",
       },
     },
   },

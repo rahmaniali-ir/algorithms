@@ -1,0 +1,9 @@
+<div class="absolute inset-0 -z-20 opacity-50">
+  @for(color of colors; track color) {
+  <div [style.left]="position.x" [style.top]="position.y" class="shape">
+    <svg-icon [style.--color]="color" name="filledSquare" />
+  </div>
+  }
+</div>
+
+<ng-content />
