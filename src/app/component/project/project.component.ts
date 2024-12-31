@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { defaultCategory } from 'src/app/config/categories';
 import { defaultProject } from 'src/app/config/projects';
 import { Project } from 'src/app/type/gallery';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { CategoryTagComponent } from '../category-tag/category-tag.component';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.sass'],
+    selector: 'app-project',
+    templateUrl: './project.component.html',
+    styleUrls: ['./project.component.sass'],
+    standalone: true,
+    imports: [
+        SvgIconModule,
+        CategoryTagComponent,
+        RouterLink,
+        RouterOutlet,
+    ],
 })
 export class ProjectComponent {
   constructor(private route: ActivatedRoute) {}

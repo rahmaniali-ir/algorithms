@@ -8,8 +8,8 @@ describe('ModalCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalCardComponent ]
-    })
+    imports: [ModalCardComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ModalCardComponent);

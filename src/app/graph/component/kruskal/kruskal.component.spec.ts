@@ -8,8 +8,8 @@ describe('KruskalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KruskalComponent ]
-    })
+    imports: [KruskalComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(KruskalComponent);

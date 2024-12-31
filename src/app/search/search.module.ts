@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { SearchTargetModalComponent } from './component/search-target-modal/search-target-modal.component';
 
 @NgModule({
-  declarations: [BinarySearchComponent, SearchTargetModalComponent],
-  imports: [CommonModule, CoreModule, IconModule, FormsModule, ArrayComponent],
+    imports: [CommonModule, CoreModule, IconModule, FormsModule, ArrayComponent, BinarySearchComponent, SearchTargetModalComponent],
 })
 export class SearchModule {}

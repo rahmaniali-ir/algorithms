@@ -1,9 +1,10 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-coin',
-  templateUrl: './coin.component.html',
-  styleUrls: ['./coin.component.sass'],
+    selector: 'app-coin',
+    templateUrl: './coin.component.html',
+    styleUrls: ['./coin.component.sass'],
+    standalone: true,
 })
 export class CoinComponent {
   @Input() amount = 0;

@@ -7,7 +7,6 @@ import { ArrayComponent } from '../generic/array/array.component';
 import { QuickSortComponent } from './component/quick-sort/quick-sort.component';
 
 @NgModule({
-  declarations: [MergeSortComponent, QuickSortComponent],
-  imports: [CommonModule, CoreModule, IconModule, ArrayComponent],
+    imports: [CommonModule, CoreModule, IconModule, ArrayComponent, MergeSortComponent, QuickSortComponent],
 })
 export class SortModule {}

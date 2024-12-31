@@ -4,11 +4,25 @@ import { BinarySearchStep } from '../../type/binary-search';
 import { getClassList } from 'src/app/core/util/customizable';
 import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { SearchTargetModalComponent } from '../search-target-modal/search-target-modal.component';
+import { SectionComponent } from '../../../core/component/section/section.component';
+import { ArrayComponent } from '../../../generic/array/array.component';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { NgIf, NgFor } from '@angular/common';
+import { StepComponent } from '../../../core/component/step/step.component';
 
 @Component({
-  selector: 'binary-search',
-  templateUrl: './binary-search.component.html',
-  styleUrls: ['./binary-search.component.sass'],
+    selector: 'binary-search',
+    templateUrl: './binary-search.component.html',
+    styleUrls: ['./binary-search.component.sass'],
+    standalone: true,
+    imports: [
+        SectionComponent,
+        ArrayComponent,
+        SvgIconModule,
+        NgIf,
+        NgFor,
+        StepComponent,
+    ],
 })
 export class BinarySearchComponent {
   input = new MetaArray<number>([

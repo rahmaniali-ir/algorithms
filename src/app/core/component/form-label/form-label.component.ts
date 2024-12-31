@@ -7,10 +7,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'form-label',
-  templateUrl: './form-label.component.html',
-  styleUrls: ['./form-label.component.sass'],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'form-label',
+    templateUrl: './form-label.component.html',
+    styleUrls: ['./form-label.component.sass'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: true,
 })
 export class FormLabelComponent implements OnInit {
   @Input() label = '';

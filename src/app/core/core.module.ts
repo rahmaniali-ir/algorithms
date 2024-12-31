@@ -10,22 +10,19 @@ import { CommonModule } from '@angular/common';
 import { SectionComponent } from './component/section/section.component';
 
 @NgModule({
-  declarations: [
-    ModalCardComponent,
-    CheckBoxComponent,
-    FormLabelComponent,
-    FormGroupComponent,
-    StepComponent,
-    SectionComponent,
-  ],
-  imports: [CommonModule, IconModule, RouterModule],
-  exports: [
-    ModalCardComponent,
-    CheckBoxComponent,
-    FormLabelComponent,
-    FormGroupComponent,
-    StepComponent,
-    SectionComponent,
-  ],
+    imports: [CommonModule, IconModule, RouterModule, ModalCardComponent,
+        CheckBoxComponent,
+        FormLabelComponent,
+        FormGroupComponent,
+        StepComponent,
+        SectionComponent],
+    exports: [
+        ModalCardComponent,
+        CheckBoxComponent,
+        FormLabelComponent,
+        FormGroupComponent,
+        StepComponent,
+        SectionComponent,
+    ],
 })
 export class CoreModule {}

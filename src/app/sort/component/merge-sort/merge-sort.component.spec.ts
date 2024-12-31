@@ -8,8 +8,8 @@ describe('MergeSortComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MergeSortComponent ]
-    })
+    imports: [MergeSortComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(MergeSortComponent);

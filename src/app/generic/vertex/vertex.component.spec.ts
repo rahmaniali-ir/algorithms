@@ -8,8 +8,8 @@ describe('VertexComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VertexComponent ]
-    })
+    imports: [VertexComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(VertexComponent);

@@ -8,7 +8,6 @@ import { IconModule } from '../icon-pack';
 import { MatrixComponent } from '../generic/matrix/matrix.component';
 
 @NgModule({
-  declarations: [MatrixMultiplicationComponent, CreateMatrixModalComponent],
-  imports: [CommonModule, FormsModule, CoreModule, IconModule, MatrixComponent],
+    imports: [CommonModule, FormsModule, CoreModule, IconModule, MatrixComponent, MatrixMultiplicationComponent, CreateMatrixModalComponent],
 })
 export class MatrixModule {}

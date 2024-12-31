@@ -8,8 +8,8 @@ describe('AddCoinModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddCoinModalComponent ]
-    })
+    imports: [AddCoinModalComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(AddCoinModalComponent);

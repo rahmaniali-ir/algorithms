@@ -8,8 +8,8 @@ describe('QuickSortComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuickSortComponent ]
-    })
+    imports: [QuickSortComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(QuickSortComponent);

@@ -6,11 +6,14 @@ import {
   EventEmitter,
   HostListener,
 } from '@angular/core';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
 
 @Component({
-  selector: 'check-box',
-  templateUrl: './check-box.component.html',
-  styleUrls: ['./check-box.component.sass'],
+    selector: 'check-box',
+    templateUrl: './check-box.component.html',
+    styleUrls: ['./check-box.component.sass'],
+    standalone: true,
+    imports: [SvgIconModule],
 })
 export class CheckBoxComponent {
   @Input()

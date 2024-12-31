@@ -3,11 +3,30 @@ import { Matrix, PlainMatrix } from '../../../generic/matrix/model/matrix';
 import { getRandom } from 'src/app/core/util/random';
 import { ActiveModal } from '@rahmaniali.ir/angular-modal';
 import { getAlphabetLetter } from 'src/app/core/util/alphabet';
+import { ModalCardComponent } from '../../../core/component/modal-card/modal-card.component';
+import { FormGroupComponent } from '../../../core/component/form-group/form-group.component';
+import { FormLabelComponent } from '../../../core/component/form-label/form-label.component';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CheckBoxComponent } from '../../../core/component/check-box/check-box.component';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { MatrixComponent } from '../../../generic/matrix/matrix.component';
 
 @Component({
-  selector: 'create-matrix-modal',
-  templateUrl: './create-matrix-modal.component.html',
-  styleUrls: ['./create-matrix-modal.component.sass'],
+    selector: 'create-matrix-modal',
+    templateUrl: './create-matrix-modal.component.html',
+    styleUrls: ['./create-matrix-modal.component.sass'],
+    standalone: true,
+    imports: [
+        ModalCardComponent,
+        FormGroupComponent,
+        FormLabelComponent,
+        NgIf,
+        FormsModule,
+        CheckBoxComponent,
+        SvgIconModule,
+        MatrixComponent,
+    ],
 })
 export class CreateMatrixModalComponent implements OnInit {
   @Input() name = getAlphabetLetter(0);

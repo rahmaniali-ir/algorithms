@@ -5,11 +5,25 @@ import { Tree } from 'src/app/graph/model/tree';
 import { TreeNodeAddress } from 'src/app/graph/type/tree';
 import { Graph } from 'src/app/generic/graph/model/graph';
 import { Position } from 'src/app/core/type/position';
+import { SectionComponent } from '../../../core/component/section/section.component';
+import { ArrayComponent } from '../../../generic/array/array.component';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { NgIf, NgFor } from '@angular/common';
+import { StepComponent } from '../../../core/component/step/step.component';
 
 @Component({
-  selector: 'merge-sort',
-  templateUrl: './merge-sort.component.html',
-  styleUrls: ['./merge-sort.component.sass'],
+    selector: 'merge-sort',
+    templateUrl: './merge-sort.component.html',
+    styleUrls: ['./merge-sort.component.sass'],
+    standalone: true,
+    imports: [
+        SectionComponent,
+        ArrayComponent,
+        SvgIconModule,
+        NgIf,
+        NgFor,
+        StepComponent,
+    ],
 })
 export class MergeSortComponent {
   input = new MetaArray<number>([27, 10, 12, 20, 25, 13, 15, 22]);

@@ -9,14 +9,14 @@ import { PrimComponent } from './component/prim/prim.component';
 import { VertexComponent } from '../generic/vertex/vertex.component';
 
 @NgModule({
-  declarations: [KruskalComponent, PrimComponent],
-  imports: [
-    CommonModule,
-    CoreModule,
-    IconModule,
-    FormsModule,
-    GraphComponent,
-    VertexComponent,
-  ],
+    imports: [
+        CommonModule,
+        CoreModule,
+        IconModule,
+        FormsModule,
+        GraphComponent,
+        VertexComponent,
+        KruskalComponent, PrimComponent,
+    ],
 })
 export class GraphModule {}

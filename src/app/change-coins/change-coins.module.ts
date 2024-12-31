@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { ChangeCoinsModalComponent } from './component/change-coins-modal/change-coins-modal.component';
 
 @NgModule({
-  declarations: [ChangeCoinsComponent, CoinComponent, AddCoinModalComponent, ChangeCoinsModalComponent],
-  imports: [CommonModule, CoreModule, IconModule, FormsModule],
+    imports: [CommonModule, CoreModule, IconModule, FormsModule, ChangeCoinsComponent, CoinComponent, AddCoinModalComponent, ChangeCoinsModalComponent],
 })
 export class ChangeCoinsModule {}

@@ -5,11 +5,27 @@ import { Edge, Vertex, Vertices } from '../../../generic/graph/type/graph';
 import { getVertexName } from '../../../generic/graph/utils/graph';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from 'src/app/core/type/position';
+import { SectionComponent } from '../../../core/component/section/section.component';
+import { NgIf, NgFor } from '@angular/common';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { GraphComponent } from '../../../generic/graph/graph.component';
+import { StepComponent } from '../../../core/component/step/step.component';
+import { VertexComponent } from '../../../generic/vertex/vertex.component';
 
 @Component({
-  selector: 'app-prim',
-  templateUrl: './prim.component.html',
-  styleUrls: ['./prim.component.sass'],
+    selector: 'app-prim',
+    templateUrl: './prim.component.html',
+    styleUrls: ['./prim.component.sass'],
+    standalone: true,
+    imports: [
+        SectionComponent,
+        NgIf,
+        SvgIconModule,
+        GraphComponent,
+        NgFor,
+        StepComponent,
+        VertexComponent,
+    ],
 })
 export class PrimComponent {
   graph = new Graph<{ position: Position }>('Input');

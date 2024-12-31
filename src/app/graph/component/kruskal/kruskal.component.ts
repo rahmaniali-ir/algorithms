@@ -5,11 +5,25 @@ import { Edge } from '../../../generic/graph/type/graph';
 import { getVertexName } from '../../../generic/graph/utils/graph';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from 'src/app/core/type/position';
+import { SectionComponent } from '../../../core/component/section/section.component';
+import { NgIf, NgFor } from '@angular/common';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
+import { GraphComponent } from '../../../generic/graph/graph.component';
+import { StepComponent } from '../../../core/component/step/step.component';
 
 @Component({
-  selector: 'app-kruskal',
-  templateUrl: './kruskal.component.html',
-  styleUrls: ['./kruskal.component.sass'],
+    selector: 'app-kruskal',
+    templateUrl: './kruskal.component.html',
+    styleUrls: ['./kruskal.component.sass'],
+    standalone: true,
+    imports: [
+        SectionComponent,
+        NgIf,
+        SvgIconModule,
+        GraphComponent,
+        NgFor,
+        StepComponent,
+    ],
 })
 export class KruskalComponent {
   graph = new Graph<{ position: Position }>('Input');

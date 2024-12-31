@@ -8,8 +8,8 @@ describe('BinarySearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BinarySearchComponent ]
-    })
+    imports: [BinarySearchComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(BinarySearchComponent);

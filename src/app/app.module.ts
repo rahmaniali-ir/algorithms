@@ -17,25 +17,23 @@ import { SortModule } from './sort/sort.module';
 import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GalleryComponent,
-    ProjectComponent,
-    ProjectCardComponent,
-    CategoryTagComponent,
-    SoonComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    IconModule,
-    MatrixModule,
-    ChangeCoinsModule,
-    GraphModule,
-    SearchModule,
-    SortModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        IconModule,
+        MatrixModule,
+        ChangeCoinsModule,
+        GraphModule,
+        SearchModule,
+        SortModule,
+        GalleryComponent,
+        ProjectComponent,
+        ProjectCardComponent,
+        CategoryTagComponent,
+        SoonComponent,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

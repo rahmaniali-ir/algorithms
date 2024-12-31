@@ -8,8 +8,8 @@ describe('PrimComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrimComponent ]
-    })
+    imports: [PrimComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(PrimComponent);

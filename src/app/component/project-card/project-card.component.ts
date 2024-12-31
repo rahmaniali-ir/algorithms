@@ -4,11 +4,20 @@ import { defaultProject } from 'src/app/config/projects';
 import { Position } from 'src/app/core/type/position';
 import { getRandom } from 'src/app/core/util/random';
 import { Project } from 'src/app/type/gallery';
+import { RouterLink } from '@angular/router';
+import { NgFor } from '@angular/common';
+import { SvgIconModule } from '@rahmaniali.ir/angular-svg-icon';
 
 @Component({
-  selector: 'project-card',
-  templateUrl: './project-card.component.html',
-  styleUrls: ['./project-card.component.sass'],
+    selector: 'project-card',
+    templateUrl: './project-card.component.html',
+    styleUrls: ['./project-card.component.sass'],
+    standalone: true,
+    imports: [
+        RouterLink,
+        NgFor,
+        SvgIconModule,
+    ],
 })
 export class ProjectCardComponent {
   @Input() project: Project = defaultProject;
