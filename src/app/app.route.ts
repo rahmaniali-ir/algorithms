@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
 import { AlgorithmComponent } from '@components/pages/algorithm/algorithm.component';
-import { projectsArray } from '@const/projects';
+import { algorithmsArray } from '@const/algorithms';
 
 export const routes: Routes = [
   {
@@ -11,10 +11,10 @@ export const routes: Routes = [
   {
     path: 'algorithm',
     component: AlgorithmComponent,
-    children: projectsArray.map((project) => ({
-      path: project.id,
-      component: project.component,
-      data: { project },
+    children: algorithmsArray.map((algorithm) => ({
+      path: algorithm.id,
+      component: algorithm.component,
+      data: { algorithm },
     })),
   },
   { path: '**', redirectTo: '' },

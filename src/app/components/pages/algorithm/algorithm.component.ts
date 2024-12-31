@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { defaultCategory } from '@const/categories';
-import { defaultProject } from '@const/projects';
+import { defaultAlgorithm } from '@const/algorithms';
 import { CategoryTagComponent } from '@core/components/category-tag/category-tag.component';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
-import { Project } from '@type/gallery';
+import { Algorithm } from '@type/algorithm';
 
 @Component({
   selector: 'app-algorithm',
@@ -16,12 +16,14 @@ import { Project } from '@type/gallery';
 export class AlgorithmComponent {
   private readonly route = inject(ActivatedRoute);
 
-  get project(): Project {
-    return this.route.snapshot.children[0].data['project'] || defaultProject;
+  get algorithm(): Algorithm {
+    return (
+      this.route.snapshot.children[0].data['algorithm'] || defaultAlgorithm
+    );
   }
 
   get category() {
-    return this.project.category || defaultCategory;
+    return this.algorithm.category || defaultCategory;
   }
 
   print() {

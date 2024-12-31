@@ -1,22 +1,21 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { Subject, throttleTime } from 'rxjs';
-import { defaultProject } from '@const/projects';
+import { defaultAlgorithm } from '@const/algorithms';
 import { Position } from '@type/position';
-import { getRandom } from 'src/app/core/util/random';
-import { Project } from '@type/gallery';
+import { getRandom } from '@core/util/random';
+import { Algorithm } from '@type/algorithm';
 import { RouterLink } from '@angular/router';
-import { NgFor } from '@angular/common';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 
 @Component({
-  selector: 'project-card',
-  templateUrl: './project-card.component.html',
-  styleUrls: ['./project-card.component.sass'],
+  selector: 'algorithm-card',
+  templateUrl: './algorithm-card.component.html',
+  styleUrls: ['./algorithm-card.component.sass'],
   standalone: true,
-  imports: [RouterLink, NgFor, SvgIconComponent],
+  imports: [RouterLink, SvgIconComponent],
 })
-export class ProjectCardComponent {
-  @Input() project: Project = defaultProject;
+export class AlgorithmCardComponent {
+  @Input() algorithm: Algorithm = defaultAlgorithm;
 
   private mouse$ = new Subject<Position>();
   mouse: Position;
@@ -42,7 +41,7 @@ export class ProjectCardComponent {
   }
 
   get category() {
-    return this.project.category;
+    return this.algorithm.category;
   }
 
   get position() {
@@ -72,7 +71,7 @@ export class ProjectCardComponent {
 
   @HostBinding('class')
   get className() {
-    return this.project.className || '';
+    return this.algorithm.className || '';
   }
 
   onMouseMove(e: MouseEvent) {

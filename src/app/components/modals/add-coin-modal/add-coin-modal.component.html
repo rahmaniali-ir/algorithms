@@ -1,10 +1,8 @@
 <modal-card header="Add Coin" description="Push new coins to existing coins">
   <section class="coins">
-    <app-coin
-      *ngFor="let coin of coins"
-      [amount]="coin.amount"
-      [size]="coin.size"
-    ></app-coin>
+    @for(coin of coins; track coin) {
+    <app-coin [amount]="coin.amount" [size]="coin.size"></app-coin>
+    }
   </section>
 
   <section>

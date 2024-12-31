@@ -1,5 +1,5 @@
 import { ChangeCoinsComponent } from '../components/algorithms/change-coins/change-coins.component';
-import { Project } from '@type/gallery';
+import { Algorithm } from '@type/algorithm';
 import { categories, defaultCategory } from './categories';
 import { SoonComponent } from '@components/algorithms/soon/soon.component';
 import { BinarySearchComponent } from '@components/algorithms/binary-search/binary-search.component';
@@ -9,26 +9,26 @@ import { MatrixMultiplicationComponent } from '@components/algorithms/matrix-mul
 import { PrimComponent } from '@components/algorithms/prim/prim.component';
 import { KruskalComponent } from '@components/algorithms/kruskal/kruskal.component';
 
-export type ProjectKey =
-  | 'binarySearch'
-  | 'mergeSort'
-  | 'quickSort'
-  | 'largeIntegerMultiplication'
-  | 'binomialCoefficient'
-  | 'floydShortestPath'
-  | 'matrixChainMultiplication'
-  | 'bottleneckTravelingSalesman'
-  | 'changeCoins'
+export type AlgorithmName =
+  | 'binary-search'
+  | 'merge-sort'
+  | 'quick-sort'
+  | 'large-integer-multiplication'
+  | 'binomial-coefficient'
+  | 'floyd-shortest-path'
+  | 'matrix-chain-multiplication'
+  | 'bottleneck-traveling-salesman'
+  | 'change-coins'
   | 'prim'
   | 'kruskal'
-  | 'dijkstraMinimumSpanningTree'
+  | 'dijkstra'
   | 'schedule'
-  | 'huffmanCoding'
+  | 'huffman-coding'
   | 'rucksack';
 
-export const projects: Record<ProjectKey, Project> = {
-  binarySearch: {
-    id: 'binarySearch',
+export const algorithms: Record<AlgorithmName, Algorithm> = {
+  'binary-search': {
+    id: 'binary-search',
     name: 'Binary Search',
     icon: 'search',
     description:
@@ -37,8 +37,8 @@ export const projects: Record<ProjectKey, Project> = {
     component: BinarySearchComponent,
   },
 
-  mergeSort: {
-    id: 'mergeSort',
+  'merge-sort': {
+    id: 'merge-sort',
     name: 'Merge Sort',
     icon: 'sort',
     description:
@@ -47,8 +47,8 @@ export const projects: Record<ProjectKey, Project> = {
     component: MergeSortComponent,
   },
 
-  quickSort: {
-    id: 'quickSort',
+  'quick-sort': {
+    id: 'quick-sort',
     name: 'Quick Sort',
     icon: 'sort',
     description:
@@ -58,8 +58,8 @@ export const projects: Record<ProjectKey, Project> = {
     className: 'soon',
   },
 
-  largeIntegerMultiplication: {
-    id: 'largeIntegerMultiplication',
+  'large-integer-multiplication': {
+    id: 'large-integer-multiplication',
     name: 'Large integer multiplication',
     icon: 'abacus',
     description: 'Lorem Ipsum!',
@@ -68,8 +68,8 @@ export const projects: Record<ProjectKey, Project> = {
     className: 'soon',
   },
 
-  binomialCoefficient: {
-    id: 'binomialCoefficient',
+  'binomial-coefficient': {
+    id: 'binomial-coefficient',
     name: 'Binomial coefficient',
     icon: 'flipV',
     description: 'Lorem Ipsum!',
@@ -78,8 +78,8 @@ export const projects: Record<ProjectKey, Project> = {
     className: 'soon',
   },
 
-  floydShortestPath: {
-    id: 'floydShortestPath',
+  'floyd-shortest-path': {
+    id: 'floyd-shortest-path',
     name: 'Floyd shortest path',
     icon: 'channel',
     description: 'Lorem Ipsum!',
@@ -88,8 +88,8 @@ export const projects: Record<ProjectKey, Project> = {
     className: 'soon',
   },
 
-  matrixChainMultiplication: {
-    id: 'matrixChainMultiplication',
+  'matrix-chain-multiplication': {
+    id: 'matrix-chain-multiplication',
     name: 'Matrix Chain Multiplication',
     icon: 'link',
     description:
@@ -98,8 +98,8 @@ export const projects: Record<ProjectKey, Project> = {
     component: MatrixMultiplicationComponent,
   },
 
-  bottleneckTravelingSalesman: {
-    id: 'bottleneckTravelingSalesman',
+  'bottleneck-traveling-salesman': {
+    id: 'bottleneck-traveling-salesman',
     name: 'Bottleneck traveling salesman',
     icon: 'store',
     description: 'Lorem Ipsum!',
@@ -108,8 +108,8 @@ export const projects: Record<ProjectKey, Project> = {
     className: 'soon',
   },
 
-  changeCoins: {
-    id: 'changeCoins',
+  'change-coins': {
+    id: 'change-coins',
     name: 'Change Coins',
     icon: 'coin',
     description:
@@ -138,8 +138,8 @@ export const projects: Record<ProjectKey, Project> = {
     component: KruskalComponent,
   },
 
-  dijkstraMinimumSpanningTree: {
-    id: 'dijkstraMinimumSpanningTree',
+  dijkstra: {
+    id: 'dijkstra-minimum-spanning-tree',
     name: 'Dijkstra minimum spanning tree',
     icon: 'channel',
     description:
@@ -159,8 +159,8 @@ export const projects: Record<ProjectKey, Project> = {
     className: 'soon',
   },
 
-  huffmanCoding: {
-    id: 'huffmanCoding',
+  'huffman-coding': {
+    id: 'huffman-coding',
     name: 'Huffman coding',
     icon: 'compress',
     description: 'Lorem Ipsum!',
@@ -180,11 +180,11 @@ export const projects: Record<ProjectKey, Project> = {
   },
 };
 
-export const projectsArray = Object.keys(projects).map(
-  (k) => projects[k as ProjectKey]
+export const algorithmsArray = Object.keys(algorithms).map(
+  (k) => algorithms[k as AlgorithmName]
 );
 
-export const defaultProject: Project = {
+export const defaultAlgorithm: Algorithm = {
   id: '',
   name: '',
   icon: '',

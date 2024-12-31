@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GreedyStep } from 'src/type/greedy';
+import { GreedyStep } from '@type/greedy';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from '@type/position';
 import { SectionComponent } from '../../../core/components/section/section.component';

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActiveModal } from '@rahmaniali.ir/angular-modal';
 import { Coin } from '../../../types/coin';
 import { ModalCardComponent } from '../../../core/components/modal-card/modal-card.component';
-import { NgFor } from '@angular/common';
 import { CoinComponent } from '../../common/coin/coin.component';
 import { FormGroupComponent } from '../../../core/components/form-group/form-group.component';
 import { FormLabelComponent } from '../../../core/components/form-label/form-label.component';
@@ -15,7 +14,6 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     ModalCardComponent,
-    NgFor,
     CoinComponent,
     FormGroupComponent,
     FormLabelComponent,

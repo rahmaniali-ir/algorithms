@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Graph } from '@models/graph';
-import { GreedyStep } from 'src/type/greedy';
+import { GreedyStep } from '@type/greedy';
 import { Edge } from '@type/graph';
 import { getVertexName } from '@utils/graph';
 import { getClassList } from 'src/app/core/util/customizable';

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Coin } from '../../../types/coin';
 import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { AddCoinModalComponent } from '../../modals/add-coin-modal/add-coin-modal.component';
-import { GreedyStep } from 'src/type/greedy';
+import { GreedyStep } from '@type/greedy';
 import { ChangeCoinsModalComponent } from '../../modals/change-coins-modal/change-coins-modal.component';
 import { SectionComponent } from '../../../core/components/section/section.component';
 import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
