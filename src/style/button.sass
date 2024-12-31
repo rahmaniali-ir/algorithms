@@ -1,96 +1,45 @@
 
 .button
-  --background-color: var(--text)
-  --background-opacity: .1
+  @apply inline-flex items-center bg-transparent border-0 cursor-pointer gap-1 isolate py-1 px-2 relative
+  --button-opacity: .05
+  --button-hover-opacity: .1
+  --button-active-opacity: .2
 
-  align-items: center
-  background: transparent
-  border: none
   border-radius: var(--radius)
-  color: var(--text)
-  cursor: pointer
-  display: inline-flex
   font-size: inherit
-  gap: 8px
-  isolation: isolate
-  padding: 8px
-  position: relative
-  text-decoration: none
 
   &:hover
-    --background-opacity: .2
+    --button-opacity: var(--button-hover-opacity)
 
-  &.vertical
-    flex-direction: column
-
-  &.primary
-    --background-color: var(--primary)
-    color: var(--primary)
-
-  &.accent
-    --background-color: var(--accent)
-    color: var(--accent)
-
-  &.neutral
-    --background-color: var(--background-accent)
-    color: var(--text) !important
+  &:active
+    --button-opacity: var(--button-active-opacity)
 
   &.filled
-    --background-opacity: 1
-    color: var(--background)
+    --button-opacity: 1
+    --button-hover-opacity: .9
 
-    &:hover
-      --background-opacity: .9
+    > svg-icon, > span
+      @apply text-neutral-50 dark:text-neutral-950
 
-  &.placeholder
-    --background-color: var(--text)
-    --background-opacity: 0
-    --hover-color: var(--primary)
+  &.plain
+    --button-opacity: 0
+    --button-hover-opacity: 0
+    --button-active-opacity: 0
 
-    border: 1px dashed var(--border)
-    justify-content: center
+    &:hover > *
+      @apply opacity-100
 
-    &.vertical
-      gap: 16px
-
-      > span
-        margin: 0
-
-    &:hover
-      --background-opacity: .02
-
-      border-color: var(--border-accent)
-
-      svg-icon
-        color: var(--hover-color)
-        opacity: 1
-        scale: 1.2
-
-      span
-        opacity: .7
-
-    svg-icon
-      opacity: .6
-
-    span
-      font-size: 14px
-      opacity: .5
-      transition: all .3s ease
+    > *
+      @apply opacity-75
 
   &::before
-    background: var(--background-color)
+    @apply bg-current block inset-0 pointer-events-none absolute transition-all -z-10
     border-radius: inherit
     content: ''
-    display: block
-    inset: 0
-    opacity: var(--background-opacity)
-    pointer-events: none
-    position: absolute
-    transition: all .3s ease
-    z-index: -1
+    opacity: var(--button-opacity)
 
   > span
-    margin-inline-end: 8px
+    @apply me-2 leading-tight
 
     &:only-child
-      margin-inline-start: 8px
+      @apply mx-2

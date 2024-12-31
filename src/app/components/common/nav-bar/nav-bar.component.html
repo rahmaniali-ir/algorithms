@@ -1,0 +1,38 @@
+<div class="flex items-center gap-1">
+  <a routerLink="/" class="button plain gap-2">
+    <svg-icon name="beaker" class="text-primary-500 !opacity-100" />
+
+    <span class="!opacity-100">
+      <strong>Algorithms</strong>
+    </span>
+  </a>
+
+  @if(category) {
+  <small class="opacity-50 mx-1 animate-appear">&gt;</small>
+
+  <a
+    routerLink="/"
+    class="button plain px-1 text-slate-500 hover:text-slate-700 animate-appear"
+  >
+    <span>{{ category.name }}</span>
+  </a>
+  } @if(algorithm) {
+  <small class="opacity-50 mx-1 animate-appear">&gt;</small>
+
+  <a
+    [routerLink]="'/algorithm/' + algorithm.id"
+    class="button plain px-1 text-slate-500 hover:text-slate-700 animate-appear"
+  >
+    <svg-icon [name]="algorithm.icon" />
+
+    <span>{{ algorithm.name }}</span>
+  </a>
+  }
+</div>
+
+<div class="flex items-center gap-2 ms-auto print:hidden">
+  <!-- print -->
+  <button (click)="print()" title="Print" class="button plain">
+    <svg-icon name="print" />
+  </button>
+</div>

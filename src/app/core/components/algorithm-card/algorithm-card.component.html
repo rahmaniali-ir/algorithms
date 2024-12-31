@@ -3,26 +3,28 @@
   [class.hovered]="hovered"
   (mousemove)="onMouseMove($event)"
   (mouseleave)="onMouseLeave()"
-  class="card"
+  class="button"
 >
   <div class="background">
     @for(color of colors; track color) {
     <div [style.left]="position.x" [style.top]="position.y" class="shape">
-      <svg-icon [style.--color]="color" name="filledSquare"></svg-icon>
+      <svg-icon [style.--color]="color" name="filledSquare" />
     </div>
     }
   </div>
 
-  <svg-icon [name]="algorithm.icon"></svg-icon>
+  <svg-icon
+    [name]="algorithm.icon"
+    class="text-8xl scale-150 absolute opacity-25 top-1/2 -translate-y-1/2 right-8 text-slate-50"
+  />
 
-  <div class="content">
-    <header>
-      <h3>
-        <svg-icon [name]="algorithm.icon"></svg-icon>
-        <span>{{ algorithm.name }}</span>
-      </h3>
-    </header>
+  <div class="flex flex-col flex-1 relative z-20 gap-4 justify-end">
+    <p class="text-xs opacity-50">{{ algorithm.description }}</p>
 
-    <p>{{ algorithm.description }}</p>
+    <strong class="font-semibold items-center flex gap-2">
+      <svg-icon [name]="algorithm.icon" class="text-2xl" />
+
+      <span class="leading-tight">{{ algorithm.name }}</span>
+    </strong>
   </div>
 </a>

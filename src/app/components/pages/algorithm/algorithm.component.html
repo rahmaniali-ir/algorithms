@@ -1,27 +1,3 @@
-<nav class="flex items-center">
-  <div class="project-icon">
-    <svg-icon [name]="algorithm.icon"></svg-icon>
-  </div>
-
-  <header>
-    <h1>{{ algorithm.name }}</h1>
-
-    <category-tag [category]="category"></category-tag>
-  </header>
-
-  <div class="options no-print">
-    <!-- print -->
-    <button (click)="print()" title="Print" class="button placeholder">
-      <svg-icon name="print"></svg-icon>
-    </button>
-
-    <!-- go to gallery -->
-    <a routerLink="/" class="button primary" title="Home">
-      <svg-icon name="apps"></svg-icon>
-    </a>
-  </div>
-</nav>
-
-<main>
+<div class="container mx-auto px-4">
   <router-outlet></router-outlet>
-</main>
+</div>

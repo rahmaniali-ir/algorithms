@@ -10,29 +10,13 @@
   box-sizing: border-box
 
 body
-  background: var(--background)
-  color: var(--text)
-  font-family: roboto, sans-serif
+  @apply select-none bg-slate-100 text-slate-800
+  font-family: "Roboto Condensed", serif
   font-size: 18px
   margin: 0
 
 ::selection
   background: var(--text-selection)
-
-.fixed-background
-  bottom: 0
-  height: 100vh
-  left: 0
-  mix-blend-mode: luminosity
-  object-fit: cover
-  opacity: .3
-  position: fixed
-  width: 100vw
-  z-index: -1
-
-.no-print
-  @media print
-    display: none !important
 
 .equation
   align-items: center
