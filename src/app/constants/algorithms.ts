@@ -8,23 +8,15 @@ import { QuickSortComponent } from '@components/algorithms/quick-sort/quick-sort
 import { MatrixMultiplicationComponent } from '@components/algorithms/matrix-multiplication/matrix-multiplication.component';
 import { PrimComponent } from '@components/algorithms/prim/prim.component';
 import { KruskalComponent } from '@components/algorithms/kruskal/kruskal.component';
+import { objectToArray } from '@utils/array';
 
 export type AlgorithmName =
   | 'binary-search'
   | 'merge-sort'
-  | 'quick-sort'
-  | 'large-integer-multiplication'
-  | 'binomial-coefficient'
-  | 'floyd-shortest-path'
   | 'matrix-chain-multiplication'
-  | 'bottleneck-traveling-salesman'
   | 'change-coins'
   | 'prim'
-  | 'kruskal'
-  | 'dijkstra'
-  | 'schedule'
-  | 'huffman-coding'
-  | 'rucksack';
+  | 'kruskal';
 
 export const algorithms: Record<AlgorithmName, Algorithm> = {
   'binary-search': {
@@ -47,47 +39,6 @@ export const algorithms: Record<AlgorithmName, Algorithm> = {
     component: MergeSortComponent,
   },
 
-  'quick-sort': {
-    id: 'quick-sort',
-    name: 'Quick Sort',
-    icon: 'sort',
-    description:
-      'Quick Sort picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.',
-    category: categories.divideAndConquer,
-    component: QuickSortComponent,
-    className: 'soon',
-  },
-
-  'large-integer-multiplication': {
-    id: 'large-integer-multiplication',
-    name: 'Large integer multiplication',
-    icon: 'abacus',
-    description: 'Lorem Ipsum!',
-    category: categories.divideAndConquer,
-    component: SoonComponent,
-    className: 'soon',
-  },
-
-  'binomial-coefficient': {
-    id: 'binomial-coefficient',
-    name: 'Binomial coefficient',
-    icon: 'flipV',
-    description: 'Lorem Ipsum!',
-    category: categories.dynamicProgramming,
-    component: SoonComponent,
-    className: 'soon',
-  },
-
-  'floyd-shortest-path': {
-    id: 'floyd-shortest-path',
-    name: 'Floyd shortest path',
-    icon: 'channel',
-    description: 'Lorem Ipsum!',
-    category: categories.dynamicProgramming,
-    component: SoonComponent,
-    className: 'soon',
-  },
-
   'matrix-chain-multiplication': {
     id: 'matrix-chain-multiplication',
     name: 'Matrix Chain Multiplication',
@@ -96,16 +47,6 @@ export const algorithms: Record<AlgorithmName, Algorithm> = {
       'Matrix multiplication is a binary operation that produces a matrix from two matrices.',
     category: categories.dynamicProgramming,
     component: MatrixMultiplicationComponent,
-  },
-
-  'bottleneck-traveling-salesman': {
-    id: 'bottleneck-traveling-salesman',
-    name: 'Bottleneck traveling salesman',
-    icon: 'store',
-    description: 'Lorem Ipsum!',
-    category: categories.dynamicProgramming,
-    component: SoonComponent,
-    className: 'soon',
   },
 
   'change-coins': {
@@ -137,52 +78,9 @@ export const algorithms: Record<AlgorithmName, Algorithm> = {
     category: categories.greedyApproach,
     component: KruskalComponent,
   },
-
-  dijkstra: {
-    id: 'dijkstra-minimum-spanning-tree',
-    name: 'Dijkstra minimum spanning tree',
-    icon: 'channel',
-    description:
-      "Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.",
-    category: categories.greedyApproach,
-    component: SoonComponent,
-    className: 'soon',
-  },
-
-  schedule: {
-    id: 'schedule',
-    name: 'Schedule',
-    icon: 'history',
-    description: 'Lorem Ipsum!',
-    category: categories.greedyApproach,
-    component: SoonComponent,
-    className: 'soon',
-  },
-
-  'huffman-coding': {
-    id: 'huffman-coding',
-    name: 'Huffman coding',
-    icon: 'compress',
-    description: 'Lorem Ipsum!',
-    category: categories.greedyApproach,
-    component: SoonComponent,
-    className: 'soon',
-  },
-
-  rucksack: {
-    id: 'rucksack',
-    name: 'Rucksack',
-    icon: 'bag',
-    description: 'Lorem Ipsum!',
-    category: categories.greedyApproach,
-    component: SoonComponent,
-    className: 'soon',
-  },
 };
 
-export const algorithmsArray = Object.keys(algorithms).map(
-  (k) => algorithms[k as AlgorithmName]
-);
+export const algorithmsArray = objectToArray(algorithms);
 
 export const defaultAlgorithm: Algorithm = {
   id: '',
