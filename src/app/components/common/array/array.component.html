@@ -5,7 +5,7 @@
 }
 
 <main>
-  @for(viewItem of viewItems; track viewItems?.[$index]) {
+  @for(viewItem of viewItems; track $index) {
   <div
     [title]="viewItem.title"
     [ngClass]="viewItem.item.meta?.className"
@@ -17,7 +17,7 @@
         @for(label of viewItem.item.meta?.labels; track $index) {
         <div [ngClass]="label.className" [title]="label.label" class="label">
           @if(label.icon) {
-          <svg-icon [name]="label.icon"></svg-icon>
+          <mat-icon [svgIcon]="label.icon" />
           }
 
           <span>{{ label.label }}</span>
@@ -25,7 +25,7 @@
         }
       </main>
 
-      <svg-icon name="angleDown"></svg-icon>
+      <mat-icon svgIcon="angleDown" />
     </div>
     }
 
@@ -45,7 +45,7 @@
 @if(editable) {
 <footer>
   <button (click)="addItem()" class="button">
-    <svg-icon name="plus"></svg-icon>
+    <mat-icon svgIcon="plus" />
   </button>
 </footer>
 }

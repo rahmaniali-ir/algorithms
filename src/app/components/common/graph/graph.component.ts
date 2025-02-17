@@ -11,18 +11,18 @@ import {
 import { CommonModule } from '@angular/common';
 import { VertexComponent } from '../vertex/vertex.component';
 import { FormsModule } from '@angular/forms';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { Graph } from '@models/graph';
 import { Position } from '@type/position';
 import { Edge, EdgeLine, Vertex } from '@type/graph';
 import { getEdgeLine } from '@utils/graph';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.sass'],
   standalone: true,
-  imports: [CommonModule, VertexComponent, FormsModule, SvgIconComponent],
+  imports: [CommonModule, VertexComponent, FormsModule, MatIconModule],
 })
 export class GraphComponent implements OnInit {
   @Input() graph: Graph = new Graph<{ position: Position }>('default');

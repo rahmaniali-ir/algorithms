@@ -1,13 +1,13 @@
 import { Component, HostBinding, HostListener } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { getRandom } from '@core/util/random';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { Position } from '@type/position';
 import { Subject, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'glass-card',
   standalone: true,
-  imports: [SvgIconComponent],
+  imports: [MatIconModule],
   templateUrl: './glass-card.component.html',
   styleUrl: './glass-card.component.sass',
   host: {

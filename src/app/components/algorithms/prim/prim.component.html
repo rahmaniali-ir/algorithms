@@ -3,7 +3,7 @@
   <!-- clear -->
   @if(graph.vertices.length) {
   <button actions (click)="clear()" class="button placeholder clear">
-    <svg-icon name="trash"></svg-icon>
+    <mat-icon svgIcon="trash" />
     <span>Clear</span>
   </button>
   }
@@ -20,7 +20,7 @@
       (click)="calculatePrimTree()"
       class="button vertical placeholder calculate"
     >
-      <svg-icon name="channel"></svg-icon>
+      <mat-icon svgIcon="channel" />
       <span>Calculate</span>
     </button>
     }

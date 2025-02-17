@@ -6,16 +6,16 @@ import { getVertexName } from '@utils/graph';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from '@type/position';
 import { SectionComponent } from '@core/components/section/section.component';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { GraphComponent } from '@common/graph/graph.component';
 import { StepComponent } from '@core/components/step/step.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-kruskal',
   templateUrl: './kruskal.component.html',
   styleUrls: ['./kruskal.component.sass'],
   standalone: true,
-  imports: [SectionComponent, SvgIconComponent, GraphComponent, StepComponent],
+  imports: [SectionComponent, MatIconModule, GraphComponent, StepComponent],
 })
 export class KruskalComponent {
   graph = new Graph<{ position: Position }>('Input');

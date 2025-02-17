@@ -1,4 +1,4 @@
 <a routerLink="/" [queryParams]="{ category: category.id }">
-  <svg-icon [name]="category.icon"></svg-icon>
+  <mat-icon [svgIcon]="category.icon" />
   <span>{{ category.name }}</span>
 </a>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Position } from '@type/position';
 import { SectionComponent } from '@core/components/section/section.component';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { StepComponent } from '@core/components/step/step.component';
 import { ArrayComponent } from '@components/common/array/array.component';
 import { MetaArray } from '@models/meta-array';
@@ -9,13 +8,14 @@ import { MergeSortStep } from '@type/merge-sort';
 import { Tree } from '@models/tree';
 import { Graph } from '@models/graph';
 import { TreeNodeAddress } from '@type/tree';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'merge-sort',
   templateUrl: './merge-sort.component.html',
   styleUrls: ['./merge-sort.component.sass'],
   standalone: true,
-  imports: [SectionComponent, ArrayComponent, SvgIconComponent, StepComponent],
+  imports: [SectionComponent, ArrayComponent, MatIconModule, StepComponent],
 })
 export class MergeSortComponent {
   input = new MetaArray<number>([27, 10, 12, 20, 25, 13, 15, 22]);

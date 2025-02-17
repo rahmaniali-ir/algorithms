@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Matrix } from '@models/matrix';
-import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { CreateMatrixModalComponent } from '@modals/create-matrix-modal/create-matrix-modal.component';
 import { getPossibleSequenceParenthesis } from '@utils/matrix';
 import { CheckBoxComponent } from '@core/components/check-box/check-box.component';
 import { SectionComponent } from '@core/components/section/section.component';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { MatrixComponent } from '@common/matrix/matrix.component';
 import { StepComponent } from '@core/components/step/step.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ModalService } from '@core/services/modal.service';
 
 @Component({
   selector: 'matrix-multiplication',
@@ -17,19 +17,19 @@ import { StepComponent } from '@core/components/step/step.component';
   imports: [
     CheckBoxComponent,
     SectionComponent,
-    SvgIconComponent,
+    MatIconModule,
     MatrixComponent,
     StepComponent,
   ],
 })
 export class MatrixMultiplicationComponent {
+  private readonly modal = inject(ModalService);
+
   matrices: Matrix<number>[] = [];
   m?: Matrix<string | undefined>;
   result?: Matrix;
   showDetails = false;
   showAxis = false;
-
-  constructor(private modal: ModalService) {}
 
   get lastMatrixColumns() {
     return this.matrices.at(-1)?.x;
@@ -54,19 +54,20 @@ export class MatrixMultiplicationComponent {
   }
 
   createMatrix() {
-    const input: { [key in string]: any } = {
+    const data: { [key in string]: any } = {
       name: this.nextMatrixName,
     };
 
     if (this.matrices.length > 0) {
-      input['fixRows'] = this.lastMatrixColumns;
+      data['fixRows'] = this.lastMatrixColumns;
     }
 
     this.modal
       .open<Matrix>(CreateMatrixModalComponent, {
-        input,
+        data,
       })
-      .result.subscribe({
+      .afterClosed()
+      .subscribe({
         next: (matrix) => {
           if (!matrix) return;
 

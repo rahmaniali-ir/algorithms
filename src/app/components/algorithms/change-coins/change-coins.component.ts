@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Coin } from '../../../types/coin';
-import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { AddCoinModalComponent } from '../../modals/add-coin-modal/add-coin-modal.component';
 import { GreedyStep } from '@type/greedy';
 import { ChangeCoinsModalComponent } from '../../modals/change-coins-modal/change-coins-modal.component';
 import { SectionComponent } from '../../../core/components/section/section.component';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { CoinComponent } from '../../common/coin/coin.component';
 import { StepComponent } from '../../../core/components/step/step.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ModalService } from '@core/services/modal.service';
 
 @Component({
   selector: 'change-coins',
   templateUrl: './change-coins.component.html',
   styleUrls: ['./change-coins.component.sass'],
   standalone: true,
-  imports: [SectionComponent, SvgIconComponent, CoinComponent, StepComponent],
+  imports: [SectionComponent, MatIconModule, CoinComponent, StepComponent],
 })
 export class ChangeCoinsComponent {
+  private readonly modal = inject(ModalService);
+
   coins: Coin[] = [
     { amount: 1, size: 1 },
     { amount: 5, size: 2 },
@@ -25,8 +27,6 @@ export class ChangeCoinsComponent {
     { amount: 25, size: 2 },
   ];
   target = 0;
-
-  constructor(private modal: ModalService) {}
 
   get sortedCoins() {
     return this.coins.sort((a, b) => b.amount - a.amount);
@@ -112,22 +112,26 @@ export class ChangeCoinsComponent {
   }
 
   addCoin() {
-    this.modal.open(AddCoinModalComponent).result.subscribe({
-      next: (coins: Coin[]) => {
-        this.coins.push(...coins);
-      },
-      error: () => {},
-    });
+    this.modal
+      .open<Coin[]>(AddCoinModalComponent)
+      .afterClosed()
+      .subscribe({
+        next: (coins) => {
+          if (coins) this.coins.push(...coins);
+        },
+        error: () => {},
+      });
   }
 
   change() {
     this.modal
-      .open(ChangeCoinsModalComponent, {
-        input: { target: this.target },
+      .open<number>(ChangeCoinsModalComponent, {
+        data: { target: this.target },
       })
-      .result.subscribe({
-        next: (target: number) => {
-          this.target = target;
+      .afterClosed()
+      .subscribe({
+        next: (target) => {
+          if (target) this.target = target;
         },
         error: () => {},
       });

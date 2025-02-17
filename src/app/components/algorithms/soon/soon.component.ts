@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-soon',
   templateUrl: './soon.component.html',
   styleUrls: ['./soon.component.sass'],
   standalone: true,
-  imports: [SvgIconComponent],
+  imports: [MatIconModule],
 })
 export class SoonComponent {}

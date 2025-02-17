@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [SvgIconComponent],
+  imports: [MatIconModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.sass',
 })

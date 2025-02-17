@@ -1,6 +1,6 @@
 <modal-card header="Add Coin" description="Push new coins to existing coins">
   <section class="coins">
-    @for(coin of coins; track coin) {
+    @for(coin of coins; track $index) {
     <app-coin [amount]="coin.amount" [size]="coin.size"></app-coin>
     }
   </section>
@@ -44,7 +44,7 @@
   </section>
 
   <ng-container footer>
-    <button (click)="modal.dismiss()" class="button neutral">
+    <button (click)="modal.close()" class="button neutral">
       <span>Cancel</span>
     </button>
 

@@ -3,7 +3,7 @@
   <!-- clear -->
   @if(coins.length) {
   <button actions (click)="clear()" class="button placeholder clear">
-    <svg-icon name="trash"></svg-icon>
+    <mat-icon svgIcon="trash" />
     <span>Clear</span>
   </button>
   }
@@ -15,7 +15,7 @@
     }
 
     <button (click)="addCoin()" class="button vertical placeholder">
-      <svg-icon name="coin"></svg-icon>
+      <mat-icon svgIcon="coin" />
       <span>Add coin</span>
     </button>
 
@@ -24,7 +24,7 @@
       (click)="change()"
       class="button vertical placeholder calculate-change"
     >
-      <svg-icon name="circleLayer"></svg-icon>
+      <mat-icon svgIcon="circleLayer" />
       <span>Change</span>
     </button>
     }
@@ -57,9 +57,9 @@
         <section class="check">
           <header>
             @if(step.feasibilityCheck) {
-            <svg-icon name="check" class="color-success"></svg-icon>
+            <mat-icon svgIcon="check" class="color-success" />
             } @else {
-            <svg-icon name="times" class="color-danger"></svg-icon>
+            <mat-icon svgIcon="times" class="color-danger" />
             }
 
             <span
@@ -76,9 +76,9 @@
         <section class="check">
           <header>
             @if(step.solutionCheck) {
-            <svg-icon name="check" class="color-success"></svg-icon>
+            <mat-icon svgIcon="check" class="color-success" />
             } @else {
-            <svg-icon name="times" class="color-danger"></svg-icon>
+            <mat-icon svgIcon="times" class="color-danger" />
             }
 
             <span

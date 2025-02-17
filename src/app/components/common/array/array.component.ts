@@ -7,16 +7,16 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { MetaArray } from '@models/meta-array';
 import { ArrayItemView } from '@type/array-item-view';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-array',
   templateUrl: './array.component.html',
   styleUrls: ['./array.component.sass'],
   standalone: true,
-  imports: [CommonModule, FormsModule, SvgIconComponent],
+  imports: [CommonModule, FormsModule, MatIconModule],
 })
 export class ArrayComponent {
   @Input() name = '';

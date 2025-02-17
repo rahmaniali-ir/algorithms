@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-step',
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.sass'],
   standalone: true,
-  imports: [SvgIconComponent],
+  imports: [MatIconModule],
 })
 export class StepComponent {
   @Input() header = '';

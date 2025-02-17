@@ -1,23 +1,18 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import {
   ActivatedRoute,
   NavigationEnd,
   Router,
   RouterLink,
 } from '@angular/router';
-import {
-  algorithms,
-  algorithmsArray,
-  defaultAlgorithm,
-} from '@const/algorithms';
-import { defaultCategory } from '@const/categories';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
+import { algorithms, algorithmsArray } from '@const/algorithms';
 import { Algorithm } from '@type/algorithm';
 
 @Component({
   selector: 'nav-bar',
   standalone: true,
-  imports: [SvgIconComponent, RouterLink],
+  imports: [MatIconModule, RouterLink],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.sass',
 })

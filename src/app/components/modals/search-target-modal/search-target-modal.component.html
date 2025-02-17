@@ -3,7 +3,7 @@
   description="Enter the target value you are searching for"
 >
   <section>
-    <form-group (enter)="submitTarget()" name="Search for">
+    <form-group name="Search for">
       <form-label label="Target value" target="target">
         <input
           [(ngModel)]="target"
@@ -19,7 +19,7 @@
   </section>
 
   <ng-container footer>
-    <button (click)="modal.dismiss()" class="button neutral">
+    <button (click)="modal.close()" class="button neutral">
       <span>Cancel</span>
     </button>
 

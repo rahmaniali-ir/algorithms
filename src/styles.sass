@@ -1,6 +1,8 @@
+@use '@angular/material' as mat
 @import ./style/variables
 @import ./style/fonts
 @import ./style/button
+@import '@angular/material/prebuilt-themes/indigo-pink.css'
 
 @tailwind base
 @tailwind components
@@ -8,6 +10,15 @@
 
 *, *::before, *::after
   box-sizing: border-box
+
+.mat-mdc-dialog-container
+  @apply rounded-xl
+
+  .mat-mdc-dialog-surface
+    @apply rounded-xl bg-transparent backdrop-blur-md
+
+html
+  color-scheme: light dark
 
 body
   @apply select-none bg-slate-100 text-slate-800
@@ -17,6 +28,12 @@ body
 
 ::selection
   background: var(--text-selection)
+
+mat-icon
+  height: 1em !important
+  min-height: 1em !important
+  min-width: 1em !important
+  width: 1em !important
 
 .equation
   align-items: center

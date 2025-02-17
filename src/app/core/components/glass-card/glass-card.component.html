@@ -1,7 +1,7 @@
 <div class="absolute inset-0 -z-20 opacity-50">
-  @for(color of colors; track color) {
+  @for(color of colors; track $index) {
   <div [style.left]="position.x" [style.top]="position.y" class="shape">
-    <svg-icon [style.--color]="color" name="filledSquare" />
+    <mat-icon [style.color]="color" svgIcon="filledSquare" />
   </div>
   }
 </div>

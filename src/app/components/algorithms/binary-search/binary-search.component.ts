@@ -1,29 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MetaArray } from '@models/meta-array';
 import { BinarySearchStep } from '@type/binary-search';
 import { getClassList } from 'src/app/core/util/customizable';
-import { ModalService } from '@rahmaniali.ir/angular-modal';
 import { SectionComponent } from '@core/components/section/section.component';
 import { ArrayComponent } from '@common/array/array.component';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { StepComponent } from '@core/components/step/step.component';
 import { SearchTargetModalComponent } from '@components/modals/search-target-modal/search-target-modal.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ModalService } from '@core/services/modal.service';
 
 @Component({
   selector: 'binary-search',
   templateUrl: './binary-search.component.html',
   styleUrls: ['./binary-search.component.sass'],
   standalone: true,
-  imports: [SectionComponent, ArrayComponent, SvgIconComponent, StepComponent],
+  imports: [SectionComponent, ArrayComponent, StepComponent, MatIconModule],
 })
 export class BinarySearchComponent {
+  private readonly modal = inject(ModalService);
+
   input = new MetaArray<number>([
     10, 12, 13, 14, 18, 20, 25, 27, 30, 35, 40, 45, 47,
   ]);
   steps: BinarySearchStep[] = [];
   target?: number = 15;
-
-  constructor(private modal: ModalService) {}
 
   binarySearch(target: number) {
     const metaArray = this.input.clone();
@@ -157,13 +157,20 @@ export class BinarySearchComponent {
   search() {
     if (this.target === undefined) return;
 
-    this.modal.open(SearchTargetModalComponent).result.subscribe({
-      next: (target: number) => {
-        this.steps = [];
-        this.target = target;
-        this.binarySearch(target);
-      },
-      error: () => {},
-    });
+    this.modal
+      .open<number>(SearchTargetModalComponent)
+      .afterClosed()
+      .subscribe({
+        next: (target) => {
+          console.log('Search target', target);
+
+          if (!target) return;
+
+          this.steps = [];
+          this.target = target;
+          this.binarySearch(target);
+        },
+        error: () => {},
+      });
   }
 }

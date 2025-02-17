@@ -23,7 +23,7 @@
   <!-- clear -->
   @if(matrices.length) {
   <button actions (click)="clear()" class="button placeholder clear">
-    <svg-icon name="trash"></svg-icon>
+    <mat-icon svgIcon="trash" />
     <span>Clear</span>
   </button>
   }
@@ -33,7 +33,7 @@
     @for(matrix of matrices; track $index) {
     <div class="matrix">
       @if(!$first) {
-      <svg-icon name="times" class="times"></svg-icon>
+      <mat-icon svgIcon="trash" class="times" />
       }
 
       <app-matrix
@@ -51,7 +51,7 @@
       (click)="createMatrix()"
       class="button vertical placeholder no-print"
     >
-      <svg-icon name="addX"></svg-icon>
+      <mat-icon svgIcon="addX" />
 
       @if(!matrices.length) {
       <span>Add First Matrix</span>
@@ -68,7 +68,7 @@
       (click)="multiply()"
       class="button vertical placeholder calculate no-print"
     >
-      <svg-icon name="calculator"></svg-icon>
+      <mat-icon svgIcon="calculator" />
       <span>Calculate</span>
     </button>
     }
@@ -76,7 +76,7 @@
     <!-- result -->
     @if(result) {
     <div class="matrix">
-      <svg-icon name="equal" class="equal"></svg-icon>
+      <mat-icon svgIcon="equal" class="equal" />
 
       <app-matrix
         [matrix]="result"
@@ -103,7 +103,7 @@
         @for(name of matrixNames; track $index) {
         <div class="name">
           @if(!$first) {
-          <svg-icon name="times"></svg-icon>
+          <mat-icon svgIcon="times" />
           }
 
           <span>{{ name }}</span>
@@ -159,7 +159,7 @@
     <app-step header="Minimum multiplications" icon="infoCircle">
       <div class="m equation">
         m
-        <svg-icon name="equal"></svg-icon>
+        <mat-icon svgIcon="equal" />
 
         <app-matrix
           [matrix]="m"

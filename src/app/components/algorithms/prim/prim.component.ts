@@ -3,13 +3,13 @@ import { GreedyStep } from '@type/greedy';
 import { getClassList } from 'src/app/core/util/customizable';
 import { Position } from '@type/position';
 import { SectionComponent } from '../../../core/components/section/section.component';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { StepComponent } from '@core/components/step/step.component';
 import { GraphComponent } from '@components/common/graph/graph.component';
 import { VertexComponent } from '@components/common/vertex/vertex.component';
 import { Graph } from '@models/graph';
 import { Edge, Vertex, Vertices } from '@type/graph';
 import { getVertexName } from '@utils/graph';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-prim',
@@ -18,7 +18,7 @@ import { getVertexName } from '@utils/graph';
   standalone: true,
   imports: [
     SectionComponent,
-    SvgIconComponent,
+    MatIconModule,
     GraphComponent,
     StepComponent,
     VertexComponent,

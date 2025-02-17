@@ -1,6 +1,6 @@
 <div class="flex items-start flex-col md:flex-row md:items-center md:gap-1">
   <a routerLink="/" class="button plain gap-2">
-    <svg-icon name="beaker" class="text-primary-500 !opacity-100" />
+    <mat-icon svgIcon="beaker" class="text-primary-500 !opacity-100" />
 
     <span class="!opacity-100">
       <strong>Algorithms</strong>
@@ -14,7 +14,7 @@
     routerLink="/"
     class="button plain text-slate-500 hover:text-slate-700 animate-appear gap-2 text-sm"
   >
-    <svg-icon [name]="category.icon" />
+    <mat-icon [svgIcon]="category.icon" />
 
     <span>{{ category.name }}</span>
   </a>
@@ -25,7 +25,7 @@
     [routerLink]="'/algorithm/' + algorithm.id"
     class="button plain text-slate-500 hover:text-slate-700 animate-appear gap-2 text-sm"
   >
-    <svg-icon [name]="algorithm.icon" />
+    <mat-icon [svgIcon]="algorithm.icon" />
 
     <span>{{ algorithm.name }}</span>
   </a>
@@ -35,6 +35,6 @@
 <div class="flex items-center gap-2 ms-auto print:hidden">
   <!-- print -->
   <button (click)="print()" title="Print" class="button plain">
-    <svg-icon name="print" />
+    <mat-icon name="print" />
   </button>
 </div>

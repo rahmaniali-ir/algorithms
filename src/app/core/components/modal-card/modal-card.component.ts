@@ -1,6 +1,6 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { ActiveModal } from '@rahmaniali.ir/angular-modal';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
+import { Component, ViewEncapsulation, Input, inject } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'modal-card',
@@ -8,11 +8,11 @@ import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
   styleUrls: ['./modal-card.component.sass'],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [SvgIconComponent],
+  imports: [MatIconModule],
 })
 export class ModalCardComponent {
+  readonly modal = inject(MatDialogRef);
+
   @Input() header = '';
   @Input() description = '';
-
-  constructor(public modal: ActiveModal) {}
 }

@@ -1,7 +1,7 @@
 <a [routerLink]="'algorithm/' + algorithm.id" class="flex-1 flex rounded-xl">
   <glass-card class="flex-1">
-    <svg-icon
-      [name]="algorithm.icon"
+    <mat-icon
+      [svgIcon]="algorithm.icon"
       class="text-8xl scale-150 absolute opacity-40 top-1/2 -translate-y-1/2 right-8 text-slate-50"
     />
 
@@ -11,7 +11,7 @@
       <p class="text-xs opacity-50 max-w-44">{{ algorithm.description }}</p>
 
       <strong class="font-semibold items-center flex gap-2">
-        <svg-icon [name]="algorithm.icon" class="text-2xl" />
+        <mat-icon [svgIcon]="algorithm.icon" class="text-2xl" />
 
         <span class="leading-tight">{{ algorithm.name }}</span>
       </strong>

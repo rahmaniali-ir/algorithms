@@ -1,15 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { Matrix, PlainMatrix } from '@models/matrix';
 import { getRandom } from 'src/app/core/util/random';
-import { ActiveModal } from '@rahmaniali.ir/angular-modal';
 import { getAlphabetLetter } from 'src/app/core/util/alphabet';
 import { ModalCardComponent } from '@core/components/modal-card/modal-card.component';
 import { FormGroupComponent } from '@core/components/form-group/form-group.component';
 import { FormLabelComponent } from '@core/components/form-label/form-label.component';
 import { FormsModule } from '@angular/forms';
 import { CheckBoxComponent } from '@core/components/check-box/check-box.component';
-import { SvgIconComponent } from '@rahmaniali.ir/angular-svg-icon';
 import { MatrixComponent } from '@common/matrix/matrix.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'create-matrix-modal',
@@ -22,11 +22,13 @@ import { MatrixComponent } from '@common/matrix/matrix.component';
     FormLabelComponent,
     FormsModule,
     CheckBoxComponent,
-    SvgIconComponent,
+    MatIconModule,
     MatrixComponent,
   ],
 })
 export class CreateMatrixModalComponent implements OnInit {
+  readonly modal = inject(MatDialogRef);
+
   @Input() name = getAlphabetLetter(0);
   @Input() set fixRows(rows: number | undefined) {
     if (rows === undefined) return;
@@ -45,8 +47,6 @@ export class CreateMatrixModalComponent implements OnInit {
   randomize = true;
   randomMin = 0;
   randomMax = 10;
-
-  constructor(public modal: ActiveModal) {}
 
   ngOnInit(): void {
     this.changeInputMatrixSize();

@@ -4,6 +4,7 @@
 
   &.hovered
     .shape > *
+      filter: grayscale(0)
       scale: 1
       opacity: 1
 
@@ -18,35 +19,34 @@
   &:nth-child(1)
     transition: all 6s linear
 
-    svg-icon
+    mat-icon
       scale: 1.5
       rotate: 43deg
 
   &:nth-child(2)
     transition: all 5s linear
 
-    svg-icon
+    mat-icon
       scale: 1
 
   &:nth-child(3)
     transition: all 4s linear
 
-    svg-icon
+    mat-icon
       scale: .6
       rotate: 90deg
 
   > *
     transition: all 2s ease
 
-  svg-icon
+  mat-icon
     animation: shape 15s ease-in-out alternate infinite
-    color: var(--color, currentColor)
     border-radius: 50%
-    height: 100px
-    opacity: 0
+    filter: grayscale(1)
+    font-size: 200px
+    opacity: .2
     transform-origin: 50% 80%
     scale: .8
-    width: 100px
 
 @keyframes shape
   0%, 100%
