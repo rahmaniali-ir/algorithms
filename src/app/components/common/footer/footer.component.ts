@@ -8,4 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.sass',
 })
-export class FooterComponent {}
+export class FooterComponent {
+  readonly date = new Date().toLocaleDateString('en-US');
+}

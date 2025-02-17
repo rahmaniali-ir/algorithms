@@ -1,14 +1,23 @@
 <a
   href="https://github.com/rahmaniali-ir/algorithms/issues"
   target="_blank"
-  class="flex items-center gap-2"
+  class="flex items-center gap-2 print:hidden"
 >
   <mat-icon svgIcon="bug" />
   <span>Send feedback or report issues</span>
 </a>
 
-<main>
+<main class="hidden flex-wrap w-full gap-1 print:flex">
+  <span>Saved from</span>
+
+  <div class="text-primary-500">https://rahmaniali-ir.github.io/algorithms</div>
+
+  <span class="opacity-75 ms-auto block">{{ date }}</span>
+</main>
+
+<main class="flex flex-wrap gap-1 print:hidden mx-auto">
   <span>Made By</span>
+
   <a
     href="https://github.com/rahmaniali-ir"
     target="_blank"
@@ -18,11 +27,18 @@
   </a>
 
   <span>At</span>
+
   <a href="https://www.khayyam.ac.ir/" target="_blank">Khayyam University</a>
+
   <span>2023</span>
 </main>
 
-<a href="https://angular.io/" target="_blank" title="Angular">
+<a
+  href="https://angular.io/"
+  target="_blank"
+  title="Angular"
+  class="print:hidden"
+>
   <span>Powered by</span>
   <mat-icon svgIcon="angular" />
   <span>Angular</span>
