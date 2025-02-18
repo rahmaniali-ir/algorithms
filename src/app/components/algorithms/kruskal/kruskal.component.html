@@ -15,15 +15,49 @@
       (edit)="onInputEdit()"
     ></app-graph>
 
-    @if(canCalculate) {
-    <button
-      (click)="calculateKruskalTree()"
-      class="button vertical placeholder calculate"
-    >
-      <mat-icon svgIcon="channel" />
-      <span>Calculate</span>
-    </button>
-    }
+    <div class="flex flex-col gap-3 items-start">
+      <!-- graph guide -->
+      <div class="flex flex-col gap-1 text-sm">
+        <strong>How to use the graph?</strong>
+
+        <ul class="list-disc list-inside">
+          <li class="opacity-75 hover:opacity-100">
+            Double click on empty space to add a node.
+          </li>
+
+          <li class="opacity-75 hover:opacity-100">
+            Double click on a node to remove.
+          </li>
+
+          <li class="opacity-75 hover:opacity-100">
+            Click on a node, drag and release to move.
+          </li>
+
+          <li class="opacity-75 hover:opacity-100">
+            Hold
+            <kbd class="bg-slate-200 inline-flex py-px px-1 rounded-lg">
+              Ctrl
+            </kbd>
+            , Click on a node, drag over another node, and release to add an
+            edge.
+          </li>
+
+          <li class="opacity-75 hover:opacity-100">
+            Click on an edge's weight to change.
+          </li>
+        </ul>
+      </div>
+
+      @if(canCalculate) {
+      <button
+        (click)="calculateKruskalTree()"
+        class="button vertical placeholder calculate"
+      >
+        <mat-icon svgIcon="channel" />
+        <span>Calculate</span>
+      </button>
+      }
+    </div>
   </div>
 </app-section>
 
